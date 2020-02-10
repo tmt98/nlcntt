@@ -1,0 +1,14 @@
+{
+  "name": "nienluancongnghethongtin",
+  "version": "1.0.0",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server.js"
+  },
+  "author": "Tran Minh Tai",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "description": ""
+}

@@ -1,0 +1,14 @@
+{
+  "name": "nienluancntt",
+  "version": "1.0.0",
+  "description": "Nien Luan CNTT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tran Minh Tai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
