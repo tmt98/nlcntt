@@ -1,0 +1,113 @@
+.post {
+    background: white;
+    margin-bottom: 10px;
+    border: 1px solid #f1f1f1;
+    padding-bottom: 15px;
+    position: relative;
+}
+.info-content-user {
+    background: white;
+    margin-bottom: 10px;
+    border: 1px solid #f1f1f1;
+    padding-bottom: 15px;
+    position: relative;
+}
+.information-blogger {
+    position: relative;
+    padding: 10px 10px 0px 10px;
+}
+.avatar {
+    width: 50px;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.infor {
+    position: relative;
+    /* top: 10px; */
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.time-post {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    left: 60px;
+    top: 30px;
+}
+.time-p {
+    position: absolute;
+}
+.cover-blog {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.cover-blog a > img{
+    /*width: 100%;min-height: 240px;height: 300px;*/ 
+    display:inline-block;
+    transition:opacity 1s linear;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    width:100%;
+    position:absolute;
+    min-height: 300px;
+}
+.title {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.title > h2 > a {
+    word-break: break-word;
+    word-spacing: normal;
+    word-wrap: break-word;
+    color: #009580;
+    font-size: 25px;
+    padding-top: 5px;
+}
+.tag-list {
+    padding-left: 20px;
+}
+.tag-item {
+    display: inline-block;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.tags img {
+    width: 14px;
+    height: 14px;
+}
+a.tags {
+    color: #c6c5c5;
+    font-size: 12px;
+    text-transform: lowercase;
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid #c6c5c5;
+    font-weight: bold;
+}
+
+.details {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.col-left span {
+    padding-right: 10px;
+    font-size: 12px;
+}
+.viewcount img {
+    width: 13px;
+    height: 13px;
+}
+.description {
+    padding-left: 20px;
+    padding-right: 20px;
+    word-break: break-word;
+    word-wrap: break-word;
+}

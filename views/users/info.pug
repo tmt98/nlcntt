@@ -1,0 +1,137 @@
+extends ../layout/default
+block script
+    link(rel='stylesheet', href='/public/css/info-user.css')
+    link(rel='stylesheet', href='/public/css/info-content-user.css')
+    link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
+block content 
+        .header.container-lg
+            .timeline
+                .container-img
+                    .cover
+                        img(src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t1.0-9/48382024_2248568198735368_1003418688080052224_o.jpg?_nc_cat=105&_nc_sid=dd9801&_nc_eui2=AeG_DrmXmbiMma0z5QRp4aOjebJDW02cE_srAxqTqN0qWeeaE35nWVx-bIie0A1zdBX-BJSz1dpeHCuvd_Gjm630HrIHTDyGZfYTNeByUKW4hg&_nc_ohc=mg9LKmSuUf4AX9QQ0Th&_nc_ht=scontent.fsgn5-2.fna&oh=9937c2347767d9b5a0e1116f91ab3291&oe=5EF8EAE0", style="cursor: s-resize;", alt="")
+        .container-lg
+            .row
+                .col-sm-3.col-left.pr-15.pl-15.mr-0.ml-0.pt-5.border-left.border-right.border-primary
+                    .info.border-bottom.border-primary.text-center
+                        .clearfix(style="padding: 5px;")
+                        img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                        p.user-name= user.name
+                        button.btn.btn-primary
+                            i.oi.oi-rss
+                            span &nbsp; Follow &nbsp;
+                            span= "(" + user.following + ")"
+                        .clearfix(style="padding: 5px;")
+                    .detail-info.border-bottom.border-primary
+                        .clearfix(style="padding: 5px;")
+                        .home
+                            span.oi.oi-map-marker
+                            span &nbsp; Sống tại Cần Thơ &nbsp;
+                        .address
+                            span.oi.oi-home
+                            span &nbsp; Đến từ Long Xuyên &nbsp;
+                        .followed
+                            span.oi.oi-rss-alt
+                            span= " Có " + user.following + " người theo dõi"
+                        .clearfix(style="padding: 5px;")
+                    .follow-list
+                        .clearfix(style="padding: 5px;")
+                        h6 4 người theo dõi
+                        .container
+                            .row.row-cols-3
+                                each user in users
+                                    .col
+                                        img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
+
+                .col-sm-9.col-right.content
+                    .post.nav.nav.bg-light
+                        a.nav-link.active(href='#') Trang Chủ
+                        a.nav-link(href='#') Hoạt Động
+                        a.nav-link(href='#') Theo Dõi
+                        a.nav-link.disabled(href='#') Đang Theo Dõi
+                    .post.border.border-primary.rounded
+                        .info-content-user.bg-white.p-1
+                            .information-blogger.clearfix
+                                .avatar
+                                    a(href="/user/" + user.id)
+                                        img.rounded-circle(style='width: 35px; height: 35px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                                .infor
+                                    a(href="/user/" + user.id).text-danger.text-decoration-none
+                                        = user.name
+                                        span &nbsp;
+                                        span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
+                                            i.oi.oi-rss
+                                            =" " + user.following + " người theo dõi"
+                                .pull-right
+                                    a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
+                                .time-post.time-p
+                                    span 25/02/2020
+                            div(style='position: relative;')
+                                .cover-blog
+                                    a(href="#").text-decoration-none
+                                        img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
+                            .title
+                                h2
+                                    a.text-decoration-none(href="#") An Giang | Thất sơn hùng vĩ
+                            .tag-list
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;chùa bà
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;núi sam
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;long xuyên
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;núi voi
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;cù lao giêng
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;thoại sơn
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;ba trúc
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;tri tôn
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;núi cấm
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;bún mắm
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;trà sư
+                                .tag-item
+                                    a(href="#").tags.text-decoration-none
+                                        i.oi.oi-tags
+                                        |&nbsp;an giang
+                            .details
+                                .col-left.viewcount
+                                    span
+                                        i.oi.oi-eye
+                                        |&nbsp;999
+                                    span
+                                        i.oi.oi-chat
+                                        |&nbsp;23
+                                    span
+                                        i.oi.oi-share-boxed
+                                        |&nbsp;23
+                            .description
+                                p Định là đi vía Bà trong ngày rồi về mà tại thấy An Giang còn nhiều chỗ đẹp chưa đi quá nên quyết định ở lại tu thập hình ảnh sống ảo luôn ?? 
+

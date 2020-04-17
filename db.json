@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Minh Nhựa",
+      "following": 3000
+    },
+    {
+      "id": 2,
+      "name": "Minh Tâm",
+      "following": 2500
+    },
+    {
+      "id": 3,
+      "name": "Minh Tài",
+      "following": 2310
+    },
+    {
+      "id": 4,
+      "name": "Minh Anh",
+      "following": 1132
+    },
+    {
+      "id": 5,
+      "name": "Minh AAA",
+      "following": 981
+    },
+    {
+      "id": 6,
+      "name": "Trần Minh Tài",
+      "following": 640
+    },
+    {
+      "id": 7,
+      "name": "abc"
+    }
+  ],
+  "post": [
+    {
+      "id": 1,
+      "title": "An Giang | Thất sơn hùng vĩ",
+      "describe": "Định là đi vía Bà trong ngày rồi về mà tại thấy An Giang còn nhiều chỗ đẹp chưa đi quá nên quyết định ở lại tu thập hình ảnh sống ảo luôn ??",
+      "content": "??Ngày đầu tiên: Sáng tụi mình đi victoria Nui Sam ăn sáng và bơi, nói là sáng chứ đi lên đó chụp quài chụp mãi tới chiều còn chưa ra được vì nhiều view đẹp lắm còn tranh thủ bơi bể bơi vô cực có view cánh đồng lúa nửa chứ, nhìn thấy thoải mái ấm áp Miền Tây vô cùng. Tới tối bọn mình xuống núi đi vía bà. Do đường đi Victoria củng là đường đi Bà Chúa Xứ nên rất gần mọi người có thể lại vía bà xong rồi chạy lên núi khoảng 2km là tới resortGiá phòng tuỳ theo mình chọn từ 1tr8 - 3tr bao gồm buffet sáng và phí phục vụMón ăn và đồ uống dao động từ 50- 200.000 Vé hồ bơi 170.000₫/ người kèm 1 món ăn và một thức uống.  Có dịp lên AG sẽ nhất định ghé lại victoria 1 lần nửa. Còn nếu muốn chụp hình vía Bà thì mình khuyên nên đi tháng 5 6 7 8 9 cho đỡ đông chụp cho dễ nè chứ mình đi là nhích xe tới ngay cổng sau thôi mà tầm nửa tiếng đó ? ??Ngày thứ 2: định kiếm chỗ ở Châu Đốc đi ăn uống thôi mà rồi hai đứa củng gán lên kiếm chỗ nào đẹp thì đi, search một hồi quyết định đi Tri Tôn luôn cách Châu Đốc 1 tiếng chạy xe máy, mấy bạn nên đi sáng sớm chứ tụi mình đi buổi trưa nắng nóng kinh khủng ? đi rất mệt •Đến chùa Khmer KosOnhDeth: nằm trên đường đi Tri Tôn cứ chạy thẳng còn 20km nửa tới Tri Tôn thì mấy bạn nhìn bên tay phải là KosOnhDeth như Thái Lan thu nhỏ vậy ? chụp chẹt trong này gần 2 tiếng tụi mình mới ra và đi cánh đồng thốt nốt ở Tri Tôn, ở đây nhiều cánh đồng lắm nên cứ ghé đại thôi mình không biết địa chỉ cụ thể ở đâu nửa. Đi Tri Tôn hơi xa và mệt nên bạn nào muốn nghĩ dưỡng du lịch thoải mái bình thường thì mình khuyên nên đi Victoria thôi là có tầm 10 tấm hình với 10 bộ đồ khác nhau rồi."
+    },
+    {
+      "id": 2,
+      "title": "Cần Thơ | Vùng Đất Tây Đô",
+      "describe": "Một thành phố nhộn nhịp, là nơi có những trường đại học. abc bla bla bla",
+      "content": "??Ngày đầu tiên: Sáng tụi mình đi victoria Nui Sam ăn sáng và bơi, nói là sáng chứ đi lên đó chụp quài chụp mãi tới chiều còn chưa ra được vì nhiều view đẹp lắm còn tranh thủ bơi bể bơi vô cực có view cánh đồng lúa nửa chứ, nhìn thấy thoải mái ấm áp Miền Tây vô cùng. Tới tối bọn mình xuống núi đi vía bà. Do đường đi Victoria củng là đường đi Bà Chúa Xứ nên rất gần mọi người có thể lại vía bà xong rồi chạy lên núi khoảng 2km là tới resortGiá phòng tuỳ theo mình chọn từ 1tr8 - 3tr bao gồm buffet sáng và phí phục vụMón ăn và đồ uống dao động từ 50- 200.000 Vé hồ bơi 170.000₫/ người kèm 1 món ăn và một thức uống.  Có dịp lên AG sẽ nhất định ghé lại victoria 1 lần nửa. Còn nếu muốn chụp hình vía Bà thì mình khuyên nên đi tháng 5 6 7 8 9 cho đỡ đông chụp cho dễ nè chứ mình đi là nhích xe tới ngay cổng sau thôi mà tầm nửa tiếng đó ? ??Ngày thứ 2: định kiếm chỗ ở Châu Đốc đi ăn uống thôi mà rồi hai đứa củng gán lên kiếm chỗ nào đẹp thì đi, search một hồi quyết định đi Tri Tôn luôn cách Châu Đốc 1 tiếng chạy xe máy, mấy bạn nên đi sáng sớm chứ tụi mình đi buổi trưa nắng nóng kinh khủng ? đi rất mệt •Đến chùa Khmer KosOnhDeth: nằm trên đường đi Tri Tôn cứ chạy thẳng còn 20km nửa tới Tri Tôn thì mấy bạn nhìn bên tay phải là KosOnhDeth như Thái Lan thu nhỏ vậy ? chụp chẹt trong này gần 2 tiếng tụi mình mới ra và đi cánh đồng thốt nốt ở Tri Tôn, ở đây nhiều cánh đồng lắm nên cứ ghé đại thôi mình không biết địa chỉ cụ thể ở đâu nửa. Đi Tri Tôn hơi xa và mệt nên bạn nào muốn nghĩ dưỡng du lịch thoải mái bình thường thì mình khuyên nên đi Victoria thôi là có tầm 10 tấm hình với 10 bộ đồ khác nhau rồi."
+    }
+  ]
+}

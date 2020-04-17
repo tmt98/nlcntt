@@ -1,0 +1,55 @@
+html
+  head
+    link(rel='stylesheet', href='/public/css/load-in.css')
+  body
+    h1 Infinite Scroll - scrollThreshold option, vanilla JS
+      .container
+        article.post
+          h1 1a - Lorem ipsum dolor sit amet
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique mauris nec sapien efficitur, sit amet varius est interdum. Curabitur quis sem felis. Curabitur at quam sit amet mi tempor tristique quis in lorem. Cras id felis sit amet erat accumsan ornare.
+          p
+            img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg', alt='orange-tree')
+          p
+            | Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+          p
+            | Nullam vel odio nec turpis consequat iaculis at ut nibh. Nulla interdum lacus vitae sapien porttitor congue sagittis ac felis.Curabitur in ligula porttitor, varius purus sed, elementum nibh. Nunc ut libero posuere.
+        article.post
+          h1 1b - Ullamcorper quam at
+          p Ullamcorper quam at, hendrerit eros. Mauris quis vehicula enim.
+          p
+            img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg', alt='cat nose')
+          p
+            | Duis elementum nisi tortor, ut elementum quam mattis condimentum. Aenean vitae massa sit amet ligula sollicitudin venenatis. Praesent ultrices laoreet hendrerit. Duis tempus ullamcorper enim, ac volutpat augue faucibus sit amet.
+          p
+            | Donec at consequat elit. Suspendisse dignissim ante vitae urna rutrum cursus. Morbi finibus semper facilisis. In varius sem ut turpis molestie volutpat. Duis ut posuere est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada placerat luctus. In eget feugiat sapien. Sed gravida ultrices accumsan.
+          p In nec ex at mi scelerisque malesuada.
+          p
+            | Nullam arcu diam, mollis sit amet condimentum et, finibus in ex. Morbi bibendum magna vel tortor fringilla efficitur. Aliquam sed lectus lacus.
+        article.post
+          h1 1c - Orci varius natoque penatibus et magnis dis parturient montes
+          p
+            | Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In varius turpis ipsum, et porta eros eleifend ullamcorper. Sed arcu nisl, rhoncus porta fermentum in, eleifend non dolor.
+          p Mauris sagittis a lectus eu fringilla. Maecenas varius cursus aliquam.
+          p
+            | Suspendisse maximus congue augue eu venenatis. Aliquam urna purus, suscipit ut purus vel, iaculis rhoncus nulla. Donec a velit elementum, pellentesque metus blandit, lacinia erat. Fusce pulvinar mattis erat ac efficitur. Pellentesque aliquam eleifend ligula, eu ullamcorper elit pretium sit amet.
+          p
+            | Praesent placerat eros sem, vel pretium libero pharetra nec. Morbi hendrerit eleifend commodo. Morbi sodales nunc purus, consequat eleifend nulla dignissim non.
+        article.post
+          h1 1d - Donec a urna in turpis maximus
+          p Donec a urna in turpis maximus faucibus a nec mauris.
+          p
+            | Donec iaculis, justo a egestas venenatis, dui nisl faucibus urna, sit amet condimentum quam dui ut libero. Etiam aliquet urna quis nisi aliquam, vitae tincidunt est feugiat.
+          p
+            | Integer viverra at arcu quis faucibus. Praesent nec venenatis odio. Donec non mattis massa, quis vestibulum leo. Etiam eleifend diam ac magna egestas aliquam. Sed vulputate risus eget efficitur auctor. Mauris aliquam ac purus at semper. Praesent vulputate hendrerit eros, vitae semper turpis venenatis et. Proin et est felis. Etiam sem risus, elementum id cursus quis, laoreet quis orci. Cras eget fermentum lorem, vitae pharetra augue. Etiam tincidunt nulla faucibus, egestas lacus sed, semper metus.
+      .page-load-status
+        .loader-ellips.infinite-scroll-request
+          span.loader-ellips__dot
+          span.loader-ellips__dot
+          span.loader-ellips__dot
+          span.loader-ellips__dot
+        p.infinite-scroll-last End of content
+        p.infinite-scroll-error No more pages to load
+    script(src='https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js')
+    script(src='/public/script/load-in.js')
+

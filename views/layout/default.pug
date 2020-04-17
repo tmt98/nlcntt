@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title GoGoShare
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    block script
+
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
+        a.navbar-brand(href='#') GoGoShare
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-2
+            li.nav-item.active
+              a.nav-link(href='/')
+                | Trang Chủ 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='#') Hình ảnh
+            li.nav-item
+              a.nav-link.disabled(href='#') Cộng đồng
+          form.form-inline.my-2.my-lg-0.mr-auto(action="/search", method="get")
+            input.form-control.mr-sm-2(type='search', name='q', placeholder='Tìm kiếm', aria-label='Search')
+            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Tìm kiếm
+          a(href="/user/create").btn.btn-outline-success Viết bài
+          ul.navbar-nav
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                img.d-inline-block.rounded-circle(style='width: 30px; height: 30px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                |&nbsp; Trần Minh Tài&nbsp;
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='#') Tài khoản
+                a.dropdown-item(href='#') Đổi mật khẩu
+                .dropdown-divider
+                a.dropdown-item(href='#') Đăng Xuất
+    block content
