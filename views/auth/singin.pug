@@ -1,0 +1,20 @@
+extends ../layout/default
+block script  
+    script(src='/public/script/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
+    link(rel='stylesheet', href='/public/css/auth-singin.css')
+    link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
+
+block content
+    a(href='#container') Reveal
+    center#container
+        #exampleModal.reveal-modal
+            .container.bg-light.m-auto
+                h3 Đăng nhập
+                input#user.form-control(type="text",name="title", placeholder="Tài khoản").d-block
+                input#password.form-control(type="password",name="title", placeholder="Mật khẩu").d-block
+                input.btn.btn-danger(type="submit", value="Đăng nhập")
+                a(href='#') Close Modal
+
+
+

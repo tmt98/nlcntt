@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const homeRoute =  require('./routes/home.route')
 const userRoute =  require('./routes/user.route')
 const postRoute =  require('./routes/post.route')
+const authRoute =  require('./routes/auth.route')
 const db = require('./db');
 
 const port = 3000;
@@ -18,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Router
 app.use('/public', express.static('public'))
-
 app.use('/',homeRoute) // Trang Chủ
 app.use('/user',userRoute) // Người dùng - User
 app.use('/post',postRoute) // Bài Viết - Post
+app.use('/auth',authRoute) // Xác thực đăng nhập
 // Listen Port
 app.listen(port, () => console.log("Server is running..."));

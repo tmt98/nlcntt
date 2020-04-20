@@ -1,16 +1,15 @@
 const express = require('express')
-const bodyParser = require('body-parser');
+const http = require('http');
+const path = require('path');
+const multer  = require('multer');
 
 const db = require('../db');
-const router = express.Router();
-// View Post
-router.get('/:id', (req, res) => {
-    var id = parseInt(req.params.id);
-    var user = db.get('users').find({ id: id }).value();
-    res.render('post/post-index', {
-        user: user,
-        users: db.get('users').value()
-    });
-});
+const upload = multer({ dest: "/public/img/user-upload" });
+const controller = require('../controllers/post.controller')
+
+const router = express.Router(); // POST/GET
+router.get('/create', controller.create); // Create Post
+router.post('/upload', upload.any(), controller.upload); // Upload
+router.get('/:id', controller.id); // View Post
 
 module.exports = router;

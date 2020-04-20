@@ -1,20 +1,10 @@
 const express = require('express')
 
 const db = require('../db');
-const router = express.Router();
-router.get('/', (req, res) => {
-    res.render('home/index',{
-        users: db.get('users').value()
-    })
-});
-router.get('/search', (req, res) => {
-    var q = req.query.q;
-    var matchedUsers = db.get('users').value().filter((user) => {
-        return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-    });
-    res.render('home/index',{
-        users: matchedUsers
-    });
-});
+const controller = require('../controllers/home.controller');
+
+const router = express.Router(); // POST/GET
+router.get('/', controller.index); // INDEX
+router.get('/search', controller.search); // Search
 
 module.exports = router;

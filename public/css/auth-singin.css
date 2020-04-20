@@ -1,0 +1,18 @@
+#container {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+#container:target {
+    visibility: visible;
+    display: block;
+}
+.reveal-modal {
+    position: relative;
+    margin: 0 auto;
+    top: 25%;
+}
+    /* Remove the left: 50% */
