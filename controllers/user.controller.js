@@ -23,7 +23,7 @@ module.exports.createPOST = (req, res) => {
     res.redirect('/user');
 }
 module.exports.id = (req, res) => {
-    var id = parseInt(req.params.id);
+    var id = req.params.id;
     var user = db.get('users').find({ id: id }).value();
     res.render('users/info', {
         user: user,

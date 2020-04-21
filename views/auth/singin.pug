@@ -6,15 +6,22 @@ block script
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
 
 block content
-    a(href='#container') Reveal
+    a(href='#container') Đăng Nhập
     center#container
         #exampleModal.reveal-modal
             .container.bg-light.m-auto
-                h3 Đăng nhập
-                input#user.form-control(type="text",name="title", placeholder="Tài khoản").d-block
-                input#password.form-control(type="password",name="title", placeholder="Mật khẩu").d-block
-                input.btn.btn-danger(type="submit", value="Đăng nhập")
-                a(href='#') Close Modal
+                form(action="/auth/loginPOST", method="post")
+                    h3 Đăng nhập
+                        //- Show lỗi
+                    if errors
+                        each error in errors
+                            .aletr.alert-danger=error
+                    label(for="user") User:
+                    input#user.form-control(type="text",name="user", placeholder="Tài khoản", value=values ? values.user : "").d-block
+                    label(for="password") Password:
+                    input#password.form-control(type="password",name="password", placeholder="Mật khẩu", value=values ? values.password : "").d-block
+                    input.btn.btn-danger(type="submit", value="Đăng nhập")
+                    a(href='#') Close Modal
 
 
 

@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+
 const db = require('../db');
 
 module.exports.create = (req,res) => {
@@ -20,7 +21,7 @@ module.exports.upload = (req, res) => {
 }
 
 module.exports.id = (req, res) => {
-    var id = parseInt(req.params.id);
+    var id = req.params.id;
     var user = db.get('users').find({ id: id }).value();
     res.render('post/post-index', {
         user: user,

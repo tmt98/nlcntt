@@ -1,38 +1,67 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "NAOVb4LmF",
+      "user": "mita1",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
       "name": "Minh Nhựa",
+      "address": "An Giang",
+      "living": "Cần Thơ",
       "following": 3000
     },
     {
-      "id": 2,
-      "name": "Minh Tâm",
-      "following": 2500
+      "id": "O124LBZmF",
+      "user": "mita2",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "name": "Minh Tài",
+      "address": "An Giang",
+      "living": "An Giang",
+      "following": 3000
     },
     {
-      "id": 3,
-      "name": "Minh Tài",
-      "following": 2310
+      "id": "OVb4LAVmF",
+      "user": "mita3",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "name": "Minh Tâm",
+      "address": "Cần Thơ",
+      "living": "Cần Thơ",
+      "following": 3000
     },
     {
       "id": 4,
-      "name": "Minh Anh",
-      "following": 1132
+      "user": "mita4",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "name": "Minh Minh",
+      "address": "Cần Thơ",
+      "living": "An Giang",
+      "following": 3000
     },
     {
-      "id": 5,
-      "name": "Minh AAA",
-      "following": 981
+      "user": "admin",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "name": "13",
+      "address": "ư",
+      "living": "a",
+      "id": "OVb4LBomF",
+      "following": 0
     },
     {
-      "id": 6,
-      "name": "Trần Minh Tài",
-      "following": 640
+      "user": "mita",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "name": "Minh Tâm",
+      "address": "405, tổ 3, Hòa Thạnh, Hòa Bình Thạnh",
+      "living": "a",
+      "id": "Bxy1XmYgy",
+      "following": 0
     },
     {
-      "id": 7,
-      "name": "abc"
+      "user": "mita11",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "name": "Minh Tâm dễ thương",
+      "address": "Can Tho, Viet Nam",
+      "living": "a",
+      "id": "6iBrn04xs",
+      "following": 0
     }
   ],
   "post": [

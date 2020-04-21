@@ -1,6 +1,8 @@
 // req.query
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const md5 = require('md5');
 
 const homeRoute =  require('./routes/home.route')
 const userRoute =  require('./routes/user.route')
@@ -14,8 +16,9 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 // Set req.body
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Router
 app.use('/public', express.static('public'))

@@ -2,10 +2,12 @@
 extends ../layout/default
 
 block script  
-    script(src='/public/script/jquery.min.js')
+    //- script(src='/public/script/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
     script(src='https://rawgit.com/edull24/ScrollWatch/v2.0.1/dist/ScrollWatch-2.0.1.min.js')
     script(type='text/javascript', src='http://js.nicedit.com/nicEdit-latest.js')
+    script(src='https://code.jquery.com/jquery-2.1.4.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-textext/1.3.0/jquery.textext.min.js').
     script(src='public/ckeditor5-build-classic/ckeditor.js')
     link(rel='stylesheet', href='/public/css/post-create.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
@@ -15,16 +17,29 @@ block content
     .container.bg-white#mainpage
         .col-sm-10.m-auto
             form(action="/action-create", method="post")
-                input#travelPostDescription.form-control.bar-10.bn.card6.p-15.resize-none.w-fit.h-inherit.bn.fs-18.bar-2(type="text",name="title", placeholder="Tiêu đề").d-block
+                input#travelPostDescription.form-control(type="text",name="title", placeholder="Tiêu đề").d-block
                 br
-                textarea#travelPostDescription.form-control.bar-10.bn.card6.p-15.resize-none.w-fit.h-inherit.bn.fs-18.bar-2(name='travelPostDescription', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
-                br
-                input#travelPostDescription.form-control.travelPostDescription.bar-10.bn.card6.p-15.resize-none.w-fit.h-inherit.bn.fs-18.bar-2(type="text",name="title", placeholder="Nhập tag bài viết").d-block
+                textarea#travelPostDescription.form-control(name='travelPostDescription', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
                 br
                 .bg-white.border.rounded
                     textarea#noidung(name="abc", style="width: 100%; height: 300px", rows="auto")
                     script(type='text/javascript').
                         new nicEditor().panelInstance('noidung');
+                br
+                label(for="textarea") Tag tìm kiếm
+                textarea#textarea.form-control.rounded(style="width: 350px;")
+                script.
+                    $('#textarea').textext({
+                    plugins: 'tags',
+                    tagsItems: [ 
+                        
+                    ]
+                    });
+                    $('#btn').click(function(){
+                    var tags = $('#textarea').textext()[0].tags()._formData;
+                    $('#result').html(JSON.stringify(tags));
+                    });
+                br
                 button.btn.btn-danger.align-center(type="submit") Đăng bài viết
     script.
         ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {console.error( error );} );
