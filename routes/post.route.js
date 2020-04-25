@@ -8,7 +8,8 @@ const upload = multer({ dest: "/public/img/user-upload" });
 const controller = require('../controllers/post.controller')
 
 const router = express.Router(); // POST/GET
-router.get('/create', controller.create); // Create Post
+router.get('/create', controller.create); // Create
+router.post('/createPOST', controller.createPOST); // Execute Create Post
 router.post('/upload', upload.any(), controller.upload); // Upload
 router.get('/:id', controller.id); // View Post
 

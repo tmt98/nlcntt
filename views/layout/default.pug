@@ -5,6 +5,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title GoGoShare
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/public/css/default.css')
     script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
     script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
@@ -30,14 +31,19 @@ html(lang="en")
             input.form-control.mr-sm-2(type='search', name='q', placeholder='Tìm kiếm', aria-label='Search')
             button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Tìm kiếm
           a(href="/post/create").btn.btn-outline-success Viết bài
-          ul.navbar-nav
-            li.nav-item.dropdown
-              a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                img.d-inline-block.rounded-circle(style='width: 30px; height: 30px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
-                |&nbsp; Trần Minh Tài&nbsp;
-              .dropdown-menu(aria-labelledby='navbarDropdown')
-                a.dropdown-item(href='#') Tài khoản
-                a.dropdown-item(href='#') Đổi mật khẩu
-                .dropdown-divider
-                a.dropdown-item(href='#') Đăng Xuất
+          if userLogin
+            ul.navbar-nav
+              li.nav-item.dropdown
+                a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  img.d-inline-block.rounded-circle(style='width: 30px; height: 30px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                  |&nbsp;
+                  =userLogin.name
+                .dropdown-menu(aria-labelledby='navbarDropdown')
+                  a.dropdown-item(href='#') Tài khoản
+                  a.dropdown-item(href='#') Đổi mật khẩu
+                  .dropdown-divider
+                  a.dropdown-item(href='/auth/logout') Đăng Xuất
+          else
+            |&nbsp;
+            a(href="/auth/login").btn.btn-outline-danger Đăng nhập
     block content

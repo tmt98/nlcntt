@@ -14,32 +14,35 @@ block script
 block content
     .banner
         .bg-dark(style="height: 480px")
+    br
     .container.bg-white#mainpage
         .col-sm-10.m-auto
-            form(action="/action-create", method="post")
-                input#travelPostDescription.form-control(type="text",name="title", placeholder="Tiêu đề").d-block
+            form(action="/post/createPOST", method="post")
+                input#title.form-control(type="text",name="title", placeholder="Tiêu đề").d-block
                 br
-                textarea#travelPostDescription.form-control(name='travelPostDescription', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
+                textarea#description.form-control(name='description', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
                 br
                 .bg-white.border.rounded
-                    textarea#noidung(name="abc", style="width: 100%; height: 300px", rows="auto")
+                    textarea#content(name="abc", style="width: 100%; height: 300px", rows="auto")
                     script(type='text/javascript').
-                        new nicEditor().panelInstance('noidung');
+                        new nicEditor().panelInstance('content');
                 br
-                label(for="textarea") Tag tìm kiếm
-                textarea#textarea.form-control.rounded(style="width: 350px;")
+                label(for="tags") Tag tìm kiếm
+                textarea#tags.form-control.rounded(style="width: 350px;")
                 script.
-                    $('#textarea').textext({
+                    $('#tags').textext({
                     plugins: 'tags',
                     tagsItems: [ 
                         
                     ]
                     });
                     $('#btn').click(function(){
-                    var tags = $('#textarea').textext()[0].tags()._formData;
+                    var tags = $('#tags').textext()[0].tags()._formData;
                     $('#result').html(JSON.stringify(tags));
                     });
                 br
                 button.btn.btn-danger.align-center(type="submit") Đăng bài viết
+                br
     script.
         ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {console.error( error );} );
+    br

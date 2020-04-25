@@ -29,8 +29,10 @@ module.exports.loginPOST = (req, res) => {
         });
         return;
     }
-    res.cookíe
-     res.redirect('/');
+    res.cookie('id',users.id, {
+        signed: true
+    });
+    res.redirect('/');
 };
 module.exports.logup = (req, res) => {
     res.render('auth/singup')
@@ -97,3 +99,7 @@ module.exports.logupPOST = (req, res) => {
     });
     return;
 };
+module.exports.logout = (req, res) => {
+    res.clearCookie('id');
+    res.redirect('/');
+}

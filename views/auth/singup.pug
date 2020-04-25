@@ -3,22 +3,22 @@ extends ../layout/default
 block script  
     script(src='/public/script/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
+    link(rel='stylesheet', href='/public/css/auth-singup.css')
 block content
-    .container
-        form(action="/auth/logupPOST", method="post")
-            h1 Đăng Kí
-            if errors
+    .container.pt-5
+        .wrapper.fadeInDown
+            #formContent
+                form(action="/auth/logupPOST", method="post")
+                    h2.active Đăng kí
+                    if errors
                         each error in errors
-                            .aletr.alert-danger=error
-            label(for="user") Username:
-            input#user.form-control(type="text",name="user", placeholder="Tài khoản", value=values ? values.user : "").d-block
-            label(for="password") Password:
-            input#password.form-control(type="password",name="password", placeholder="Mật khẩu", value=values ? values.password : "").d-
-            label(for="name") Họ tên:
-            input#name.form-control(type="text",name="name", placeholder="Họ Tên", value=values ? values.name : "").d-block
-            label(for="address") Quê quán:
-            input#address.form-control(type="text",name="address", placeholder="Nơi bạn được sinh ra", value=values ? values.address : "").d-block
-            label(for="living") Sống tại:
-            input#living.form-control(type="text",name="living", placeholder="Hiện tại đang ở", value=values ? values.living : "").d-block
-            br
-            input.btn.btn-danger(type="submit", value="Đăng kí")
+                            p=error
+                    br
+                    input#user(type="text",name="user", placeholder="tài khoản", value=values ? values.user : "")
+                    input#password(type="password",name="password", placeholder="mật khẩu", value=values ? values.password : "")
+                    input#name(type="text",name="name", placeholder="họ Tên", value=values ? values.name : "")
+                    input#address(type="text",name="address", placeholder="quê quán", value=values ? values.address : "")
+                    input#living(type="text",name="living", placeholder="sống tại", value=values ? values.living : "")
+                    br
+                    input(type="submit", value="Đăng kí")
+                    a.pb-3.d-block(href="/auth/login") Đăng nhập
