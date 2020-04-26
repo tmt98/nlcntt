@@ -2,7 +2,6 @@
 extends ../layout/default
 
 block script  
-    //- script(src='/public/script/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
     script(src='https://rawgit.com/edull24/ScrollWatch/v2.0.1/dist/ScrollWatch-2.0.1.min.js')
     script(type='text/javascript', src='http://js.nicedit.com/nicEdit-latest.js')
@@ -11,6 +10,26 @@ block script
     script(src='public/ckeditor5-build-classic/ckeditor.js')
     link(rel='stylesheet', href='/public/css/post-create.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
+    //- tag
+    link(href='/public/tag-it-master/css/jquery.tagit.css', rel='stylesheet', type='text/css')
+    link(href='/public/tag-it-master/css/tagit.ui-zendesk.css', rel='stylesheet', type='text/css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', type='text/javascript', charset='utf-8')
+    script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js', type='text/javascript', charset='utf-8')
+    script(src='/public/tag-it-master/js/tag-it.js', type='text/javascript', charset='utf-8')
+    script.
+        $(function(){
+        var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript'];
+        //-------------------------------
+        // Single field
+        //-------------------------------
+        $('#singleFieldTags').tagit({
+        availableTags: sampleTags,
+        // This will make Tag-it submit a single form value, as a comma-delimited field.
+        singleField: true,
+        singleFieldNode: $('#mySingleField')
+        });
+        });
+    //-
 block content
     .banner
         .bg-dark(style="height: 480px")
@@ -23,26 +42,14 @@ block content
                 textarea#description.form-control(name='description', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
                 br
                 .bg-white.border.rounded
-                    textarea#content(name="abc", style="width: 100%; height: 300px", rows="auto")
+                    textarea#content(name="content", style="width: 100%; height: 300px", rows="auto")
                     script(type='text/javascript').
                         new nicEditor().panelInstance('content');
                 br
                 label(for="tags") Tag tìm kiếm
-                textarea#tags.form-control.rounded(style="width: 350px;")
-                script.
-                    $('#tags').textext({
-                    plugins: 'tags',
-                    tagsItems: [ 
-                        
-                    ]
-                    });
-                    $('#btn').click(function(){
-                    var tags = $('#tags').textext()[0].tags()._formData;
-                    $('#result').html(JSON.stringify(tags));
-                    });
+                input#mySingleField(type='hidden', name='tags', value='')
+                ul#singleFieldTags
                 br
                 button.btn.btn-danger.align-center(type="submit") Đăng bài viết
                 br
-    script.
-        ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {console.error( error );} );
     br
