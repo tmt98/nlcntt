@@ -2,6 +2,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/NienLuanCNTT", { useNewUrlParser: true })
 
 const homeRoute =  require('./routes/home.route')
 const userRoute =  require('./routes/user.route')

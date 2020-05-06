@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const shortid = require('shortid');
 
 const db = require('../db');
 
@@ -10,7 +11,11 @@ module.exports.create = (req,res) => {
         users: db.get('users').value()
     });
 }
-module.exports.createPOST = (req,res) => {
+module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
+    req.body.id = shortid.generate();
+    req.body.user = res.locals.userLogin.id;
+    console.log(req.body);
+    req.body.tags = req.body.tags.split(',');
     console.log(req.body);
     res.redirect('/');
 }

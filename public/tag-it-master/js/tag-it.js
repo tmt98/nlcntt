@@ -248,7 +248,7 @@
                             that.tagInput.val() !== ''
                         ) ||
                         (
-                            event.which == $.ui.keyCode.SPACE &&
+                            event.which == $.ui.keyCode.ENTER &&
                             that.options.allowSpaces !== true &&
                             (
                                 $.trim(that.tagInput.val()).replace( /^s*/, '' ).charAt(0) != '"' ||
