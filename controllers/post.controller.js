@@ -1,7 +1,7 @@
-const bodyParser = require('body-parser');
-const shortid = require('shortid');
+var bodyParser = require('body-parser');
+var shortid = require('shortid');
 
-const db = require('../db');
+var db = require('../db');
 
 module.exports.create = (req,res) => {
     var id = parseInt(req.params.id);
@@ -12,12 +12,23 @@ module.exports.create = (req,res) => {
     });
 }
 module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
-    req.body.id = shortid.generate();
-    req.body.user = res.locals.userLogin.id;
-    console.log(req.body);
-    req.body.tags = req.body.tags.split(',');
-    console.log(req.body);
-    res.redirect('/');
+    const file = req.file
+    if (!file) {
+        const error = new Error('Please upload a file')
+        error.httpStatusCode = 400
+        return next(error)
+    }
+    res.send(file)
+    // console.log(req.file, req.body);
+    // req.body.id = shortid.generate();
+    // req.body.user = res.locals.userLogin.id;
+    // console.log(req.body);
+    // req.body.tags = req.body.tags.split(',');
+    // console.log(req.body);
+    // res.send({
+        
+    // });
+    // res.redirect('/');
 }
 
 module.exports.upload = (req, res) => {

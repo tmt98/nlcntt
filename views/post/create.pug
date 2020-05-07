@@ -7,7 +7,9 @@ block script
     script(type='text/javascript', src='http://js.nicedit.com/nicEdit-latest.js')
     script(src='https://code.jquery.com/jquery-2.1.4.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-textext/1.3.0/jquery.textext.min.js').
-    script(src='public/ckeditor5-build-classic/ckeditor.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
     link(rel='stylesheet', href='/public/css/post-create.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
     //- tag
@@ -32,11 +34,16 @@ block script
     //-
 block content
     .banner
-        .bg-dark(style="height: 480px")
+        .bg-dark(style="height: 630px")
+            img#previewbanner(style="height:630px; width: 100%")
     br
     .container.bg-white#mainpage
         .col-sm-10.m-auto
-            form(action="/post/createPOST", method="post")
+            form(action="/post/createPOST", enctype="multipart/form-data", method="post")
+                .custom-file.mb-3
+                    input#customFile.custom-file-input(type='file', accept="image/*", name="banner_upload", onchange='loadFile(event)')
+                    label.custom-file-label(for='customFile') Chọn ảnh bìa (Kích thước Hx480)
+                br
                 input#title.form-control(type="text",name="title", placeholder="Tiêu đề").d-block
                 br
                 textarea#description.form-control(name='description', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
@@ -53,3 +60,19 @@ block content
                 button.btn.btn-danger.align-center(type="submit") Đăng bài viết
                 br
     br
+    script.
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    script.
+        var loadFile = function(event) {
+        var previewbanner = document.getElementById('previewbanner');
+        previewbanner.src = URL.createObjectURL(event.target.files[0]);
+        previewbanner.onload = function() {
+        URL.revokeObjectURL(previewbanner.src) // free memory
+        }
+        };
+
+

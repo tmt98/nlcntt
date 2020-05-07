@@ -1,16 +1,19 @@
-const express = require('express')
-const http = require('http');
-const path = require('path');
-const multer  = require('multer');
+var express = require('express')
+var http = require('http');
+var path = require('path');
+var multer = require('multer');
 
-const db = require('../db');
-const upload = multer({ dest: "/public/img/user-upload" });
-const controller = require('../controllers/post.controller')
+var db = require('../db');
+var controller = require('../controllers/post.controller')
+var upload = multer({ dest: 'public/upload/banner/' })
 
-const router = express.Router(); // POST/GET
+var router = express.Router(); // POST/GET
 router.get('/create', controller.create); // Create
-router.post('/createPOST', controller.createPOST); // Execute Create Post
-router.post('/upload', upload.any(), controller.upload); // Upload
+router.post('/createPOST',
+    upload.single('banner_upload'), 
+    controller.createPOST
+    ); // Execute Create Post
+// router.post('/upload', upload.any(), controller.upload); // Upload
 router.get('/:id', controller.id); // View Post
 
 module.exports = router;
