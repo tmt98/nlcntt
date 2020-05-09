@@ -4,22 +4,22 @@ block script
     link(rel='stylesheet', href='/public/css/info-content-user.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
 block content 
-        .header.container-lg
+    .container
+        .header.container-lg(style="padding: 0")
             .timeline
                 .container-img
                     .cover
                         img(src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t1.0-9/48382024_2248568198735368_1003418688080052224_o.jpg?_nc_cat=105&_nc_sid=dd9801&_nc_eui2=AeG_DrmXmbiMma0z5QRp4aOjebJDW02cE_srAxqTqN0qWeeaE35nWVx-bIie0A1zdBX-BJSz1dpeHCuvd_Gjm630HrIHTDyGZfYTNeByUKW4hg&_nc_ohc=mg9LKmSuUf4AX9QQ0Th&_nc_ht=scontent.fsgn5-2.fna&oh=9937c2347767d9b5a0e1116f91ab3291&oe=5EF8EAE0", style="cursor: s-resize;", alt="")
         .container-lg
             .row
-                .col-sm-3.col-left.pr-15.pl-15.mr-0.ml-0.pt-5.border-left.border-right.border-primary
+                .col-lg-3.col-sm-4.col-left.pr-15.pl-15.mr-0.ml-0.pt-5.border-left.border-right.border-primary
                     .info.border-bottom.border-primary.text-center
                         .clearfix(style="padding: 5px;")
                         img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
                         p.user-name= user.name
                         button.btn.btn-primary
-                            i.oi.oi-rss
-                            span &nbsp; Follow &nbsp;
-                            span= "(" + user.following + ")"
+                            span.oi.oi-rss
+                            span &nbsp; Follow
                         .clearfix(style="padding: 5px;")
                     .detail-info.border-bottom.border-primary
                         .clearfix(style="padding: 5px;")
@@ -41,8 +41,10 @@ block content
                                 each user in users
                                     .col
                                         img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
+                    br
+                            
 
-                .col-sm-9.col-right.content
+                .col-lg-9.col-sm-8.col-right.content
                     .post.nav.nav.bg-light
                         a.nav-link.active(href='#') Trang Chủ
                         a.nav-link(href='#') Hoạt Động

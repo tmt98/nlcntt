@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body{
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
 }
 img {
     width: 100%;
+}
+img.banner{
+    height: 630px;
+
 }
 img.img-thumbnail.rounded-circle {
     /* position: absolute;
     top: -100px;
     display: block; */
-    min-width: 200px;
     max-width: 200px;
-    min-height: 200px;
     max-height: 200px;
 }
 .post-title {
@@ -20,7 +22,7 @@ img.img-thumbnail.rounded-circle {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    /* z-index: 1; */
     /* opacity: .5; */
     background: url(/public/v5/images/title_bg.png) 0 bottom repeat-x;
     background-size: contain;
@@ -56,3 +58,94 @@ input:focus {
     border-radius: 31px;
     z-index: 1; */
 }
+@media (max-width:1490px){
+    .post-title {
+        height: 50%;
+        position: absolute;
+    }
+    img.banner{
+        height: 500px;
+    }
+}
+@media (max-width:1460px){
+    .post-title {
+        height: 55%;
+        position: absolute;
+    }
+}
+@media (max-width:1260px){
+    .post-title {
+        height: 58%;
+        position: absolute;
+    }
+    img.banner{
+        height: 500px;
+    }
+}
+@media (max-width:1150px){
+    .post-title {
+        height: 60%;
+        position: absolute;
+    }
+    img.banner{
+        height: 450px;
+    }
+
+}
+@media (max-width:1048px){
+    .post-title {
+        height: 70%;
+        position: absolute;
+    }
+    img.banner{
+        height: 400px;
+    }
+
+}
+@media (max-width:990px){
+    img.banner {
+        width: 100%;
+    }
+}
+@media (max-width:870px){
+    .post-title {
+        height: 80%;
+        position: absolute;
+    }
+    .follow-count {
+        display: none;
+    }
+    img.banner{
+        height: 290px;
+    }
+}
+@media (max-width:760px){
+    .post-title {
+        height: 80%;
+        position: absolute;
+    }
+    .follow-count {
+        display: none;
+    }
+    img.banner{
+        height: 260px;
+    }
+}
+@media (max-width:530px){
+    .user-name {
+        display: none;
+    }
+    [class*="follow-"] {
+        display: none;
+    }
+    button.btn.btn-primary{
+        border-radius: 50%;
+    }
+    .post-title {
+        height: 89%;
+        position: absolute;
+    }
+    img.banner{
+        height: 170px;
+    }
+} 

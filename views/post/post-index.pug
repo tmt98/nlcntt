@@ -8,27 +8,27 @@ block script
   link(rel='stylesheet', href='/public/css/post-index.css')
   link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
 block content
-  img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='').banner
+  img(src= data.banner, alt='').banner
   .post-title.container-lg
     .row
-      .col-sm-3.col-left.text-center
+      .col-lg-3.col-sm-3.col-xs-4.col-3.col-left.text-center
         .info-post.center.clearfix
           .avatar
             a(href="/user/" + user.id)
               img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
           .name.clear-left
-            h5=user.name
+            h5.user-name=data.user
           .follow.clear-left
             button.btn.btn-primary
-              i.oi.oi-rss
-              span &nbsp; Follow &nbsp;
-              span= "(" + user.following + ")"
-      .col-sm-9.col-right
+              span.oi.oi-rss
+              span.follow-title &nbsp; Follow
+              span.follow-count= " (" + user.following + ")"
+      .col-lg-9.col-sm-9.col-xs-8.col-9.col-right
         .title-post.align-middle
-          h3.text-white REVIEW MỘT ÍT KINH NGHIỆM CHUYẾN ĐI TRUNG QUỐC
+          h4.text-white(style="text-shadow: 1px 1px #ff0000;")= data.title
     .row.content
-      .col-sm-2.col-left
-      .col-sm-10.col-right
+      .col-sm-3.col-left
+      .col-sm-9.col-right.border.rounded(style="padding-top:25px;padding-bottom: 25px")
         .clearfix
           .date-post.float-right
             h5 
@@ -39,45 +39,15 @@ block content
               span.oi.oi-chat
               span &nbsp; 5 &nbsp;&nbsp;&nbsp;
         .description.bg-light.p-1(style="border-left: 6px solid red;")
-          h4 Chuyến đi 7 ngày tại Lệ Giang - Shangrila - Đại Ly - Côn Minh
+          h4= data.description
         .container.content-post.pt-3.font-weight-light(style="font-size: 17px")
-          p Lần đầu Review về chuyến đi Lệ Giang+Shangrila+Đại Lý+Côn Minh tự túc của mình, đi cũng đã lâu giờ mới có thời gian viết, mình nhớ gì viết đó nha.??
-          p Thời gian đi đẹp nhất là từ tháng 3 đến tháng 5 , do mình đi vào tháng 10, lúc này đỉnh núi thì ít tuyết mà lại hay mưa, mọi người đi nhớ mang theo áo ấm nha.
-          p Đầu tiên là xin Visa Trung Quốc.
-          p Hồ sơ chuẩn bị như sau do mình tự đi làm
-          p * Tờ khai xin cấp visa Trung Quốc theo mẫu quy định của Đại sứ quán
-          p * Bản gốc hộ chiếu (còn thời hạn tối thiểu 6 tháng)
-          p * 02 ảnh 4cmx6cm. Ảnh chụp nền trắng, mặt nhìn thẳng
-          p * Bản copy CMND
-          p * Giấy khai sinh, sổ hộ khẩu (nếu xin visa cho trẻ em đi du lịch cùng)
-          p * Số điện thoại và thông tin người làm visa
-          p * Thời gian lưu trú không quá 15 ngày
-          img.rounded(src="https://media2.gody.vn/public/mytravelmap/images/2020/4/15/q.luongtran6487/e836389852714b46ccd9fb835c3ecd1a.jpeg", alt="")
-          p * Booking khách sạn này là bắt buộc phải đặt phòng để làm visa nhé mình đặt phòng qua trang Booking để được thanh toán sau.
-          p * Vé máy bay thời gian đi và thời gian về. Mình đặt vé trả tiền sau của Vietnam Airline nha để sau này có thể huỷ hoặc đổi ngày bay.
-          p * In booking ks và vé máy bay nộp kèm hồ sơ luôn.
-          p * Địa chỉ Lãnh sự quán Trung Quốc tại HCM : ( 175 Hai Bà Trưng, P.6, Q.3)
-          p * Địa chỉ Lãnh sự quán Trung Quốc tại Hà Nội : ( 46 Hoàng Diệu, Hà Nội)
-          p * Chi phí là 60USD không biết giờ giá co thay đổi không.
-          p * Visa đi được nhiều nơi thì tỷ lệ đâu cao hơn nha.
-          p * Nếu rối quá thì mình làm dịch vụ cho gọn, có thể liên hệ qua chỗ chuyên làm Visa SĐT : 0933079981 ( gặp Chánh ) tại HCM để làm cho nhanh, vì mình thích trải nghiệm nên mình tự làm ?? .
-          p Tiếp theo là phương tiện di chuyển có 2 cách đó là Máy bay hoặc Tàu lửa nhé nhưng mình khuyên là đi máy bay cho khoẻ và cũng không mắc hơn Tàu lửa bao nhiêu. 
-          p Đặt của hãng China Eastern Airline nha. Mình đặt qua App Trip.com tải App này về nha.
-          p (TPHCM/HN - Lệ Giang quá cảnh tại Côn Minh )đợt mình đi thì như vậy không biết giờ có thay đổi gì không mọi người tự xem nhé. Giá vé 1 chiều khoản 3 triệu mấy.
-          p Facebook không sử dụng được tại Trung Quốc , mình cài app VPN vượt tường lửa để sử dụng facabook và google nha.
-          p Nếu muốn sử dụng thẻ để thanh toán thì mình nhớ làm thẻ có biểu tượng UnionPay mới có thể sử dụng được tại Trung Quốc nha. Còn không thì cứ Nhân Dân tệ làm tới.??
-          p Kế đến là khách sạn thì mình đặt trong khu phố cổ cho tiện tham quan : mình đặt qua trang Booking sau đó tìm số dt liên hệ khách sạn nhờ họ đón mình tại sân bay, mình sử dụng Wechat để liên hệ với khách sạn , bạn nào biết tiếng Trung thì sẽ dễ dàng hơn nếu bạn nào không biết thì trong Wechat có phần vừa nhắn vừa dịch rất tiện lợi luôn. Giá khách sạn tại những nơi mình ở cũng không quá cao phải nói là rẻ. Tuỳ sở thích mỗi người nhu cầu ở ra sao mà lựa chọn hehe.
-          p Và Wechat là App khổng thế thiếu khi mình dulich và giao tiếp tại Trung Quốc.
-          p Đến Lệ Giang check in nhận phòng và mình hỏi lấy bản đồ khu phố cổ và chiến thôi nha.
-          img.rounded(src="https://media2.gody.vn/public/mytravelmap/images/2020/4/15/q.luongtran6487/e836389852714b46ccd9fb835c3ecd1a.jpeg", alt="")
-          p Ngày 1 : Những điểm tham quan tại phố cổ.
-          p
+            div!=data.content
         br.pt-9
         h3(style="border-top: 3px solid;") Comment
         .container.reply-comment
           .send-comment
             .avatar.clearfix
-              a(href="/user/" + user.id).float-left
+              a(href="/user/" + data.user).float-left
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
                 span &nbsp;
               .text-input
@@ -85,7 +55,7 @@ block content
           br
           .user.clearfix
             .avatar.float-left
-              a(href="/user/" + user.id)
+              a(href="/user/" + data.user)
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
               span &nbsp;
             .infor.clearfix

@@ -1,6 +1,5 @@
-var bodyParser = require('body-parser');
 var shortid = require('shortid');
-
+var html2jade = require('html2jade');
 var db = require('../db');
 
 module.exports.create = (req,res) => {
@@ -12,23 +11,14 @@ module.exports.create = (req,res) => {
     });
 }
 module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
-    const file = req.file
-    if (!file) {
-        const error = new Error('Please upload a file')
-        error.httpStatusCode = 400
-        return next(error)
-    }
-    res.send(file)
-    // console.log(req.file, req.body);
-    // req.body.id = shortid.generate();
-    // req.body.user = res.locals.userLogin.id;
-    // console.log(req.body);
-    // req.body.tags = req.body.tags.split(',');
-    // console.log(req.body);
-    // res.send({
-        
-    // });
-    // res.redirect('/');
+    console.log(req.file);
+    req.body.id = shortid.generate();
+    req.body.user = res.locals.userLogin.id;
+    req.body.banner = "/" + req.file.destination + req.file.filename
+    req.body = JSON.parse(JSON.stringify(req.body));
+    console.log(req.body);
+    db.get('post').push(req.body).write();
+    res.redirect('/');
 }
 
 module.exports.upload = (req, res) => {
@@ -42,9 +32,13 @@ module.exports.upload = (req, res) => {
 
 module.exports.id = (req, res) => {
     var id = req.params.id;
+    var idpost = "llROLlg_k";
     var user = db.get('users').find({ id: id }).value();
+    var data = db.get('post').find({ id: idpost}).value();
+    console.log(data.content);
     res.render('post/post-index', {
         user: user,
+        data: data,
         users: db.get('users').value()
     });
 }

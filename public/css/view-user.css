@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 .item-list {
     background: white;
     margin-bottom: 10px;
