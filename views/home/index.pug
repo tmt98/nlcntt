@@ -1,4 +1,3 @@
-
 extends ../layout/default
 
 block script  
@@ -13,79 +12,36 @@ block content
       .select-group
         h1 Cộng đồng
       .show-all
-      each user in users
+      each post in posts
             .item-list
               .information-blogger.clearfix
                 .avatar
-                  a(href="/user/" + user.id)
-                    img.rounded-circle(style='width: 35px; height: 35px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                  a(href="/user/" + post.user._id)
+                    img.rounded-circle(style='width: 35px; height: 35px;',src=post.user.avatar, alt="")
                 .infor
-                  a(href="/user/" + user.id).text-danger.text-decoration-none
-                    = user.name
+                  a(href="/user/" + post.user._id).text-danger.text-decoration-none
+                    = post.user.name
                     span &nbsp;
                     span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
                       i.oi.oi-rss
-                      =" " + user.following + " người theo dõi"
+                      =" " + post.user.following + " người theo dõi"
                 .pull-right
                   a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
                 .time-post.time-p
-                  span 25/02/2020
+                  span= post.datepost.getDate() + "/" + post.datepost.getMonth() + "/" + post.datepost.getFullYear()
               div(style='position: relative;')
                 .cover-blog
                   a(href="#").text-decoration-none
                     img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
               .title
                 h2
-                  a.text-decoration-none(href="/post/" + user.id) An Giang | Thất sơn hùng vĩ
+                  a.text-decoration-none(href="/post/" + post.id)= post.title
               .tag-list
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;chùa bà
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;núi sam
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;long xuyên
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;núi voi
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;cù lao giêng
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;thoại sơn
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;ba trúc
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;tri tôn
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;núi cấm
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;bún mắm
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;trà sư
-                .tag-item
-                  a(href="#").tags.text-decoration-none
-                    i.oi.oi-tags
-                    |&nbsp;an giang
+                each tag in post.tags
+                  .tag-item
+                    a(href="#").tags.text-decoration-none
+                      i.oi.oi-tags
+                      =tag
               .details
                 .col-left.viewcount
                   span
@@ -98,7 +54,7 @@ block content
                     i.oi.oi-share-boxed
                     |&nbsp;23
               .description
-                p Định là đi vía Bà trong ngày rồi về mà tại thấy An Giang còn nhiều chỗ đẹp chưa đi quá nên quyết định ở lại tu thập hình ảnh sống ảo luôn ?? 
+                p= post.description
     .col-sm-3.col-right
             
 

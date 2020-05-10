@@ -4,18 +4,19 @@
       "id": "NAOVb4LmF",
       "user": "mita1",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "Minh Nhựa",
+      "name": "Minh Tài",
       "address": "An Giang",
       "living": "Cần Thơ",
+      "avatar": "/public/upload/avatar/abc.jpg",
       "following": 3000
     },
     {
       "id": "O124LBZmF",
-      "user": "mita2",
+      "user": "vandu",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "Minh Tài",
-      "address": "An Giang",
-      "living": "An Giang",
+      "name": "Văn Dự",
+      "address": "Bến Tre",
+      "living": "Cần Thơ",
       "following": 3000
     },
     {
@@ -28,7 +29,7 @@
       "following": 3000
     },
     {
-      "id": 4,
+      "id": "OVb4LAVmG",
       "user": "mita4",
       "password": "e10adc3949ba59abbe56e057f20f883e",
       "name": "Minh Minh",
@@ -37,94 +38,76 @@
       "following": 3000
     },
     {
-      "user": "admin",
+      "user": "taoluan",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "13",
-      "address": "ư",
-      "living": "a",
+      "name": "Tào Văn Luân",
+      "address": "Sóc Trăng",
+      "living": "Cần Thơ",
       "id": "OVb4LBomF",
       "following": 0
     },
     {
-      "user": "mita",
+      "user": "huynhan",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "Minh Tâm",
-      "address": "405, tổ 3, Hòa Thạnh, Hòa Bình Thạnh",
-      "living": "a",
+      "name": "Huỳnh An",
+      "address": "Bạc Liêu",
+      "living": "Cần Thơ",
       "id": "Bxy1XmYgy",
       "following": 0
     },
     {
-      "user": "mita11",
+      "user": "dongnhi",
       "password": "4297f44b13955235245b2497399d7a93",
-      "name": "Minh Tâm",
-      "address": "Can Tho, Viet Nam",
-      "living": "a",
+      "name": "Đông Nhi",
+      "address": "Cần Thơ",
+      "living": "Cần Thơ",
       "id": "6iBrn04xs",
       "following": 0
     },
     {
-      "user": "asdas",
+      "user": "minhhuong",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "asdasdasd",
-      "address": "1234",
-      "living": "123456",
+      "name": "Minh Hướng",
+      "address": "Sóc Trăng",
+      "living": "Sóc Trăng",
       "id": "A3RS2JFyK",
       "following": 0
     },
     {
       "user": "mita123",
       "password": "e10adc3949ba59abbe56e057f20f883e",
-      "name": "123456",
-      "address": "123456",
-      "living": "123456",
+      "name": "Nhựt Huy",
+      "address": "Kiên Giang",
+      "living": "Cần Thơ",
       "id": "RMCKQ0jSc",
       "following": 0
     }
   ],
   "post": [
     {
-      "_id": "5e9984652f18733110ffe853",
-      "user": "mita11",
-      "title": "An Giang - Vùng Đất với 7 núi",
-      "banner": "/banner/angiang.png",
-      "description": "An Giang bla bla bla",
-      "content": "Xin chào các bạn đã dến viwóadâdoa ada adia",
-      "tag": [
-        "chùa bà",
-        "vía bà",
-        "núi sam",
-        "long xuyên"
-      ],
-      "view": {
-        "$numberInt": "0"
-      },
-      "datepost": 1587488400000
+      "title": "ANANTARA QUY NHƠN – TRẢI NGHIỆM THIÊN ĐƯỜNG GIỮA LÒNG ĐẤT VÕ",
+      "description": "Dù chỉ mới được đưa vào hoạt động năm 2018, nhưng Anantara Quy Nhơn đã nhanh chóng trở thành cái tên cực hot được khách du lịch tìm kiếm hàng đầu cho chuyến du lịch nghỉ dưỡng tại thành phố biển Quy Nhơn xinh đẹp.\r\n",
+      "content": "<div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/1411baf4c116d647f29b3ced2062246e.jpg\" alt=\"\" align=\"none\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn nằm trên địa phận Bãi Dài, Ghềnh Ráng, Quy Nhơn không quá xa trung tâm thành phố nhưng nơi đây cũng đủ tách biệt khỏi những bộn bề, ồn ào, thay vào đó là sự yên bình, khoáng đạt để bạn tận hưởng những ngày nghỉ thật tuyệt vời và ý nghĩa bên người thân, bạn bè.</span><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Nằm bên bờ biển tuyệt đẹp nhưng khu nghỉ dưỡng Anantara, không hề làm mất đi vẻ đẹp nguyên sơ của bãi biển này mà còn điểm tô thêm những sắc xanh cho vùng biển Việt Nam.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Mang tinh thần của những quần thể villas khác thuộc Anantara Group, thiết kế nơi đây đã thể hiện rõ nét những đặc trưng của thiên nhiên và đưa du khách đến gần hơn với văn hóa bản địa.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn có 26 căn villa (gồm một hoặc hai phòng ngủ) được thiết kế với hướng đề cao sự riêng tư cho khách. Các phòng được trang trí tinh tế, hài hòa với cùng tông màu pha trộn 3 yếu tố thiên nhiên thủy, hỏa, thổ để có được màu sắc vừa mộc mạc ấm cúng vừa sang trọng đẳng cấp.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Các căn hộ được tận dụng các nguyên vật liệu bản xứ, các món đồ thủ công truyền thống và cả những tác phẩm nghệ thuật địa phương khơi gợi nên cảm hứng nghệ thuật và mang đến sự mới lạ thú vị dành cho khách nghỉ lại.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, mỗi căn villa đều có một bể bơi vô cực riêng với tầm nhìn rộng lớn ra biến xanh, ngoài ra một bể tắm cỡ đại để cả gia đình có thể thỏa sức vùng vẫy. Có thể nói rằng, không gian riêng tư, hòa mình cùng bãi biển xanh ngọc bích tại resort cao cấp Anantara thật lý tưởng để các bạn tận hưởng kỳ nghỉ thật đáng nhớ bên gia đình, bạn bè của mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Ngoài ra địa chỉ nghỉ dưỡng này còn có dịch vụ quản gia, các gói trị liệu Spa, các hoạt động kết nối khách du lịch với văn hóa đại phương, đây chính là điều tuyệt vời để các bạn vừa có thể nghỉ ngơi vừa có thể khám phá để mở mang tầm nhìn cho bản thân mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/4a2bf2b7f0d47dfe8b406aed9da326e2.jpg\" alt=\"\" align=\"none\"><span style=\"font-family: Montserrat, sans-serif; color: rgb(51, 51, 51);\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Để thưởng thức ẩm thực địa phương các bạn không cần phải đi đâu, bởi ngay trong khuôn viên khu nghỉ dưỡng Anantara tại Quy Nhơn có nhà hàng phục vụ nhiều món hải sản tương ngon, đảm bảo hương vị truyền thống, phù hợp khẩu vị của du khách.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, tại đây cũng không thiếu các món ăn Á, Âu để du khách có thể thưởng thức, khám phá và cảm nhận.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn quả thực là thiên đường nghỉ dưỡng tuyệt vời giữa lòng đất võ Bình Định. Vì vậy, nếu có dịp đến đây, các bạn hãy thỏa sức trải nghiệm, khám phá và lưu lại cho mình những khoảng khắc thật tuyệt vời nhé!</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div>",
+      "tags": "quy nhơ,bình định,tuy hòa",
+      "id": "llRLLlg_G",
+      "user": "NAOVb4LmF",
+      "banner": "/public/upload/avatar/8c343ba9ffbaffa303d934b181c5d1a9"
     },
     {
-      "_id": "5e2284652f18733110ffe853",
-      "user": "mita",
-      "title": "An Giang - Vùng Đất với 7 núi",
-      "banner": "/banner/angiang.png",
-      "description": "An Giang bla bla bla",
-      "content": "Xin chào các bạnáđâsđâsđa đã dến viwóadâdoa ada adia",
-      "tag": [
-        "chùa bà",
-        "vía bà",
-        "núi sam",
-        "long xuyên"
-      ],
-      "view": {
-        "$numberInt": "0"
-      },
-      "datepost": 1587488400000
+      "title": "ANANTARA QUY NHƠN – TRẢI NGHIỆM THIÊN ĐƯỜNG GIỮA LÒNG ĐẤT VÕ",
+      "description": "Dù chỉ mới được đưa vào hoạt động năm 2018, nhưng Anantara Quy Nhơn đã nhanh chóng trở thành cái tên cực hot được khách du lịch tìm kiếm hàng đầu cho chuyến du lịch nghỉ dưỡng tại thành phố biển Quy Nhơn xinh đẹp.\r\n",
+      "content": "<div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/1411baf4c116d647f29b3ced2062246e.jpg\" alt=\"\" align=\"none\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn nằm trên địa phận Bãi Dài, Ghềnh Ráng, Quy Nhơn không quá xa trung tâm thành phố nhưng nơi đây cũng đủ tách biệt khỏi những bộn bề, ồn ào, thay vào đó là sự yên bình, khoáng đạt để bạn tận hưởng những ngày nghỉ thật tuyệt vời và ý nghĩa bên người thân, bạn bè.</span><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Nằm bên bờ biển tuyệt đẹp nhưng khu nghỉ dưỡng Anantara, không hề làm mất đi vẻ đẹp nguyên sơ của bãi biển này mà còn điểm tô thêm những sắc xanh cho vùng biển Việt Nam.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Mang tinh thần của những quần thể villas khác thuộc Anantara Group, thiết kế nơi đây đã thể hiện rõ nét những đặc trưng của thiên nhiên và đưa du khách đến gần hơn với văn hóa bản địa.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn có 26 căn villa (gồm một hoặc hai phòng ngủ) được thiết kế với hướng đề cao sự riêng tư cho khách. Các phòng được trang trí tinh tế, hài hòa với cùng tông màu pha trộn 3 yếu tố thiên nhiên thủy, hỏa, thổ để có được màu sắc vừa mộc mạc ấm cúng vừa sang trọng đẳng cấp.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Các căn hộ được tận dụng các nguyên vật liệu bản xứ, các món đồ thủ công truyền thống và cả những tác phẩm nghệ thuật địa phương khơi gợi nên cảm hứng nghệ thuật và mang đến sự mới lạ thú vị dành cho khách nghỉ lại.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, mỗi căn villa đều có một bể bơi vô cực riêng với tầm nhìn rộng lớn ra biến xanh, ngoài ra một bể tắm cỡ đại để cả gia đình có thể thỏa sức vùng vẫy. Có thể nói rằng, không gian riêng tư, hòa mình cùng bãi biển xanh ngọc bích tại resort cao cấp Anantara thật lý tưởng để các bạn tận hưởng kỳ nghỉ thật đáng nhớ bên gia đình, bạn bè của mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Ngoài ra địa chỉ nghỉ dưỡng này còn có dịch vụ quản gia, các gói trị liệu Spa, các hoạt động kết nối khách du lịch với văn hóa đại phương, đây chính là điều tuyệt vời để các bạn vừa có thể nghỉ ngơi vừa có thể khám phá để mở mang tầm nhìn cho bản thân mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/4a2bf2b7f0d47dfe8b406aed9da326e2.jpg\" alt=\"\" align=\"none\"><span style=\"font-family: Montserrat, sans-serif; color: rgb(51, 51, 51);\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Để thưởng thức ẩm thực địa phương các bạn không cần phải đi đâu, bởi ngay trong khuôn viên khu nghỉ dưỡng Anantara tại Quy Nhơn có nhà hàng phục vụ nhiều món hải sản tương ngon, đảm bảo hương vị truyền thống, phù hợp khẩu vị của du khách.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, tại đây cũng không thiếu các món ăn Á, Âu để du khách có thể thưởng thức, khám phá và cảm nhận.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn quả thực là thiên đường nghỉ dưỡng tuyệt vời giữa lòng đất võ Bình Định. Vì vậy, nếu có dịp đến đây, các bạn hãy thỏa sức trải nghiệm, khám phá và lưu lại cho mình những khoảng khắc thật tuyệt vời nhé!</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div>",
+      "tags": "quy nhơ,bình định,tuy hòa",
+      "id": "lVA2lgJF",
+      "user": "NAOVb4LmF",
+      "banner": "/public/upload/avatar/8c343ba9ffbaffa303d934b181c5d1a9"
     },
     {
       "title": "ANANTARA QUY NHƠN – TRẢI NGHIỆM THIÊN ĐƯỜNG GIỮA LÒNG ĐẤT VÕ",
       "description": "Dù chỉ mới được đưa vào hoạt động năm 2018, nhưng Anantara Quy Nhơn đã nhanh chóng trở thành cái tên cực hot được khách du lịch tìm kiếm hàng đầu cho chuyến du lịch nghỉ dưỡng tại thành phố biển Quy Nhơn xinh đẹp.",
       "content": "<div>abc</div>",
       "tags": "quy nhơn,anantara,bình định",
-      "id": "2mEi0Ktjn",
+      "id": "lGA9FFJF",
       "user": "NAOVb4LmF",
       "banner": "/public/upload/avatar/840189eb3c31919bcfefb401140aad1a"
     },
@@ -133,9 +116,27 @@
       "description": "Dù chỉ mới được đưa vào hoạt động năm 2018, nhưng Anantara Quy Nhơn đã nhanh chóng trở thành cái tên cực hot được khách du lịch tìm kiếm hàng đầu cho chuyến du lịch nghỉ dưỡng tại thành phố biển Quy Nhơn xinh đẹp.\r\n",
       "content": "<div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/1411baf4c116d647f29b3ced2062246e.jpg\" alt=\"\" align=\"none\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn nằm trên địa phận Bãi Dài, Ghềnh Ráng, Quy Nhơn không quá xa trung tâm thành phố nhưng nơi đây cũng đủ tách biệt khỏi những bộn bề, ồn ào, thay vào đó là sự yên bình, khoáng đạt để bạn tận hưởng những ngày nghỉ thật tuyệt vời và ý nghĩa bên người thân, bạn bè.</span><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Nằm bên bờ biển tuyệt đẹp nhưng khu nghỉ dưỡng Anantara, không hề làm mất đi vẻ đẹp nguyên sơ của bãi biển này mà còn điểm tô thêm những sắc xanh cho vùng biển Việt Nam.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Mang tinh thần của những quần thể villas khác thuộc Anantara Group, thiết kế nơi đây đã thể hiện rõ nét những đặc trưng của thiên nhiên và đưa du khách đến gần hơn với văn hóa bản địa.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn có 26 căn villa (gồm một hoặc hai phòng ngủ) được thiết kế với hướng đề cao sự riêng tư cho khách. Các phòng được trang trí tinh tế, hài hòa với cùng tông màu pha trộn 3 yếu tố thiên nhiên thủy, hỏa, thổ để có được màu sắc vừa mộc mạc ấm cúng vừa sang trọng đẳng cấp.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Các căn hộ được tận dụng các nguyên vật liệu bản xứ, các món đồ thủ công truyền thống và cả những tác phẩm nghệ thuật địa phương khơi gợi nên cảm hứng nghệ thuật và mang đến sự mới lạ thú vị dành cho khách nghỉ lại.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, mỗi căn villa đều có một bể bơi vô cực riêng với tầm nhìn rộng lớn ra biến xanh, ngoài ra một bể tắm cỡ đại để cả gia đình có thể thỏa sức vùng vẫy. Có thể nói rằng, không gian riêng tư, hòa mình cùng bãi biển xanh ngọc bích tại resort cao cấp Anantara thật lý tưởng để các bạn tận hưởng kỳ nghỉ thật đáng nhớ bên gia đình, bạn bè của mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Ngoài ra địa chỉ nghỉ dưỡng này còn có dịch vụ quản gia, các gói trị liệu Spa, các hoạt động kết nối khách du lịch với văn hóa đại phương, đây chính là điều tuyệt vời để các bạn vừa có thể nghỉ ngơi vừa có thể khám phá để mở mang tầm nhìn cho bản thân mình.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/3/13/quynhchi191020164143/4a2bf2b7f0d47dfe8b406aed9da326e2.jpg\" alt=\"\" align=\"none\"><span style=\"font-family: Montserrat, sans-serif; color: rgb(51, 51, 51);\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Để thưởng thức ẩm thực địa phương các bạn không cần phải đi đâu, bởi ngay trong khuôn viên khu nghỉ dưỡng Anantara tại Quy Nhơn có nhà hàng phục vụ nhiều món hải sản tương ngon, đảm bảo hương vị truyền thống, phù hợp khẩu vị của du khách.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, tại đây cũng không thiếu các món ăn Á, Âu để du khách có thể thưởng thức, khám phá và cảm nhận.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Anantara Quy Nhơn quả thực là thiên đường nghỉ dưỡng tuyệt vời giữa lòng đất võ Bình Định. Vì vậy, nếu có dịp đến đây, các bạn hãy thỏa sức trải nghiệm, khám phá và lưu lại cho mình những khoảng khắc thật tuyệt vời nhé!</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div>",
       "tags": "quy nhơ,bình định,tuy hòa",
-      "id": "llROLlg_k",
+      "id": "lGAZZFJF",
       "user": "NAOVb4LmF",
       "banner": "/public/upload/avatar/8c343ba9ffbaffa303d934b181c5d1a9"
+    },
+    {
+      "title": "TIỆM CAFÉ THÁNG 3",
+      "description": "Một quán bình yên giữa lòng Đà Lạt\r\n",
+      "content": "<span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Nhắc đến Đà Lạt là nhắc đến một thành phố bình yên và tĩnh lặng. Với mình, đó là một thành phố đợm buồn, nơi bạn có thể trải lòng và giải tỏa những âu tư sau những ngày làm việc mệt nhọc.&nbsp;</span><br><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Chẳng có đâu như Đà Lạt, nơi mà hầu như chỗ nào cũng có quán cafe. Cafe Đà Lạt đã trở thành một thương hiệu du lịch riêng có mà chẳng có địa điểm nào trên đất nước Việt Nam có được. Hễ cứ tới là phải đi cafe, phải tới một vài điểm nào đó check-in vài tấm hình với ly cafe, cảm nhận cái không khí mát mẻ, trong lành của thành phố ngàn thông này.&nbsp;</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bắt kịp với xu hướng của giới trẻ đấy, nhiều quán cafe view đẹp mọc lên như nấm, thu hút rất nhiều giới trẻ tới thưởng lãm.&nbsp;</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Tùy vào cái gout của từng người mà mỗi người lại bỏ túi vài quán cafe ruột trên này, hễ lên là phải tới cho đỡ thèm. Riêng tôi, tôi cũng có vài quán như thế. Hôm nay, tôi sẽ review cho các bạn về một trong những quán cafe với tôi là tuyệt vời nhất ở Đà Lạt. Nơi bạn có thể ngắm nhìn quang cảnh thành phố từ trên cao, nơi bạn có thể thưởng thức hương vị cafe rang say đậm đà và một nơi đủ yên tĩnh để lắng lòng mình lại.&nbsp;</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"font-weight: 700; color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Đó là Tiệm café Tháng 3!&nbsp;</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Tọa lạc tại địa chỉ: 04 Đống Đa, P.3, TP. Đà Lạt (rất gần bến xe trung tâm Đà Lạt và đồi Robin).&nbsp;</span><span style=\"font-weight: 700; color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2017/11/7/vanhaitlhb231322/9fe11e90585bf0d186efbde611e7faa9.jpg\" alt=\"\" align=\"none\"><span style=\"font-family: Montserrat, sans-serif; color: rgb(51, 51, 51);\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Quán có view tổng thể màu trắng, mặc dù không phải là một điểm mới đối với dân sành cafe hay các bạn trẻ, tuy nhiên, với mình, cafe ở đây khá ngon và âm nhạc cổ điển Pháp thực sự tuyệt!</span><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Nhiều quán cafe hiện đại chú trọng view sống ảo, trang hoàng lộng lẫy mà ít để ý vào vị cafe, không gian và sự tĩnh lặng cần có để khách du lịch đã vốn quen với nhộn nhịp cần phải lắng lòng lại và cảm nhận nhiều hơn về thành phố này.&nbsp;</span><img style=\"font-size: 1rem;\"><img style=\"font-size: 1rem;\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2017/11/7/vanhaitlhb231322/92cd1399bd5ea6f06fc5a90f4f9e6d4d.jpg\" alt=\"\" align=\"none\"><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Được biết chủ quán là một bạn trẻ khá yêu thích cafe và vẻ cổ điển của Đà Lạt xưa, vì vậy mà quán có rất nhiều không gian mở, giống như ta được trở lại với Đà Lạt của những năm 50-60 của thế kỷ XX.&nbsp;</span><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Không quá nhiều điểm nhấn được trang trí cho quán, nhưng nhìn tổng thể, với một con mắt nghệ thuật thì có lẽ Tiệm cafe Tháng 3 có rất nhiều góc chết để sống ảo và tạo ra một album chill hết sức.&nbsp;</span><img style=\"font-size: 1rem;\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><br></div><div><img src=\"https://i.imgur.com/BcQXRO8.jpg\" width=\"885\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Mình nhớ lần đầu tới đây đã từng hỏi xin nguyên album nhạc của quán về nhà nghe, nhưng có lẽ vì Sài Gòn tấp nập và xô bồ quá, cũng chẳng có không khí trong lành như ở đây nên chẳng hề có được cảm giác yên bình như ở Đà Lạt.&nbsp;</span><br></div>",
+      "tags": "đà lạt,lâm đồng,cafe,tháng 3,trong lành",
+      "id": "zRS8YT6c9",
+      "user": "OVb4LBomF",
+      "banner": "/public/upload/avatar/42b1a8b8af206fdf9ec67bbabbf67e6f"
+    },
+    {
+      "title": "MÙA NÀY ĐI ĐÂU? CHECK-IN NHỮNG MÙA HOA \"TRÀN VỀ\" SIÊU ĐẸP, SIÊU LUNG LINH",
+      "description": "Mùa này đi đâu? Check-in những mùa hoa \"tràn về\" siêu đẹp, siêu lung linh đẹp mê mẩn trên khắp mọi miền Việt Nam",
+      "content": "<div><h2 class=\"article-title\" data-paraid=\"3e2cac34-c4ed-da2d-98e6-dcab8caf3f75\" data-day=\"0\" data-seq=\"3e2cac34-c4ed-da2d-98e6-dcab8caf3f75\" id=\"1-sai-gon-mua-hoa-ken-hong-dep-ngat-ngay-nhu-nhung-thuoc-phim-nhat-ban\" style=\"font-family: Montserrat, sans-serif; font-weight: bold; line-height: 32px; color: rgb(51, 51, 51); margin-bottom: 10px; font-size: 24px;\">1. Sài Gòn mùa hoa kèn hồng đẹp ngất ngây như những thước phim Nhật Bản</h2></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Trông khá giống với hoa anh đào, hoa kèn hồng xuất hiện khiến các con phố Sài Gòn thêm phần dịu nhẹ, lãng mạn giữa mùa Corona. Thường thì loài hoa này chỉ nở mỗi năm/ lần, nhưng khi khoe sắc thì khiến ai cũng muốn ngắm nhìn. Kèn hồng cho bông nhỏ, màu hồng tím nhạt. Loài hoa này khi nở rộ tạo nên 1 mảng màu không quá sặc sỡ nhưng cũng đủ để làm tâm hồn người nhìn nhẹ nhàng &amp; xao xuyến.</span><br></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/9/12/irishua8531/7642a46466cd8cee39ad9f97f3d1f13c.jpg\" alt=\"\" align=\"none\"><span style=\"font-family: Montserrat, sans-serif; color: rgb(51, 51, 51);\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">+ Hoa kèn hồng được trồng nhiều ở đường Hàm Nghi, Quận 1; đường Điện Biên Phủ, quận Bình Thạnh... nhưng đẹp nhất có lẽ là đại lộ Võ Văn Kiệt</span><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">+ Thời điểm để chụp kèn hồng đẹp nhất là trước 10h sáng hoặc chiều mát.</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">+ Nếu muốn chụp ảnh cùng hoa nên mặc trang phục trơn màu, có tone màu sáng để trở nên nổi bật. Chú ý khi chụp ảnh không làm ảnh hưởng đến giao thông trên đường nhé!</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><h2 class=\"ce-element--focused article-title\" data-paraid=\"1155052f-8fe6-d10d-59ec-86756c2845d4\" data-day=\"0\" data-seq=\"1155052f-8fe6-d10d-59ec-86756c2845d4\" id=\"2-hoa-ban-trang-tran-ve-giua-long-ha-noi\" style=\"font-family: Montserrat, sans-serif; font-weight: bold; line-height: 32px; color: rgb(51, 51, 51); margin-bottom: 10px; font-size: 24px;\">2. Hoa ban trắng \"tràn về\" giữa lòng Hà Nội<img style=\"color: rgb(33, 37, 41); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 1rem; font-weight: 400;\"></h2></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">+ Địa điểm: trên tuyến đường Bắc Sơn giáp Hoàng Diệu (Ba Đình)</span><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Chỉ cần một chiếc điện thoại cùng với 10k gửi xe thôi là có bộ ảnh hơi bị lung linh luôn nhé !</span></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/9/12/irishua8531/7fb3b76e93f9f6ca3cbc9849ca59e9fe.jpg\" alt=\"\" align=\"none\"><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><h2 class=\"article-title\" data-paraid=\"a47b2139-8fef-dd01-0ad2-dc4a8efb4cd4\" data-seq=\"a47b2139-8fef-dd01-0ad2-dc4a8efb4cd4\" id=\"3-mua-hoa-mo-hoa-man---o-tay-bac\" style=\"font-family: Montserrat, sans-serif; font-weight: bold; line-height: 32px; color: rgb(51, 51, 51); margin-bottom: 10px; font-size: 24px;\">3. Mùa hoa mơ, hoa mận,&nbsp; ở Tây Bắc</h2></div><div><img src=\"https://media2.gody.vn/public/mytravelmap/images/2018/9/12/irishua8531/ba2138e128e8bf39b2a1b76c50f1723f.jpg\" alt=\"\" align=\"none\"><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Cách đi: Xe máy, xe khách, ô tô tự lái: đều dễ dàng di chuyển vì đường MC khá đẹp, có biển chỉ dẫn (Hà Nội – Nguyễn Trãi – Quốc lộ 6 – Tp. Hòa Bình – đèo Thung Khe (hay còn gọi là đèo đá trắng) – Mai Châu – Quốc Lộ 43 – Mộc Châu (190km/6h)</span><br></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Địa điểm: Rừng thông Bản Áng , Đồi chè Mộc Châu , Thác Dải Yếm Đỉnh Pha Luông, Thung lũng mận Nà Ka, Mu Náu, Phiêng Khoang, Tham Tán</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\">Bên cạnh đó, các món ăn mang đậm chất Tây Bắc mà bạn không nên bỏ qua như: bê chao, cá suối, lợn mán, thắng cố, cơm lam..</span><span style=\"color: rgb(51, 51, 51); font-family: Montserrat, sans-serif;\"><br></span></div><div><img style=\"font-size: 1rem;\"><br></div>",
+      "tags": "di dau,du lich 3 mien,viet nam",
+      "id": "d9zdLeyTS",
+      "user": "OVb4LBomF",
+      "banner": "/public/upload/avatar/3e61a468ac679d3190016170711de231"
     }
   ]
 }

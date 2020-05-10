@@ -8,7 +8,7 @@ block script
   link(rel='stylesheet', href='/public/css/post-index.css')
   link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
 block content
-  img(src= data.banner, alt='').banner
+  img(src=""+ data.banner, alt='').banner
   .post-title.container-lg
     .row
       .col-lg-3.col-sm-3.col-xs-4.col-3.col-left.text-center
@@ -17,7 +17,7 @@ block content
             a(href="/user/" + user.id)
               img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
           .name.clear-left
-            h5.user-name=data.user
+            h5.user-name=user.name
           .follow.clear-left
             button.btn.btn-primary
               span.oi.oi-rss
@@ -28,7 +28,7 @@ block content
           h4.text-white(style="text-shadow: 1px 1px #ff0000;")= data.title
     .row.content
       .col-sm-3.col-left
-      .col-sm-9.col-right.border.rounded(style="padding-top:25px;padding-bottom: 25px")
+      .col-sm-9.col-right.border.rounded(style="padding-top:25px;padding-bottom: 25px").bg-light
         .clearfix
           .date-post.float-right
             h5 

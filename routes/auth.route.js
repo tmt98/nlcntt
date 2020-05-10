@@ -1,7 +1,6 @@
 const express = require('express');
 var multer = require('multer');
 
-const db = require('../db');
 const controller = require('../controllers/auth.controller')
 var upload = multer({ dest: 'public/upload/avatar/' })
 

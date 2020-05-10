@@ -25,10 +25,10 @@ block content
                         .clearfix(style="padding: 5px;")
                         .home
                             span.oi.oi-map-marker
-                            span &nbsp; Sống tại Cần Thơ &nbsp;
+                            span= " Sống tại " + user.living
                         .address
                             span.oi.oi-home
-                            span &nbsp; Đến từ Long Xuyên &nbsp;
+                            span= " Đến từ " + user.address
                         .followed
                             span.oi.oi-rss-alt
                             span= " Có " + user.following + " người theo dõi"
@@ -58,7 +58,7 @@ block content
                                         img.rounded-circle(style='width: 35px; height: 35px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
                                 .infor
                                     a(href="/user/" + user.id).text-danger.text-decoration-none
-                                        = user.name
+                                        = post.user
                                         span &nbsp;
                                         span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
                                             i.oi.oi-rss

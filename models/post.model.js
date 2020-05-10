@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const postSchema =  new mongoose.Schema({
     title: String,
     description: String,
-    iduser: String,
+    user: { type: mongoose.Schema.Types.ObjectID, ref: 'User' },
     content: String,
-    tag: [String],
+    tags: [String],
     banner: String,
     datepost: { type: Date, default: Date.now },
     view: Number,
     comment: [{
-        _idcmt: new mongoose.Types.ObjectId(),
+        // _idcmt: new mongoose.Types.ObjectId(),
         idusercmt: String,
         datecmt: { type: Date, default: Date.now },
-        contentcmt: String;
+        contentcmt: String
     }]
 });
 const Post = mongoose.model('Post', postSchema, 'post');

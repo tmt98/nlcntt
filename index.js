@@ -10,7 +10,6 @@ var homeRoute =  require('./routes/home.route')
 var userRoute =  require('./routes/user.route')
 var postRoute =  require('./routes/post.route')
 var authRoute =  require('./routes/auth.route')
-var db = require('./db');
 
 var port = 3000;
 var app = express();

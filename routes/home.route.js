@@ -1,6 +1,4 @@
 const express = require('express')
-
-const db = require('../db');
 const controller = require('../controllers/home.controller');
 
 const router = express.Router(); // POST/GET

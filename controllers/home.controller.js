@@ -1,11 +1,14 @@
-const db = require('../db');
-
-module.exports.index = (req, res) => {
-    res.render('home/index',{
-        users: db.get('users').value()
+var UserM = require('../models/user.model');
+var PostM = require('../models/post.model');
+module.exports.index =  (req, res) => {
+    PostM.find().populate('user').then( (post) => {
+        res.render('home/index', {
+            posts: post
+        });
     })
 };
 
+// Chưa fix
 module.exports.search = (req, res) => {
     var q = req.query.q;
     var matchedUsers = db.get('users').value().filter((user) => {

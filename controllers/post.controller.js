@@ -1,23 +1,25 @@
-var shortid = require('shortid');
-var html2jade = require('html2jade');
-var db = require('../db');
+var UserM = require('../models/user.model');
+var PostM = require('../models/post.model');
 
-module.exports.create = (req,res) => {
-    var id = parseInt(req.params.id);
-    var user = db.get('users').find({ id: id }).value();
+module.exports.create = async (req,res) => {
+    var id = req.signedCookies.id;
+    var user = await UserM.findById(id);
+    console.log(user);
     res.render('post/create',{
-        user: user,
-        users: db.get('users').value()
+        user: user
     });
 }
 module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
     console.log(req.file);
-    req.body.id = shortid.generate();
-    req.body.user = res.locals.userLogin.id;
+    req.body.user = res.signedCookies.id;
     req.body.banner = "/" + req.file.destination + req.file.filename
     req.body = JSON.parse(JSON.stringify(req.body));
     console.log(req.body);
-    db.get('post').push(req.body).write();
+    postInsert = new PostM(req.body);
+    postInsert.save(function (err, postInsert) {
+        if (err) return console.error(err);
+        console.log(postInsert.id + " saved to post collection.");
+    });
     res.redirect('/');
 }
 
@@ -32,13 +34,13 @@ module.exports.upload = (req, res) => {
 
 module.exports.id = (req, res) => {
     var id = req.params.id;
-    var idpost = "llROLlg_k";
-    var user = db.get('users').find({ id: id }).value();
-    var data = db.get('post').find({ id: idpost}).value();
-    console.log(data.content);
+    console.log(id);
+    var data = db.get('post').find({ id: id}).value();
+    // console.log(data.content);
+    console.log(data.user);
     res.render('post/post-index', {
-        user: user,
         data: data,
+        user: db.get('users').find({id: data.user}).value(),
         users: db.get('users').value()
     });
 }
