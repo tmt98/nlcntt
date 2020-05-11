@@ -22,7 +22,7 @@ module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
     });
     res.redirect('/');
 }
-
+// Test
 module.exports.upload = (req, res) => {
 	// Some operation
 	res.send({
@@ -31,16 +31,12 @@ module.exports.upload = (req, res) => {
     	"url": "/public/img/user-upload"
 	})
 }
-
-module.exports.id = (req, res) => {
+//
+module.exports.id = async (req, res) => {
     var id = req.params.id;
-    console.log(id);
-    var data = db.get('post').find({ id: id}).value();
-    // console.log(data.content);
-    console.log(data.user);
+    var data = await PostM.findById(id).populate('user');
+    console.log(data);
     res.render('post/post-index', {
-        data: data,
-        user: db.get('users').find({id: data.user}).value(),
-        users: db.get('users').value()
+        data: data
     });
 }

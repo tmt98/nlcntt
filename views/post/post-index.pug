@@ -14,15 +14,15 @@ block content
       .col-lg-3.col-sm-3.col-xs-4.col-3.col-left.text-center
         .info-post.center.clearfix
           .avatar
-            a(href="/user/" + user.id)
+            a(href="/user/" + data.user._id)
               img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
           .name.clear-left
-            h5.user-name=user.name
+            h5.user-name=data.user.name
           .follow.clear-left
             button.btn.btn-primary
               span.oi.oi-rss
               span.follow-title &nbsp; Follow
-              span.follow-count= " (" + user.following + ")"
+              span.follow-count= " (" + data.user.following + ")"
       .col-lg-9.col-sm-9.col-xs-8.col-9.col-right
         .title-post.align-middle
           h4.text-white(style="text-shadow: 1px 1px #ff0000;")= data.title
@@ -55,31 +55,31 @@ block content
           br
           .user.clearfix
             .avatar.float-left
-              a(href="/user/" + data.user)
+              a(href="/user/" + data.user._id)
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
               span &nbsp;
             .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + user.id).text-danger.text-decoration-none
-                = user.name
+              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
+                = data.user.name
               p &nbsp;14:52 18/04/2020
               p review chi tiết,7 ngày mà đi nhiều vậy ah bạn ?
           .user.clearfix
             .avatar.float-left
-              a(href="/user/" + user.id)
+              a(href="/user/" + data.user._id)
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
               span &nbsp;
             .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + user.id).text-danger.text-decoration-none
-                = user.name
+              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
+                = data.user.name
               p &nbsp;14:52 18/04/2020
               p đẹp thật sự, nhìn thích ghê
           .user.clearfix
             .avatar.float-left
-              a(href="/user/" + user.id)
+              a(href="/user/" + data.user._id)
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
               span &nbsp;
             .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + user.id).text-danger.text-decoration-none
-                = user.name
+              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
+                = data.user.name
               p &nbsp;14:52 18/04/2020
               p nhất định phải đi mới được thích quá chừng luôn

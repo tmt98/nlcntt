@@ -4,7 +4,7 @@ var UserM = require('../models/user.model');
 var PostM = require('../models/post.model');
 
 module.exports.login = (req, res) => {
-    res.render('auth/singin')
+    res.render('auth/signin')
 };
 module.exports.loginPOST = async (req, res) => {
     var user = req.body.user;
@@ -14,7 +14,7 @@ module.exports.loginPOST = async (req, res) => {
     var user = await UserM.findOne({user: user})
     console.log(user);
     if (!user) {
-        res.render('auth/singin',{
+        res.render('auth/signin',{
             errors: [
                 'Người dùng không tồn tại'
             ],
@@ -23,7 +23,7 @@ module.exports.loginPOST = async (req, res) => {
         return;
     }
     if (user.password !== password){
-        res.render('auth/singin',{
+        res.render('auth/signin',{
             errors: [
                 'Tài khoản hoặc mật khẩu không chính xác'
             ],
@@ -36,14 +36,14 @@ module.exports.loginPOST = async (req, res) => {
     });
     res.redirect('/');
 };
-module.exports.logup = (req, res) => {
-    res.render('auth/singup')
+module.exports.signup = (req, res) => {
+    res.render('auth/signup')
 };
-module.exports.logupPOST = async (req, res) => {
+module.exports.signupPOST = async (req, res) => {
     var users = await UserM.findOne({user: req.body.user});
     if (!users) {
         if (req.body.user==""){
-            res.render('auth/singup',{
+            res.render('auth/signup',{
                 errors: [
                     'Tài khoản không được trống'
                 ],
@@ -52,7 +52,7 @@ module.exports.logupPOST = async (req, res) => {
             return;
         }
         if (req.body.password==""){
-            res.render('auth/singup',{
+            res.render('auth/signup',{
                 errors: [
                     'Mật khẩu không được trống'
                 ],
@@ -61,7 +61,7 @@ module.exports.logupPOST = async (req, res) => {
             return;
         }
         if (req.body.name==""){
-            res.render('auth/singup',{
+            res.render('auth/signup',{
                 errors: [
                     'Họ tên không được trống'
                 ],
@@ -70,7 +70,7 @@ module.exports.logupPOST = async (req, res) => {
             return;
         }
         if (req.body.address==""){
-            res.render('auth/singup',{
+            res.render('auth/signup',{
                 errors: [
                     'Quê quán không được trống'
                 ],
@@ -79,7 +79,7 @@ module.exports.logupPOST = async (req, res) => {
             return;
         }
         if (req.body.living==""){
-            res.render('auth/singup',{
+            res.render('auth/signup',{
                 errors: [
                     'Nơi ở không được trống'
                 ],
@@ -95,7 +95,7 @@ module.exports.logupPOST = async (req, res) => {
         });
         res.redirect('/');
     }
-    res.render('auth/singup',{
+    res.render('auth/signup',{
         errors: [
             'Tài khoản đã tồn tại'
         ],

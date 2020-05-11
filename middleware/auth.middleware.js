@@ -16,6 +16,6 @@ module.exports.loginOrNo = (req, res ,next) => {
         if(user){
             res.locals.userLogin = user;
         }
-        }
+    }
     next();
 };
