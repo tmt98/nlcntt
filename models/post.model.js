@@ -8,11 +8,13 @@ const postSchema =  new mongoose.Schema({
     banner: String,
     datepost: { type: Date, default: Date.now },
     view: Number,
+    like: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     comment: [{
-        // _idcmt: new mongoose.Types.ObjectId(),
-        idusercmt: String,
+        _idcmt: {type: mongoose.Schema.Types.ObjectId , default: new mongoose.Types.ObjectId()}, 
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         datecmt: { type: Date, default: Date.now },
-        contentcmt: String
+        contentcmt: String,
+        like: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
     }]
 });
 const Post = mongoose.model('Post', postSchema, 'post');
