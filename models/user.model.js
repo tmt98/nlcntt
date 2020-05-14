@@ -7,7 +7,7 @@ const userSchema =  new mongoose.Schema({
     living: String,
     joindate: { type: Date, default: Date.now },
     avatar: String,
-    following: { type: Number, default: 0}
+    following: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 const User = mongoose.model('User', userSchema, 'user');
 module.exports = User;

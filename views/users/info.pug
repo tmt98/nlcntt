@@ -16,7 +16,7 @@ block content
                     .sticky-top
                         .info.border-bottom.border-primary.text-center
                             .clearfix(style="padding: 5px;")
-                            img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                            img.img-thumbnail.rounded-circle(src=""+ user.avatar, alt="")
                             p.user-name= user.name
                             button.btn.btn-primary
                                 span.oi.oi-rss
@@ -32,22 +32,20 @@ block content
                                 span= " Đến từ " + user.address
                             .followed
                                 span.oi.oi-rss-alt
-                                span= " Có " + user.following + " người theo dõi"
+                                span= " Có " + user.following.length + " người theo dõi"
+                            .johndate
+                                span.oi.oi-calendar
+                                span= user.joindate
                             .clearfix(style="padding: 5px;")
                         .follow-list
                             .clearfix(style="padding: 5px;")
-                            h6 4 người theo dõi
+                            h6= user.following.length + " người theo dõi" 
                             .container
                                 .row.row-cols-3
-                                    
+                                    each follow in user.following
                                         .col
-                                            img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
-                                        .col
-                                            img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
-                                        .col
-                                            img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
-                                        .col
-                                            img.img-thumbnail(src="https://www.remako.com/wp-content/uploads/2018/06/no-avatar-remako.png", alt="")
+                                            a(href="/user/"+follow._id)
+                                                img.img-thumbnail(src="" + follow.avatar, alt="")
                         br
                             
 
@@ -70,7 +68,7 @@ block content
                                             span &nbsp;
                                             span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
                                                 i.oi.oi-rss
-                                                =" " + user.following + " người theo dõi"
+                                                =" " + user.following.length + " người theo dõi"
                                     .pull-right
                                         a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
                                     .time-post.time-p

@@ -7,7 +7,7 @@ const postSchema =  new mongoose.Schema({
     tags: [String],
     banner: String,
     datepost: { type: Date, default: Date.now },
-    view: Number,
+    view: { type: Number, default: 0},
     like: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     comment: [{
         _idcmt: {type: mongoose.Schema.Types.ObjectId , default: new mongoose.Types.ObjectId()}, 
