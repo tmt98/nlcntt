@@ -28,7 +28,7 @@ block content
                 .pull-right
                   a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
                 .time-post.time-p
-                  span= post.datepost.getDate() + "/" + post.datepost.getMonth() + "/" + post.datepost.getFullYear()
+                  span= post.datepost.getDate() + "/" + (post.datepost.getMonth()+1).valueOf() + "/" + post.datepost.getFullYear()
               div(style='position: relative;')
                 .cover-blog
                   a(href="#").text-decoration-none

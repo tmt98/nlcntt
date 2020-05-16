@@ -20,8 +20,7 @@ module.exports.create = (req,res) => {
     res.render('users/create');
 };
 module.exports.createPOST = (req, res) => {
-    db.get('users').push(req.body).write();
-    res.redirect('/user');
+    // Test
 }
 module.exports.id = async (req, res) => {
     var id = req.params.id;

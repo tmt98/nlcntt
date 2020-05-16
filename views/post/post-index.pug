@@ -22,7 +22,7 @@ block content
             button.btn.btn-primary
               span.oi.oi-rss
               span.follow-title &nbsp; Follow
-              span.follow-count= " (" + data.user.following + ")"
+              span.follow-count= " (" + data.user.following.length + ")"
       .col-lg-9.col-sm-9.col-xs-8.col-9.col-right
         .title-post.align-middle
           h4.text-white(style="text-shadow: 1px 1px #ff0000;")= data.title
@@ -30,60 +30,45 @@ block content
       .col-sm-3.col-left
       .col-sm-9.col-right.border.rounded(style="padding-top:25px;padding-bottom: 25px").bg-light
         .clearfix
-          .date-post.float-right
-            h5 
+          .date-post.float-right.pr-3
+            h5
               span.oi.oi-calendar
-              span &nbsp; 17/04/2020
-          .comment.float-right
+              span= data.datepost.getDate() + "/" + (data.datepost.getMonth()+1).valueOf() + "/" + data.datepost.getFullYear()
+          .comment.float-right.pr-3
             h5
               span.oi.oi-chat
-              span &nbsp; 5 &nbsp;&nbsp;&nbsp;
-          .view.float-right
+              span= " " + data.comment.length
+          .view.float-right.pr-3
             h5
               span.oi.oi-eye
-              span= " " + data.view + ""
+              span= " " + data.view
         .description.bg-light.p-1(style="border-left: 6px solid red;")
           h4= data.description
         .container.content-post.pt-3.font-weight-light(style="font-size: 17px")
             div!=data.content
         br.pt-9
         h3(style="border-top: 3px solid;") Comment
-        .container.reply-comment
+        .container.reply-comment#comment
           .send-comment
             .avatar.clearfix
-              a(href="/user/" + data.user).float-left
+              a(href="/user/" + userLogin.name).float-left
                 img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
                 span &nbsp;
               .text-input
                 input.input.shadow-sm(type="text", name="abc")
           br
-          .user.clearfix
-            .avatar.float-left
-              a(href="/user/" + data.user._id)
-                img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
-              span &nbsp;
-            .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
-                = data.user.name
-              p &nbsp;14:52 18/04/2020
-              p review chi tiết,7 ngày mà đi nhiều vậy ah bạn ?
-          .user.clearfix
-            .avatar.float-left
-              a(href="/user/" + data.user._id)
-                img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
-              span &nbsp;
-            .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
-                = data.user.name
-              p &nbsp;14:52 18/04/2020
-              p đẹp thật sự, nhìn thích ghê
-          .user.clearfix
-            .avatar.float-left
-              a(href="/user/" + data.user._id)
-                img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
-              span &nbsp;
-            .infor.clearfix
-              a.float-left.font-weight-bold(href="/user/" + data.user._id).text-danger.text-decoration-none
-                = data.user.name
-              p &nbsp;14:52 18/04/2020
-              p nhất định phải đi mới được thích quá chừng luôn
+          each cmt in data.comment
+            .user.clearfix
+              .avatar.float-left
+                a(href="/user/" + cmt.user._id)
+                  img.rounded-circle(style='width: 40px; height: 40px;',src="" + cmt.user.avatar, alt="")
+                span &nbsp;
+              .infor.clearfix
+                a.float-left.font-weight-bold(href="/user/" + cmt.user._id).text-danger.text-decoration-none.pr-1
+                  p= cmt.user.name
+                p= "" + cmt.datecmt.getHours()+":"+ cmt.datecmt.getMinutes() + " " + cmt.datecmt.getDate() + "/" + (cmt.datecmt.getMonth()+1).valueOf() + "/" + cmt.datecmt.getFullYear()
+                p= "" + cmt.content
+                p.clearfix
+                  i.oi.oi-thumb-up.btn-primary(style="width: 10%").text-center.p-1.rounded.block.float-left
+                  if (cmt.like.length > 0)
+                    p= cmt.like.length + " thích bài viết này"

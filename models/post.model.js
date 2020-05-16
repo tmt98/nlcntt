@@ -13,7 +13,7 @@ const postSchema =  new mongoose.Schema({
         _idcmt: {type: mongoose.Schema.Types.ObjectId , default: new mongoose.Types.ObjectId()}, 
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         datecmt: { type: Date, default: Date.now },
-        contentcmt: String,
+        content: String,
         like: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
     }]
 });

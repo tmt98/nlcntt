@@ -10,17 +10,16 @@ module.exports.create = async (req,res) => {
     });
 }
 module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
-    console.log(req.file);
-    req.body.user = res.signedCookies.id;
-    req.body.banner = "/" + req.file.destination + req.file.filename
-    req.body = JSON.parse(JSON.stringify(req.body));
+    // console.log(req.signedCookies.id);
+    // req.body.user = req.signedCookies.id;
+    // req.body.banner = "/" + req.file.destination + req.file.filename;
     console.log(req.body);
-    postInsert = new PostM(req.body);
-    postInsert.save(function (err, postInsert) {
-        if (err) return console.error(err);
-        console.log(postInsert.id + " saved to post collection.");
-    });
-    res.redirect('/');
+    // PostM.create(req.body, function (err, UserM) {
+    //     if (err) return handleError(err);
+    //     // saved!
+    //     console.log(PostM.title + "da duoc them vao database")
+    // });
+    // res.redirect('/');
 }
 // Test
 module.exports.upload = (req, res) => {
@@ -34,9 +33,9 @@ module.exports.upload = (req, res) => {
 //
 module.exports.id = async (req, res) => {
     var id = req.params.id;
-    var data = await PostM.findById(id).populate('user');
-    console.log(data);
+    var data = await (await PostM.findById(id).populate('user').populate('comment.user'));
     res.render('post/post-index', {
         data: data
+        // comment: comment
     });
 }

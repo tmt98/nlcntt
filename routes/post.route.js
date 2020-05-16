@@ -6,7 +6,7 @@ const controller = require('../controllers/post.controller')
 //
 var authMiddleware = require('../middleware/auth.middleware')
 
-var upload = multer({ dest: 'public/upload/avatar/' })
+var upload = multer({ dest: 'public/upload/banner/' })
 
 const router = express.Router(); // POST/GET
 router.get('/create', authMiddleware.requireAuth, controller.create); // Create

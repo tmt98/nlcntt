@@ -1,7 +1,7 @@
 var UserM = require('../models/user.model');
 var PostM = require('../models/post.model');
 module.exports.index =  (req, res) => {
-    PostM.find().populate('user').then( (post) => {
+    PostM.find().populate('user').sort({datepost: -1}).then( (post) => {
         res.render('home/index', {
             posts: post
         });

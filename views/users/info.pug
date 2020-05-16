@@ -35,7 +35,7 @@ block content
                                 span= " Có " + user.following.length + " người theo dõi"
                             .johndate
                                 span.oi.oi-calendar
-                                span= user.joindate
+                                span="Tham gia từ ngày " + user.joindate.getDate() + "/" + (user.joindate.getMonth()+1).valueOf() + "/" + user.joindate.getFullYear()
                             .clearfix(style="padding: 5px;")
                         .follow-list
                             .clearfix(style="padding: 5px;")

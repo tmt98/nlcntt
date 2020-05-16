@@ -1,7 +1,11 @@
-const express = require('express')
+const express = require('express');
+var multer = require('multer');
 
 const db = require('../db');
 const controller = require('../controllers/user.controller')
+//
+
+var upload = multer({ dest: 'public/upload/avatar/' })
 
 const router = express.Router(); // POST/GET
 router.get('/', controller.index); // Index /user

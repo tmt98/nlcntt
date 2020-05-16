@@ -88,12 +88,13 @@ module.exports.signupPOST = async (req, res) => {
             return;
         }
         req.body.password = md5(req.body.password);
-        var userInsert = new UserM(req.body);
-        userInsert.save(function (err, userInsert) {
-            if (err) return console.error(err);
-            console.log(userInsert.user + " saved to user collection.");
+        req.body.avatar = "/" + req.file.destination + req.file.filename;
+        UserM.create(req.body, function (err, UserM) {
+            if (err) return handleError(err);
+            // saved!
+            console.log(UserM.user + "da duoc them vao database")
         });
-        res.redirect('/');
+        return res.redirect('/');
     }
     res.render('auth/signup',{
         errors: [
