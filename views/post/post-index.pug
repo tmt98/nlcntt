@@ -15,7 +15,7 @@ block content
         .info-post.center.clearfix
           .avatar
             a(href="/user/" + data.user._id)
-              img.img-thumbnail.rounded-circle(src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+              img.img-thumbnail.rounded-circle(src="" + data.user.avatar, alt="")
           .name.clear-left
             h5.user-name=data.user.name
           .follow.clear-left
@@ -50,16 +50,20 @@ block content
         h3(style="border-top: 3px solid;") Comment
         .container.reply-comment#comment
           .send-comment
-            .avatar.clearfix
-              a(href="/user/" + userLogin.name).float-left
-                img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
-                span &nbsp;
-              .text-input
-                input.input.shadow-sm(type="text", name="abc")
+            if userLogin
+              .avatar.clearfix
+                a(href="/user/" + userLogin.name).float-left
+                  img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                  span &nbsp;
+                .text-input
+                  input.input.shadow-sm(type="text", name="abc")
+            else
+              a(href="/auth/login").btn.btn-primary Đăng nhập
           br
           each cmt in data.comment
             .user.clearfix
               .avatar.float-left
+                p.d-none.idC= cmt._idcmt
                 a(href="/user/" + cmt.user._id)
                   img.rounded-circle(style='width: 40px; height: 40px;',src="" + cmt.user.avatar, alt="")
                 span &nbsp;
@@ -69,6 +73,53 @@ block content
                 p= "" + cmt.datecmt.getHours()+":"+ cmt.datecmt.getMinutes() + " " + cmt.datecmt.getDate() + "/" + (cmt.datecmt.getMonth()+1).valueOf() + "/" + cmt.datecmt.getFullYear()
                 p= "" + cmt.content
                 p.clearfix
-                  i.oi.oi-thumb-up.btn-primary(style="width: 10%").text-center.p-1.rounded.block.float-left
+                  i.oi.oi-thumb-up.btn-primary(style="width: 10%", id=cmt._idcmt, data-2=""+data._id).text-center.p-1.rounded.block.float-left.like
                   if (cmt.like.length > 0)
-                    p= cmt.like.length + " thích bài viết này"
+                    p(class="like-count-"+cmt._idcmt,data-1=cmt.like.length)= cmt.like.length + " người thích bài viết này"
+                  else
+                    p(class="like-count-"+cmt._idcmt,data-1=cmt.like.length)
+  script.
+    $(document).on('click','.like', function(){
+      var idC = $(this).attr('id');
+      var countID = ".like-count-"+idC;
+      $.ajax({
+        url: "/ajax/like/" + idC,
+        method: "post",
+        context: this,
+        success: function(data){
+          if(data.success){
+            $(this).removeClass("btn-primary");
+            $(this).addClass("btn-danger");
+            $(this).removeClass("like");
+            $(this).addClass("unlike");
+            var count = (parseInt(($(countID).attr('data-1')).valueOf())+1).valueOf()
+            $(countID).html(count + " người đã thích bài viết");
+            $(countID).attr('data-1', count);
+          } else {
+            alert(data);
+          }
+        }
+      }); // $.ajax
+    }) // $(document)
+    $(document).on('click','.unlike', function(){
+      var idC = $(this).attr('id');
+      var countID = ".like-count-"+idC;
+      $.ajax({
+        url: "/ajax/unlike/" + idC,
+        method: "post",
+        context: this,
+        success: function(data){
+          if(data.success){
+            $(this).removeClass("btn-danger");
+            $(this).addClass("btn-primary");
+            $(this).removeClass("unlike");
+            $(this).addClass("like");
+            var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
+            $(countID).html(count + " người đã thích bài viết");
+            $(countID).attr('data-1', count);
+          } else {
+            alert(data);
+          }
+        }
+      })
+    })

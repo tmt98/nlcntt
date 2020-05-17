@@ -39,7 +39,9 @@ p.user-name {
     line-height: 24px;
 }
 .content {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    background-color: #e7e7e7;
+    /* opacity: 0.4; */
 }
 @media (max-width:990px){
     .cover img {

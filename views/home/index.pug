@@ -45,14 +45,14 @@ block content
               .details
                 .col-left.viewcount
                   span
-                    i.oi.oi-eye
-                    |&nbsp;999
+                    i.oi.oi-eye.pr-1
+                    = post.view
                   span
-                    i.oi.oi-chat
-                    |&nbsp;23
+                    i.oi.oi-chat.pr-1
+                    = post.comment.length
                   span
-                    i.oi.oi-share-boxed
-                    |&nbsp;23
+                    i.oi.oi-share-boxed.pr-1
+                    |23
               .description
                 p= post.description
     .col-sm-3.col-right

@@ -13,6 +13,7 @@ var homeRoute =  require('./routes/home.route');
 var userRoute =  require('./routes/user.route');
 var postRoute =  require('./routes/post.route');
 var authRoute =  require('./routes/auth.route');
+var ajaxRoute = require('./routes/ajax.route');
 
 var apiUserRoute = require('./api/routes/user.route');
 
@@ -34,7 +35,9 @@ app.use('/', authMiddleware.loginOrNo, homeRoute) // Trang Chủ
 app.use('/user',userRoute) // Người dùng - User
 app.use('/post', postRoute) // Bài Viết - Post
 app.use('/auth',authRoute) // Xác thực đăng nhập
+app.use('/ajax',ajaxRoute) // Gọi AJAX
 
-app.use('/api/user', apiUserRoute);
+// Server API
+app.use('/api/user', apiUserRoute); 
 // Listen Port
 app.listen(port, () => console.log("Server is running..."));

@@ -26,7 +26,6 @@ module.exports.id = async (req, res) => {
     var id = req.params.id;
     let user = await UserM.findById(id).populate('following');
     let post = await PostM.find({user: id});
-    console.log(user);
     res.render('users/info', {
         user: user,
         posts: post

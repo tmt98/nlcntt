@@ -10,16 +10,17 @@ module.exports.create = async (req,res) => {
     });
 }
 module.exports.createPOST = (req,res) => { // Tạo bài viết (Conntent)
-    // console.log(req.signedCookies.id);
-    // req.body.user = req.signedCookies.id;
-    // req.body.banner = "/" + req.file.destination + req.file.filename;
+    console.log(req.signedCookies.id);
+    req.body.user = req.signedCookies.id;
+    req.body.tags = req.body.tags.split(',');
+    req.body.banner = "/" + req.file.destination + req.file.filename;
     console.log(req.body);
-    // PostM.create(req.body, function (err, UserM) {
-    //     if (err) return handleError(err);
-    //     // saved!
-    //     console.log(PostM.title + "da duoc them vao database")
-    // });
-    // res.redirect('/');
+    PostM.create(req.body, function (err, UserM) {
+        if (err) return handleError(err);
+        // saved!
+        console.log(PostM.title + "da duoc them vao database")
+    });
+    res.redirect('/');
 }
 // Test
 module.exports.upload = (req, res) => {
@@ -34,6 +35,9 @@ module.exports.upload = (req, res) => {
 module.exports.id = async (req, res) => {
     var id = req.params.id;
     var data = await (await PostM.findById(id).populate('user').populate('comment.user'));
+    await PostM.updateOne({ _id: id }, {
+        view: data.view+1
+      });      
     res.render('post/post-index', {
         data: data
         // comment: comment
