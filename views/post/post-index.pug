@@ -82,10 +82,14 @@ block content
     $(document).on('click','.like', function(){
       var idC = $(this).attr('id');
       var countID = ".like-count-"+idC;
+      var idPost = $(this).attr('data-2');
       $.ajax({
         url: "/ajax/like/" + idC,
         method: "post",
         context: this,
+        data: {
+          idpost: idPost
+        },
         success: function(data){
           if(data.success){
             $(this).removeClass("btn-primary");
