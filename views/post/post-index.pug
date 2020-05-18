@@ -37,7 +37,7 @@ block content
           .comment.float-right.pr-3
             h5
               span.oi.oi-chat
-              span= " " + data.comment.length
+              span= " " + comment.length
           .view.float-right.pr-3
             h5
               span.oi.oi-eye
@@ -56,14 +56,14 @@ block content
                   img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
                   span &nbsp;
                 .text-input
-                  input.input.shadow-sm(type="text", name="abc")
+                  input.input.shadow-sm(type="text", name="abc", data-1=""+data._id)#comment-text
             else
               a(href="/auth/login").btn.btn-primary Đăng nhập
           br
-          each cmt in data.comment
-            .user.clearfix
+          .user.clearfix#comment-list
+          each cmt in comment
               .avatar.float-left
-                p.d-none.idC= cmt._idcmt
+                p.d-none.idC= cmt._id
                 a(href="/user/" + cmt.user._id)
                   img.rounded-circle(style='width: 40px; height: 40px;',src="" + cmt.user.avatar, alt="")
                 span &nbsp;
@@ -73,11 +73,11 @@ block content
                 p= "" + cmt.datecmt.getHours()+":"+ cmt.datecmt.getMinutes() + " " + cmt.datecmt.getDate() + "/" + (cmt.datecmt.getMonth()+1).valueOf() + "/" + cmt.datecmt.getFullYear()
                 p= "" + cmt.content
                 p.clearfix
-                  i.oi.oi-thumb-up.btn-primary(style="width: 10%", id=cmt._idcmt, data-2=""+data._id).text-center.p-1.rounded.block.float-left.like
+                  i.oi.oi-thumb-up.btn-primary(style="width: 10%", id=cmt._id, data-2=""+data._id).text-center.p-1.rounded.block.float-left.like
                   if (cmt.like.length > 0)
-                    p(class="like-count-"+cmt._idcmt,data-1=cmt.like.length)= cmt.like.length + " người thích bài viết này"
+                    p(class="like-count-"+cmt._id,data-1=cmt.like.length)= cmt.like.length + " người thích bài viết này"
                   else
-                    p(class="like-count-"+cmt._idcmt,data-1=cmt.like.length)
+                    p(class="like-count-"+cmt._id,data-1=cmt.like.length)
   script.
     $(document).on('click','.like', function(){
       var idC = $(this).attr('id');
@@ -104,14 +104,18 @@ block content
           }
         }
       }); // $.ajax
-    }) // $(document)
+    }); // $(document) LIKE
     $(document).on('click','.unlike', function(){
       var idC = $(this).attr('id');
       var countID = ".like-count-"+idC;
+      var idPost = $(this).attr('data-2');
       $.ajax({
         url: "/ajax/unlike/" + idC,
         method: "post",
         context: this,
+        data: {
+          idpost: idPost
+        },
         success: function(data){
           if(data.success){
             $(this).removeClass("btn-danger");
@@ -126,4 +130,37 @@ block content
           }
         }
       })
-    })
+    }); // $(document) UNLIKE
+    $('#comment-text').bind("enterKey",function(e){
+      var idPost = $('#comment-text').attr('data-1');
+      var value = $('#comment-text').val();
+      $.ajax({
+        url: "/ajax/comment/" + idPost,
+        method: "post",
+        context: this,
+        data: {
+          idpost: idPost,
+          value: value
+        },
+        success: function(data){
+          if(data.success){
+            $(this).val("");
+            $( "#comment-list" ).append( "<p>Test</p>" );
+          } else {
+            alert(data);
+          }
+        }
+      })
+    });
+    $('#comment-text').keyup(function(e){
+      if(e.keyCode == 13)
+      {
+        if ($(this).val()==""){
+          alert("Vui lòng nhập nội dung");
+        }
+        else{
+          $(this).trigger("enterKey");
+        }
+      }
+    });
+    

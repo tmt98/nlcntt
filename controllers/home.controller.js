@@ -1,11 +1,12 @@
 var UserM = require('../models/user.model');
 var PostM = require('../models/post.model');
-module.exports.index =  (req, res) => {
-    PostM.find().populate('user').sort({datepost: -1}).then( (post) => {
-        res.render('home/index', {
-            posts: post
-        });
-    })
+module.exports.index = async (req, res) => {
+    var data = await PostM.find().populate('user').sort({datepost: -1})
+
+    // res.json(data);
+    res.render('home/index', {
+         posts: data
+    });
 };
 
 // Chưa fix
