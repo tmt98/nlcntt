@@ -19,22 +19,22 @@ block content
                             img.img-thumbnail.rounded-circle(src=""+ user.avatar, alt="")
                             p.user-name= user.name
                             button.btn.btn-primary
-                                span.oi.oi-rss
+                                span.fa.fa-rss
                                 span &nbsp; Follow
                             .clearfix(style="padding: 5px;")
                         .detail-info.border-bottom.border-primary
                             .clearfix(style="padding: 5px;")
                             .home
-                                span.oi.oi-map-marker
+                                span.fa.fa-map-marker
                                 span= " Sống tại " + user.living
                             .address
-                                span.oi.oi-home
+                                span.fa.fa-home
                                 span= " Đến từ " + user.address
                             .followed
-                                span.oi.oi-rss-alt
+                                span.fa.fa-rss
                                 span= " Có " + user.following.length + " người theo dõi"
                             .johndate
-                                span.oi.oi-calendar
+                                span.fa.fa-calendar
                                 span="Tham gia từ ngày " + user.joindate.getDate() + "/" + (user.joindate.getMonth()+1).valueOf() + "/" + user.joindate.getFullYear()
                             .clearfix(style="padding: 5px;")
                         .follow-list
@@ -67,7 +67,7 @@ block content
                                             = user.name
                                             span &nbsp;
                                             span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
-                                                i.oi.oi-rss
+                                                i.fa.fa-rss
                                                 =" " + user.following.length + " người theo dõi"
                                     .pull-right
                                         a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
@@ -79,23 +79,23 @@ block content
                                             img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
                                 .title
                                     h2
-                                        a.text-decoration-none(href="#")= post.title
+                                        a.text-decoration-none(href="/post/"+post._id)= post.title
                                 .tag-list
                                     each tag in post.tags
                                         .tag-item
                                             a(href="#").tags.text-decoration-none
-                                                i.oi.oi-tags
-                                                =" " + tag
+                                                i.fa.fa-tags.pr-1
+                                                =tag
                                 .details
                                     .col-left.viewcount
                                         span
-                                            i.oi.oi-eye
-                                            |&nbsp;999
+                                            i.fa.fa-eye.pr-1
+                                            =post.view
                                         span
-                                            i.oi.oi-chat
+                                            i.fa.fa-comments.pr-1
                                             |&nbsp;23
                                         span
-                                            i.oi.oi-share-boxed
+                                            i.fa.fa-share
                                             |&nbsp;23
                                 .description
                                     p= post.description

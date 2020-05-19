@@ -1,4 +1,3 @@
-
 extends ../layout/default
 
 block script  
@@ -20,7 +19,7 @@ block content
             h5.user-name=data.user.name
           .follow.clear-left
             button.btn.btn-primary
-              span.oi.oi-rss
+              span.fa.fa-rss
               span.follow-title &nbsp; Follow
               span.follow-count= " (" + data.user.following.length + ")"
       .col-lg-9.col-sm-9.col-xs-8.col-9.col-right
@@ -32,18 +31,18 @@ block content
         .clearfix
           .date-post.float-right.pr-3
             h5
-              span.oi.oi-calendar
+              span.fa.fa-calendar.pr-1
               span= data.datepost.getDate() + "/" + (data.datepost.getMonth()+1).valueOf() + "/" + data.datepost.getFullYear()
           .comment.float-right.pr-3
             h5
-              span.oi.oi-chat
-              span= " " + comment.length
+              span.fa.fa-comments.pr-1
+              span= comment.length
           .view.float-right.pr-3
             h5
-              span.oi.oi-eye
-              span= " " + data.view
+              span.fa.fa-eye.pr-1
+              span= data.view
         .description.bg-light.p-1(style="border-left: 6px solid red;")
-          h4= data.description
+          h4.pl-2= data.description
         .container.content-post.pt-3.font-weight-light(style="font-size: 17px")
             div!=data.content
         br.pt-9
@@ -58,10 +57,11 @@ block content
                 .text-input
                   input.input.shadow-sm(type="text", name="abc", data-1=""+data._id)#comment-text
             else
-              a(href="/auth/login").btn.btn-primary Đăng nhập
+              a#login(href="/auth/login").btn.btn-primary Đăng nhập
           br
           .user.clearfix#comment-list
-          each cmt in comment
+          each cmt,index in comment
+            #each-comment.border-bottom.border-primary.p-2.m-1
               .avatar.float-left
                 p.d-none.idC= cmt._id
                 a(href="/user/" + cmt.user._id)
@@ -73,7 +73,10 @@ block content
                 p= "" + cmt.datecmt.getHours()+":"+ cmt.datecmt.getMinutes() + " " + cmt.datecmt.getDate() + "/" + (cmt.datecmt.getMonth()+1).valueOf() + "/" + cmt.datecmt.getFullYear()
                 p= "" + cmt.content
                 p.clearfix
-                  i.oi.oi-thumb-up.btn-primary(style="width: 10%", id=cmt._id, data-2=""+data._id).text-center.p-1.rounded.block.float-left.like
+                  if (checklike[index])
+                    i.fa.fa-thumbs-up.btn-danger(aria-hidden='true', style="width: 10%", id=cmt._id, data-2=""+data._id).text-center.p-1.rounded.block.float-left.unlike
+                  else
+                    i.fa.fa-thumbs-up.btn-primary(aria-hidden='true', style="width: 10%", id=cmt._id, data-2=""+data._id).text-center.p-1.rounded.block.float-left.like                  
                   if (cmt.like.length > 0)
                     p(class="like-count-"+cmt._id,data-1=cmt.like.length)= cmt.like.length + " người thích bài viết này"
                   else
@@ -145,7 +148,7 @@ block content
         success: function(data){
           if(data.success){
             $(this).val("");
-            $( "#comment-list" ).append( "<p>Test</p>" );
+            location.reload();
           } else {
             alert(data);
           }
@@ -163,4 +166,7 @@ block content
         }
       }
     });
-    
+    $('#login').on('click', function(){
+
+      localStorage.setItem( "URL_P",window.location.href);
+    });

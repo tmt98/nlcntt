@@ -12,7 +12,7 @@ block content
       .select-group
         h1 Cộng đồng
       .show-all
-      each post in posts
+        each post in posts
             .item-list
               .information-blogger.clearfix
                 .avatar
@@ -23,7 +23,7 @@ block content
                     = post.user.name
                     span &nbsp;
                     span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
-                      i.oi.oi-rss
+                      i.fa.fa-rss
                       =" " + post.user.following.length + " người theo dõi"
                 .pull-right
                   a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
@@ -32,7 +32,7 @@ block content
               div(style='position: relative;')
                 .cover-blog
                   a(href="#").text-decoration-none
-                    img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
+                    img(src='' + post.banner, alt='')
               .title
                 h2
                   a.text-decoration-none(href="/post/" + post.id)= post.title
@@ -40,21 +40,28 @@ block content
                 each tag in post.tags
                   .tag-item
                     a(href="#").tags.text-decoration-none
-                      i.oi.oi-tags
+                      i.fa.fa-tags.pr-1
                       =tag
               .details
                 .col-left.viewcount
                   span
-                    i.oi.oi-eye.pr-1
+                    i.fa.fa-eye.pr-1
                     = post.view
                   span
-                    i.oi.oi-chat.pr-1
+                    i.fa.fa-comments.pr-1
                     = 2
                   span
-                    i.oi.oi-share-boxed.pr-1
+                    i.fa.fa-share.pr-1
                     |23
               .description
                 p= post.description
+    script.
+            $(window).scroll(function() {
+              if($(window).scrollTop() == $(document).height() - $(window).height()) {
+                // ajax call get data from server and append to the div
+                $('.show-all').append('<p>abc</p>');
+              }
+            });
     .col-sm-3.col-right
             
 

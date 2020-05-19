@@ -18,7 +18,11 @@ block content
                 form(id="loginFORM", action="", method="post")
                     input#login(type='text', name='user', placeholder='tài khoản', value=values ? values.user : "")
                     input#password(type='password', name='password', placeholder='mật khẩu', value=values ? values.password : "")
+                    input#url(type='hidden', name='url')
                     input(type='submit', value='Đăng nhập')
                     a.pb-3.d-block(href="/auth/signup") Đăng kí
                 // Remind Passowrd
                 //- #formFooter
+                script.
+                    if (localStorage.getItem("URL_P"))
+                        $('#url').val(localStorage.getItem("URL_P"))
