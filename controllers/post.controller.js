@@ -30,19 +30,44 @@ module.exports.upload = (req, res) => {
 		"uploaded": 1,
     	"fileName": "IMAGE.PNG",
     	"url": "/public/img/user-upload"
-	})
+	});
 }
 //
 module.exports.id = async (req, res) => {
     var id = req.params.id;
+    var checkLikeAr = [];
     var data = await (await PostM.findById(id).populate('user'));
-    var comment = await CommentM.find({idpost: id}).populate('user');
+    var comment = await CommentM.find({idpost: id}, (err, comment) =>{ // , like: {$in: req.signedCookies.id}
+        for( let i = 0; i < comment.length; i++){
+            if (!req.signedCookies.id){
+                checkLikeAr.push(false);
+            } else {
+                if (comment[i].like == []){
+                    checkLikeAr.push(false);
+                }
+                else {
+                    var checkLike = comment[i].like.find(a => {
+                        // console.log("CO LIKE HAY KHONG : " + a);
+                        // console.log("ID LOGIN : " + req.signedCookies.id);
+                        return a == req.signedCookies.id;
+                    });
+                    // console.log(checkLike);
+                    if (checkLike == req.signedCookies.id){
+                        checkLikeAr.push(true);
+                    } else {
+                        checkLikeAr.push(false);
+                    }
+                }
+            }
+        }
+    }).populate('user').sort({datecmt: -1});
+    console.log(checkLikeAr);
     await PostM.updateOne({ _id: id }, {
-        view: data.view+1
+        view: data.view + 1
       });      
-    console.log(comment);
     res.render('post/post-index', {
         data: data,
-        comment: comment
+        comment: comment,
+        checklike: checkLikeAr
     });
 }

@@ -14,6 +14,7 @@ var userRoute =  require('./routes/user.route');
 var postRoute =  require('./routes/post.route');
 var authRoute =  require('./routes/auth.route');
 var ajaxRoute = require('./routes/ajax.route');
+var adminRoute = require('./routes//admin.route');
 
 var apiUserRoute = require('./api/routes/user.route');
 
@@ -31,11 +32,12 @@ var authMiddleware = require('./middleware/auth.middleware')
 
 // Router
 app.use('/public', express.static('public'))
-app.use('/', authMiddleware.loginOrNo, homeRoute) // Trang Chủ
-app.use('/user',userRoute) // Người dùng - User
-app.use('/post', postRoute) // Bài Viết - Post
-app.use('/auth',authRoute) // Xác thực đăng nhập
-app.use('/ajax',ajaxRoute) // Gọi AJAX
+app.use('/', authMiddleware.loginOrNo, homeRoute); // Trang Chủ
+app.use('/user', userRoute); // Người dùng - User
+app.use('/post', postRoute); // Bài Viết - Post
+app.use('/auth', authRoute); // Xác thực đăng nhập
+app.use('/ajax', ajaxRoute); // Gọi AJAX
+app.use('/admin', adminRoute); // Admin Controller
 
 // Server API
 app.use('/api/user', apiUserRoute); 
