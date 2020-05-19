@@ -1,60 +1,68 @@
-extends ../layout/default
+  extends ../layout/default
 
-block script  
-  script(src='/public/script/jquery.min.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
-  script(src='https://rawgit.com/edull24/ScrollWatch/v2.0.1/dist/ScrollWatch-2.0.1.min.js')
-  link(rel='stylesheet', href='/public/css/view-user.css')
-  link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
-block content
-  .container-lg
-    .col-left
-      .select-group
-        h1 Cộng đồng
-      .show-all
-      each post in posts
-            .item-list
-              .information-blogger.clearfix
-                .avatar
-                  a(href="/user/" + post.user._id)
-                    img.rounded-circle(style='width: 35px; height: 35px;',src=post.user.avatar, alt="")
-                .infor
-                  a(href="/user/" + post.user._id).text-danger.text-decoration-none
-                    = post.user.name
-                    span &nbsp;
-                    span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
-                      i.oi.oi-rss
-                      =" " + post.user.following.length + " người theo dõi"
-                .pull-right
-                  a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
-                .time-post.time-p
-                  span= post.datepost.getDate() + "/" + (post.datepost.getMonth()+1).valueOf() + "/" + post.datepost.getFullYear()
-              div(style='position: relative;')
-                .cover-blog
-                  a(href="#").text-decoration-none
-                    img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
-              .title
-                h2
-                  a.text-decoration-none(href="/post/" + post.id)= post.title
-              .tag-list
-                each tag in post.tags
-                  .tag-item
-                    a(href="#").tags.text-decoration-none
-                      i.oi.oi-tags
-                      =tag
-              .details
-                .col-left.viewcount
-                  span
-                    i.oi.oi-eye.pr-1
-                    = post.view
-                  span
-                    i.oi.oi-chat.pr-1
-                    = 2
-                  span
-                    i.oi.oi-share-boxed.pr-1
-                    |23
-              .description
-                p= post.description
-    .col-sm-3.col-right
-            
+    block script  
+    script(src='/public/script/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
+    script(src='https://rawgit.com/edull24/ScrollWatch/v2.0.1/dist/ScrollWatch-2.0.1.min.js')
+    link(rel='stylesheet', href='/public/css/view-user.css')
+    block content
+    .container-lg
+      .col-left
+        .select-group
+          h1 Cộng đồng
+        .show-all#allpost
+          .postadd
+            each post in posts
+              .item-list
+                .information-blogger.clearfix
+                  .avatar
+                    a(href="/user/" + post.user._id)
+                      img.rounded-circle(style='width: 35px; height: 35px;',src=post.user.avatar, alt="")
+                  .infor
+                    a(href="/user/" + post.user._id).text-danger.text-decoration-none
+                      = post.user.name
+                      span &nbsp;
+                      span(style='color: #1d9c73;font-size: 11px;padding-left: 1px;border: 1px solid #1d9c73;padding: 3px 10px;border-radius: 5px;')
+                        i.fa.fa-rss
+                        |=" " + post.user.following.length + " người theo dõi"
+                      .pull-right
+                        a(href='#', style='color: #337ab7;font-size: 14px;text-align: center;font-weight: normal;line-height: 40px;font-style: italic;') #blog
+                      .time-post.time-p
+                        span= post.datepost.getDate() + "/" + (post.datepost.getMonth()+1).valueOf() + "/" + post.datepost.getFullYear()
+                    div(style='position: relative;')
+                      .cover-blog
+                        a(href="#").text-decoration-none
+                          img(src=''+ post.banner, alt='')
+                    .title
+                      h2
+                        a.text-decoration-none(href="/post/" + post.id)= post.title
+                    .tag-list
+                      each tag in post.tags
+                        .tag-item
+                          a(href="#").tags.text-decoration-none
+                        i.fa.fa-tags.pr-1
+                        =tag
+                .details
+                  .col-left.viewcount
+                    span
+                      i.fa.fa-eye.pr-1
+                      = post.view
+                    span
+                      i.fa.fa-comments.pr-1
+                      = 2
+                    span
+                      i.fa.fa-share.pr-1
+                      |23
+                .description
+                  p= post.description
+          script.
+            $(window).scroll(function() {
+              if($(window).scrollTop() == $(document).height() - $(window).height()) {
+                // ajax call get data from server and append to the div
+
+                $('.postadd').append('<p>abc</p>');
+              }
+            });
+      .col-sm-3.col-right
+
 
