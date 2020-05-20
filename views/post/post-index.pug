@@ -103,7 +103,7 @@ block content
             $(countID).html(count + " người đã thích bài viết");
             $(countID).attr('data-1', count);
           } else {
-            alert(data);
+            window.location.href = "/auth/login";
           }
         }
       }); // $.ajax
@@ -129,7 +129,7 @@ block content
             $(countID).html(count + " người đã thích bài viết");
             $(countID).attr('data-1', count);
           } else {
-            alert(data);
+            window.location.href = "/auth/login";
           }
         }
       })
