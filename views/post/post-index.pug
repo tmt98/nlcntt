@@ -71,7 +71,30 @@ block content
                 a.float-left.font-weight-bold(href="/user/" + cmt.user._id).text-danger.text-decoration-none.pr-1
                   p= cmt.user.name
                 p= "" + cmt.datecmt.getHours()+":"+ cmt.datecmt.getMinutes() + " " + cmt.datecmt.getDate() + "/" + (cmt.datecmt.getMonth()+1).valueOf() + "/" + cmt.datecmt.getFullYear()
-                p= "" + cmt.content
+                p#comment-content= "" + cmt.content
+                if (checkTrue[index])
+                  // Button trigger modal
+                  button.btn.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#m'+cmt._id)
+                    | Sửa
+                  button.btn.btn-primary.mr-1(type='button')
+                    | Xóa
+                  // , data-toggle='modal', data-target='#m'+cmt._id)
+                  // Modal
+                  .modal.fade(id='m'+cmt._id,tabindex='-1', role='dialog', aria-labelledby='m'+cmt._id+'Title', aria-hidden='true')
+                    .modal-dialog.modal-dialog-centered(role='document')
+                      .modal-content
+                        form(action="/ajax/edit-comment/" + cmt._id , method="post")
+                          .modal-header
+                            h5.modal-title(id='m'+cmt._id+'Title') Sửa bình luận
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                              span(aria-hidden='true') &times;
+                          .modal-body
+                            input(type="text",name='noidung', id=''+cmt._id,value=""+cmt.content)
+                            input(type="hidden", name="link",value ="")
+                          .modal-footer
+                            input.btn.btn-primary.d-inline-block.w-25(type="submit", value="Lưu thay đổi")
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Đóng
+                p=""
                 p.clearfix
                   if (checklike[index])
                     i.fa.fa-thumbs-up.btn-danger(aria-hidden='true', style="width: 10%", id=cmt._id, data-2=""+data._id).text-center.p-1.rounded.block.float-left.unlike
@@ -81,6 +104,9 @@ block content
                     p(class="like-count-"+cmt._id,data-1=cmt.like.length)= cmt.like.length + " người thích bài viết này"
                   else
                     p(class="like-count-"+cmt._id,data-1=cmt.like.length)
+
+
+
   script.
     $(document).on('click','.like', function(){
       var idC = $(this).attr('id');
@@ -100,7 +126,7 @@ block content
             $(this).removeClass("like");
             $(this).addClass("unlike");
             var count = (parseInt(($(countID).attr('data-1')).valueOf())+1).valueOf()
-            $(countID).html(count + " người đã thích bài viết");
+            $(countID).html(count + " người thích bài viết này");
             $(countID).attr('data-1', count);
           } else {
             window.location.href = "/auth/login";
@@ -126,7 +152,7 @@ block content
             $(this).removeClass("unlike");
             $(this).addClass("like");
             var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
-            $(countID).html(count + " người đã thích bài viết");
+            $(countID).html(count + " người thích bài viết này");
             $(countID).attr('data-1', count);
           } else {
             window.location.href = "/auth/login";
@@ -170,3 +196,11 @@ block content
 
       localStorage.setItem( "URL_P",window.location.href);
     });
+    $(document).on('click','#edit-comment', function(){
+      $("#comment-content").attr('hidden') = true;
+    });
+    $( document ).ready(function() {
+      var link = window.location.href.split("#");
+      $('input[type="hidden"').val(link[0]+"#comment");    
+    });
+    

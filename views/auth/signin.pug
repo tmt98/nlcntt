@@ -16,8 +16,8 @@ block content
                 br
                 // Login Form
                 form(id="loginFORM", action="", method="post")
-                    input#login(type='text', name='user', placeholder='tài khoản', value=values ? values.user : "")
-                    input#password(type='password', name='password', placeholder='mật khẩu', value=values ? values.password : "")
+                    input#login(type='text', name='user', placeholder='tài khoản', value=values ? values.user : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản')", oninput="this.setCustomValidity('')")
+                    input#password(type='password', name='password', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')", oninput="this.setCustomValidity('')")
                     input#url(type='hidden', name='url')
                     input(type='submit', value='Đăng nhập')
                     a.pb-3.d-block(href="/auth/signup") Đăng kí

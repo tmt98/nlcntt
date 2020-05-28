@@ -37,9 +37,9 @@ module.exports.upload = (req, res) => {
 module.exports.id = async (req, res) => {
   var id = req.params.id;
   var checkLikeAr = [];
+  var trueUserCommentAr = [];
   var data = await await PostM.findById(id).populate("user");
   var comment = await CommentM.find({ idpost: id }, (err, comment) => {
-    // , like: {$in: req.signedCookies.id}
     for (let i = 0; i < comment.length; i++) {
       if (!req.signedCookies.id) {
         checkLikeAr.push(false);
@@ -48,8 +48,6 @@ module.exports.id = async (req, res) => {
           checkLikeAr.push(false);
         } else {
           var checkLike = comment[i].like.find((a) => {
-            // console.log("CO LIKE HAY KHONG : " + a);
-            // console.log("ID LOGIN : " + req.signedCookies.id);
             return a == req.signedCookies.id;
           });
           // console.log(checkLike);
@@ -58,23 +56,28 @@ module.exports.id = async (req, res) => {
           } else {
             checkLikeAr.push(false);
           }
+          // var checkTrueUserPost = comment[i].user;
+          if (comment[i].user._id == req.signedCookies.id) {
+            trueUserCommentAr.push(true);
+          } else {
+            trueUserCommentAr.push(false);
+          }
         }
       }
     }
   })
     .populate("user")
     .sort({ datecmt: -1 });
-  console.log(checkLikeAr);
   await PostM.updateOne(
     { _id: id },
     {
       view: data.view + 1,
     }
   );
-  console.log(comment);
   res.render("post/post-index", {
     data: data,
     comment: comment,
     checklike: checkLikeAr,
+    checkTrue: trueUserCommentAr,
   });
 };

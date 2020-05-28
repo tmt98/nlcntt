@@ -41,13 +41,12 @@ block content
         .col-sm-10.m-auto
             form(action="/post/createPOST", method="post", enctype="multipart/form-data")
                 .custom-file.mb-3
-                    input#customFile.customFile.custom-file-input(type='file', name="customFile", onchange='loadFile(event)') 
-                    //, onchange='loadFile(event)'
+                    input#customFile.customFile.custom-file-input(type='file', name="customFile", onchange='loadFile(event)', required, oninvalid="this.setCustomValidity('Vui lòng chọn banner')", oninput="this.setCustomValidity('')")
                     label.custom-file-label(for='customFile') Chọn ảnh bìa (Kích thước chiều cao 630px)
                 br
-                input#title.form-control(type="text",name="title", placeholder="Tiêu đề").d-block
+                input#title.form-control(type="text",name="title", placeholder="Tiêu đề", required, oninvalid="this.setCustomValidity('Vui lòng nhập tiêu đề')", oninput="this.setCustomValidity('')").d-block
                 br
-                textarea#description.form-control(name='description', type='text', placeholder='Giới thiệu ngắn ...', rows='auto')
+                textarea#description.form-control(name='description', type='text', placeholder='Giới thiệu ngắn ...', rows='auto', required, oninvalid="this.setCustomValidity('Vui lòng viết miêu tả')", oninput="this.setCustomValidity('')")
                 br
                 .bg-white.border.rounded
                     textarea#content(name="content", style="width: 100%; height: 300px", rows="auto")
@@ -55,7 +54,7 @@ block content
                         new nicEditor().panelInstance('content');
                 br
                 label(for="tags") Tag tìm kiếm
-                input#mySingleField(type='hidden', name='tags', value='')
+                input#mySingleField(type='hidden', name='tags', value='', required, oninvalid="this.setCustomValidity('Vui lòng chọn tag tìm kiếm')", oninput="this.setCustomValidity('')")
                 ul#singleFieldTags.rounded
                 br
                 button.btn.btn-danger.align-center(type="submit") Đăng bài viết

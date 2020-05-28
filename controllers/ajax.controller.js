@@ -60,3 +60,13 @@ module.exports.comment = async (req, res) => {
     success: true,
   });
 };
+
+module.exports.editcomment = async (req, res) => {
+  // Sửa comment
+  let id = req.params.id;
+  let link = req.body.link;
+  let comment = await CommentM.findById(id);
+  comment.content = req.body.noidung;
+  await comment.save();
+  res.redirect(link);
+};
