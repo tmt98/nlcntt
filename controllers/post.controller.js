@@ -2,6 +2,7 @@ var UserM = require("../models/user.model");
 var PostM = require("../models/post.model");
 var CommentM = require("../models/comment.model");
 
+// --> CREATE POST FORM
 module.exports.create = async (req, res) => {
   var id = req.signedCookies.id;
   var user = await UserM.findById(id);
@@ -10,6 +11,7 @@ module.exports.create = async (req, res) => {
     user: user,
   });
 };
+// --> CREATE POST
 module.exports.createPOST = (req, res) => {
   // Tạo bài viết (Conntent)
   console.log(req.signedCookies.id);
@@ -24,39 +26,49 @@ module.exports.createPOST = (req, res) => {
   });
   res.redirect("/");
 };
-// Test
-module.exports.upload = (req, res) => {
-  // Some operation
-  res.send({
-    uploaded: 1,
-    fileName: "IMAGE.PNG",
-    url: "/public/img/user-upload",
-  });
-};
-//
+// --> VIEW POST BY ID
 module.exports.id = async (req, res) => {
-  var id = req.params.id;
-  var checkLikeAr = [];
-  var trueUserCommentAr = [];
-  var data = await await PostM.findById(id).populate("user");
-  var comment = await CommentM.find({ idpost: id }, (err, comment) => {
+  let id = req.params.id; // --> Biến id bài viết
+  let checkLikeAr = []; // --> Mảng kiểm tra like -> true/false
+  let trueUserCommentAr = []; // --> Mảng xác thực để cấp quyền sửa xóa comment -> true/false
+  let checkFollowTF;
+  let trueUserPostTF = false;
+  // --> Get data bài viết
+  let data = await PostM.findById(id).populate("user");
+  let user = await UserM.findById(data.user);
+  // Kiểm tra user post
+  if (data.user._id == req.signedCookies.id) {
+    trueUserPostTF = true;
+  }
+  // Kiểm tra follow
+  if (!req.signedCookies.id) {
+    checkFollowTF = false;
+  } else {
+    var checkFollow = user.following.find((u) => {
+      return u == req.signedCookies.id;
+    });
+    if (checkFollow == req.signedCookies.id) {
+      checkFollowTF = true;
+    } else checkFollowTF = false;
+  }
+  // --> Get comment bài viết
+  let comment = await CommentM.find({ idpost: id }, (err, comment) => {
     for (let i = 0; i < comment.length; i++) {
       if (!req.signedCookies.id) {
         checkLikeAr.push(false);
       } else {
         if (comment[i].like == []) {
+          // --> Chưa ai like
           checkLikeAr.push(false);
         } else {
           var checkLike = comment[i].like.find((a) => {
             return a == req.signedCookies.id;
           });
-          // console.log(checkLike);
           if (checkLike == req.signedCookies.id) {
             checkLikeAr.push(true);
           } else {
             checkLikeAr.push(false);
           }
-          // var checkTrueUserPost = comment[i].user;
           if (comment[i].user._id == req.signedCookies.id) {
             trueUserCommentAr.push(true);
           } else {
@@ -69,14 +81,18 @@ module.exports.id = async (req, res) => {
     .populate("user")
     .sort({ datecmt: -1 });
   await PostM.updateOne(
+    // --> Update view
     { _id: id },
     {
       view: data.view + 1,
     }
   );
+  console.log(data.user._id);
   res.render("post/post-index", {
     data: data,
     comment: comment,
+    checkfollow: checkFollowTF,
+    checkTrueUser: trueUserPostTF,
     checklike: checkLikeAr,
     checkTrue: trueUserCommentAr,
   });

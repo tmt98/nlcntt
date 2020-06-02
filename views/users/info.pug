@@ -16,7 +16,7 @@ block content
                     .sticky-top
                         .info.border-bottom.border-primary.text-center
                             .clearfix(style="padding: 5px;")
-                            img.img-thumbnail.rounded-circle(src=""+ user.avatar, alt="")
+                            img.img-thumbnail.rounded-circle#avatarP(src=""+ user.avatar, alt="")
                             p.user-name= user.name
                             button.btn.btn-primary
                                 span.fa.fa-rss
@@ -45,7 +45,7 @@ block content
                                     each follow in user.following
                                         .col
                                             a(href="/user/"+follow._id)
-                                                img.img-thumbnail(src="" + follow.avatar, alt="")
+                                                img.img-thumbnail.rounded-circle(src="" + follow.avatar, alt="")
                         br
                             
 

@@ -138,7 +138,7 @@ input:focus {
     [class*="follow-"] {
         display: none;
     }
-    button.btn.btn-primary{
+    button.btn.btn-danger.button-follow,button.btn.btn-primary.button-unfollow{
         border-radius: 50%;
     }
     .post-title {

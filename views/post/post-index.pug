@@ -18,10 +18,21 @@ block content
           .name.clear-left
             h5.user-name=data.user.name
           .follow.clear-left
-            button.btn.btn-primary
-              span.fa.fa-rss
-              span.follow-title &nbsp; Follow
-              span.follow-count= " (" + data.user.following.length + ")"
+            if (checkTrueUser)
+              button.btn.btn-info.edit
+                  span.fa.fa-pencil-square-o
+                  span.follow-title &nbsp; Edit
+            else
+              if (checkfollow)
+                button.btn.btn-danger.button-unfollow(class="follow-count-"+data.user._id, data-2=""+data.user._id)
+                  span.fa.fa-rss
+                  span.follow-title &nbsp; Unfollow
+                  span.follow-count= "(" + data.user.following.length + ")"
+              else
+                button.btn.btn-primary.button-follow(class="follow-count-"+data.user._id, data-2=""+data.user._id)
+                  span.fa.fa-rss
+                  span.follow-title &nbsp; Follow
+                  span.follow-count(data-1=data.user.following.length)= "(" + data.user.following.length + ")"
       .col-lg-9.col-sm-9.col-xs-8.col-9.col-right
         .title-post.align-middle
           h4.text-white(style="text-shadow: 1px 1px #ff0000;")= data.title
@@ -76,10 +87,10 @@ block content
                   // Button trigger modal
                   button.btn.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#m'+cmt._id)
                     | Sửa
-                  button.btn.btn-primary.mr-1(type='button')
+                  button.btn.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#d'+cmt._id)
                     | Xóa
                   // , data-toggle='modal', data-target='#m'+cmt._id)
-                  // Modal
+                  // Modal Edit
                   .modal.fade(id='m'+cmt._id,tabindex='-1', role='dialog', aria-labelledby='m'+cmt._id+'Title', aria-hidden='true')
                     .modal-dialog.modal-dialog-centered(role='document')
                       .modal-content
@@ -94,6 +105,21 @@ block content
                           .modal-footer
                             input.btn.btn-primary.d-inline-block.w-25(type="submit", value="Lưu thay đổi")
                             button.btn.btn-secondary(type='button', data-dismiss='modal') Đóng
+                  // Modal Delete
+                  .modal.fade(id='d'+cmt._id,tabindex='-1', role='dialog', aria-labelledby='d'+cmt._id+'Title', aria-hidden='true')
+                    .modal-dialog.modal-dialog-centered(role='document')
+                      .modal-content
+                        form(action="/ajax/delete-comment/" + cmt._id , method="post")
+                          .modal-header
+                            h5.modal-title(id='d'+cmt._id+'Title') Xóa bình luận
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                              span(aria-hidden='true') &times;
+                          .modal-body
+                            | Bạn có muốn xóa bình luận này không
+                            input(type="hidden", name="link",value ="")
+                          .modal-footer
+                            input.btn.btn-primary.d-inline-block.w-25(type="submit", value="Có")
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Không
                 p=""
                 p.clearfix
                   if (checklike[index])
@@ -203,4 +229,54 @@ block content
       var link = window.location.href.split("#");
       $('input[type="hidden"').val(link[0]+"#comment");    
     });
-    
+    $(document).on('click','.button-follow', function(){
+      var idUserPost = $(this).attr('data-2');
+      var countID = ".follow-count-"+idUserPost;
+      console.log("a");
+      $.ajax({
+        url: "/ajax/follow/" + idUserPost,
+        method: "post",
+        context: this,
+        data: {
+          idUserPost: idUserPost
+        },
+        success: function(data){
+          console.log("a");
+          if(data.success){
+              $(this).removeClass("btn-primary");
+              $(this).addClass("btn-danger");
+              $(this).removeClass("button-follow");
+              $(this).addClass("button-unfollow");
+              var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
+              $(countID).attr('data-1', count);
+          } else {
+              window.location.href = "/auth/login";
+          }
+        }
+      })
+    });
+    $(document).on('click','.button-unfollow', function(){
+      var idUserPost = $(this).attr('data-2');
+      var countID = ".follow-count-"+idUserPost;
+      $.ajax({
+        url: "/ajax/unfollow/" + idUserPost,
+        method: "post",
+        context: this,
+        data: {
+          idUserPost: idUserPost
+        },
+        success: function(data){
+          console.log("a");
+          if(data.success){
+              $(this).removeClass("btn-danger");
+              $(this).addClass("btn-primary");
+              $(this).removeClass("button-unfollow");
+              $(this).addClass("button-follow");
+              var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
+              $(countID).attr('data-1', count);
+          } else {
+              window.location.href = "/auth/login";
+          }
+        }
+      })
+    });
