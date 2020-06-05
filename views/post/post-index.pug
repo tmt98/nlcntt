@@ -27,7 +27,7 @@ block content
                 button.btn.btn-danger.button-unfollow(class="follow-count-"+data.user._id, data-2=""+data.user._id)
                   span.fa.fa-rss
                   span.follow-title &nbsp; Unfollow
-                  span.follow-count= "(" + data.user.following.length + ")"
+                  span.follow-count(data-1=data.user.following.length)= "(" + data.user.following.length + ")"
               else
                 button.btn.btn-primary.button-follow(class="follow-count-"+data.user._id, data-2=""+data.user._id)
                   span.fa.fa-rss
@@ -231,8 +231,6 @@ block content
     });
     $(document).on('click','.button-follow', function(){
       var idUserPost = $(this).attr('data-2');
-      var countID = ".follow-count-"+idUserPost;
-      console.log("a");
       $.ajax({
         url: "/ajax/follow/" + idUserPost,
         method: "post",
@@ -247,8 +245,10 @@ block content
               $(this).addClass("btn-danger");
               $(this).removeClass("button-follow");
               $(this).addClass("button-unfollow");
-              var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
-              $(countID).attr('data-1', count);
+              $('.follow-title').html("&nbsp; Unfollow");
+              var count = (parseInt($('.follow-count').attr('data-1')).valueOf()+1).valueOf();
+              $('.follow-count').attr('data-1',count);
+              $('.follow-count').html("("+count+")");
           } else {
               window.location.href = "/auth/login";
           }
@@ -272,8 +272,10 @@ block content
               $(this).addClass("btn-primary");
               $(this).removeClass("button-unfollow");
               $(this).addClass("button-follow");
-              var count = (parseInt(($(countID).attr('data-1')).valueOf())-1).valueOf()
-              $(countID).attr('data-1', count);
+              $('.follow-title').html("&nbsp; Follow");
+              var count = (parseInt($('.follow-count').attr('data-1')).valueOf()-1).valueOf();
+              $('.follow-count').attr('data-1',count);
+              $('.follow-count').html("("+count+")");
           } else {
               window.location.href = "/auth/login";
           }

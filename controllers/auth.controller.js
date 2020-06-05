@@ -11,7 +11,11 @@ module.exports.loginPOST = async (req, res) => {
   console.log(user);
   var password = md5(req.body.password);
   console.log(password);
-  var url = req.body.url;
+  if (!req.body.url) {
+    var url = "/";
+  } else {
+    var url = req.body.url;
+  }
   console.log(url);
   var user = await UserM.findOne({ user: user });
   console.log(user);
