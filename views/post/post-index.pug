@@ -21,7 +21,7 @@ block content
             if (checkTrueUser)
               button.btn.btn-info.edit
                   span.fa.fa-pencil-square-o
-                  span.follow-title &nbsp; Edit
+                  span.follow-title &nbsp; Edit Profile
             else
               if (checkfollow)
                 button.btn.btn-danger.button-unfollow(class="follow-count-"+data.user._id, data-2=""+data.user._id)
@@ -57,6 +57,8 @@ block content
         .container.content-post.pt-3.font-weight-light(style="font-size: 17px")
             div!=data.content
         br.pt-9
+        if (checkTrueUser)
+          a(href="/post/edit/"+ data._id).btn Sửa bài viết
         h3(style="border-top: 3px solid;") Comment
         .container.reply-comment#comment
           .send-comment

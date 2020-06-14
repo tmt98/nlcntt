@@ -97,3 +97,14 @@ module.exports.id = async (req, res) => {
     checkTrue: trueUserCommentAr,
   });
 };
+
+// --> EDIT POST
+module.exports.edit = async (req, res) => {
+  console.log(req.signedCookies.id);
+  console.log(req.params.id);
+  let data = await PostM.findById(req.params.id);
+  console.log(data);
+  res.render("post/post-edit", {
+    data: data,
+  });
+};

@@ -18,9 +18,21 @@ block content
                             .clearfix(style="padding: 5px;")
                             img.img-thumbnail.rounded-circle#avatarP(src=""+ user.avatar, alt="")
                             p.user-name= user.name
-                            button.btn.btn-primary
-                                span.fa.fa-rss
-                                span &nbsp; Follow
+                            if (checkTrueUser)
+                                button.btn.btn-info.edit
+                                    span.fa.fa-pencil-square-o
+                                    span.follow-title &nbsp; Edit
+                            else
+                                if (checkfollow)
+                                    button.btn.btn-danger.button-unfollow(class="follow-count-"+user._id, data-2=""+user._id)
+                                        span.fa.fa-rss
+                                        span.follow-title &nbsp; Unfollow
+                                        span.follow-count(data-1=user.following.length)= "(" + user.following.length + ")"
+                                else
+                                    button.btn.btn-primary.button-follow(class="follow-count-"+user._id, data-2=""+user._id)
+                                        span.fa.fa-rss
+                                        span.follow-title &nbsp; Follow
+                                        span.follow-count(data-1=user.following.length)= "(" + user.following.length + ")"
                             .clearfix(style="padding: 5px;")
                         .detail-info.border-bottom.border-primary
                             .clearfix(style="padding: 5px;")
