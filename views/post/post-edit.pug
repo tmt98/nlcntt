@@ -2,19 +2,14 @@
 extends ../layout/default
 
 block script  
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
-    script(src='https://rawgit.com/edull24/ScrollWatch/v2.0.1/dist/ScrollWatch-2.0.1.min.js')
-    script(type='text/javascript', src='http://js.nicedit.com/nicEdit-latest.js')
-    script(src='https://code.jquery.com/jquery-2.1.4.js')
+    script(src='/public/nicedit/nicEdit.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-textext/1.3.0/jquery.textext.min.js').
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
     link(rel='stylesheet', href='/public/css/post-create.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
-    script(src='/public/ckeditor/ckeditor.js')
-    link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css', rel='stylesheet')
-    //- tag
+    //- script(src='/public/ckeditor/ckeditor.js')
     link(href='/public/tag-it-master/css/jquery.tagit.css', rel='stylesheet', type='text/css')
     link(href='/public/tag-it-master/css/tagit.ui-zendesk.css', rel='stylesheet', type='text/css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', type='text/javascript', charset='utf-8')
@@ -32,18 +27,24 @@ block script
         singleField: true,
         singleFieldNode: $('#mySingleField')
         });
+        var tags = "#{data.tags}".split(',');
+        console.log(tags);
+        for (var i = 0; i < tags.length; i++){
+            console.log(tags[i]);
+            $("#singleFieldTags").tagit("createTag", tags[i]);
+        }
         });
     //-
 block content
     .banner
         .bg-dark(style="height: 630px")
-            img#previewbanner(style="height:630px; width: 100%")
+            img#previewbanner(style="height:630px; width: 100%", src= ""+ data.banner)
     br
     .container.bg-white#mainpage
         .col-sm-10.m-auto
-            form(action="/post/createPOST", method="post", enctype="multipart/form-data")
+            form(action="/post/edit/" +data._id, method="post", enctype="multipart/form-data")
                 .custom-file.mb-3
-                    input#customFile.customFile.custom-file-input(type='file', name="customFile", onchange='loadFile(event)', required, oninvalid="this.setCustomValidity('Vui lòng chọn banner')", oninput="this.setCustomValidity('')",)
+                    input#customFile.customFile.custom-file-input(type='file', name="customFile", onchange='loadFile(event)')
                     label.custom-file-label(for='customFile') Chọn ảnh bìa (Kích thước chiều cao 630px)
                 br
                 input#title.form-control(type="text",name="title", placeholder="Tiêu đề", required, oninvalid="this.setCustomValidity('Vui lòng nhập tiêu đề')", oninput="this.setCustomValidity('')", value = data.title).d-block
@@ -54,23 +55,28 @@ block content
                     textarea#content(name="content", style="width: 100%; height: 300px", rows="auto")
                     script(type='text/javascript').
                         new nicEditor().panelInstance('content');
-                    textarea#editor1(name='editor1', rows='10', cols='80')
-                        | This is my textarea to be replaced with CKEditor.
-                    script.
-                        CKEDITOR.replace( 'editor1', {
-                            filebrowserUploadUrl: '/uploader'
-                        });
+                    //- textarea#editor1(name='editor1', style="width: 100%; height: 2000px", rows='auto')
+                    //-     | This is my textarea to be replaced with CKEditor.
+                    //- script.
+                    //-     var data = '#{data.content}';
+                    //-     var content = $('<textarea />').html(data).text();
+                    //-     CKEDITOR.replace( 'editor1', {
+                    //-         extraPlugins: 'imageuploader,autogrow',
+                    //-         filebrowserUploadUrl: '/uploader'
+                    //-     });
+                    //-     CKEDITOR.instances['editor1'].setData(content);
 
                 br
                 label(for="tags") Tag tìm kiếm
                 input#mySingleField(type='hidden', name='tags', value='', required, oninvalid="this.setCustomValidity('Vui lòng chọn tag tìm kiếm')", oninput="this.setCustomValidity('')")
                 ul#singleFieldTags.rounded
                 br
-                button.btn.btn-danger.align-center(type="submit") Đăng bài viết
+                button.btn.btn-danger.align-center(type="submit") Lưu bài viết
                 br
     br
     // Include stylesheet
     // Create the editor container
+    #hello
     script.
         // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function() {
@@ -87,9 +93,10 @@ block content
         };
     script.
         $(document).ready(function() {
-            //- var content= #{data.content};
-            //- nicEditors.findEditor('content').setContent(content);
-           $(".nicEdit-main").html("#{data.content}");
+            var data = '#{data.content}';
+            var content = $('<textarea />').html(data).text();
+            console.log(content);
+            nicEditors.findEditor('content').setContent(content);
         });
 
  

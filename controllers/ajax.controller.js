@@ -72,7 +72,7 @@ module.exports.editcomment = async (req, res) => {
   await comment.save();
   res.redirect(link);
 };
-// --> DEconstE COMMENT
+// --> DELETE COMMENT
 module.exports.deletecomment = async (req, res) => {
   // Xóa comment
   const id = req.params.id;

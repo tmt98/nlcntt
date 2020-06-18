@@ -2,28 +2,30 @@
  * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
+
 CKEDITOR.editorConfig = function (config) {
   config.toolbarGroups = [
-    { name: "document", groups: ["mode", "document", "doctools"] },
-    { name: "clipboard", groups: ["clipboard", "undo"] },
     {
       name: "editing",
-      groups: ["find", "selection", "spellchecker", "editing"],
+      groups: ["spellchecker", "find", "selection", "editing"],
     },
+    { name: "document", groups: ["mode", "document", "doctools"] },
+    { name: "clipboard", groups: ["clipboard", "undo"] },
     { name: "forms", groups: ["forms"] },
     { name: "styles", groups: ["styles"] },
+    { name: "colors", groups: ["colors"] },
     { name: "basicstyles", groups: ["basicstyles", "cleanup"] },
     {
       name: "paragraph",
-      groups: ["indent", "list", "blocks", "align", "bidi", "paragraph"],
+      groups: ["list", "indent", "blocks", "align", "bidi", "paragraph"],
     },
     { name: "links", groups: ["links"] },
     { name: "insert", groups: ["insert"] },
-    { name: "colors", groups: ["colors"] },
     { name: "tools", groups: ["tools"] },
     { name: "others", groups: ["others"] },
+    { name: "about", groups: ["about"] },
   ];
 
   config.removeButtons =
-    "Source,NewPage,Preview,Save,Print,Cut,Copy,PasteText,Paste,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Select,Textarea,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,Language,Unlink,Anchor,Flash,Table,HorizontalRule,SpecialChar,PageBreak,Iframe,ShowBlocks,Templates,Styles,Format,CreateDiv,BidiLtr,BidiRtl,Link";
+    "Save,Source,NewPage,Preview,Print,Templates,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Cut,Form,Radio,Checkbox,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Link,Unlink,Anchor,Flash,Table,SpecialChar,Iframe,Styles,Format,ShowBlocks,Subscript,Superscript,CreateDiv,HorizontalRule,About";
 };

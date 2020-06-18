@@ -16,7 +16,7 @@ html(lang="en")
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top(style='min-height: 56px; max-height: 62px')
     nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
-        a.navbar-brand(href='#') GoGoShare
+        a.navbar-brand(href='/') GoGoShare
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -37,11 +37,27 @@ html(lang="en")
             ul.navbar-nav
               li.nav-item.dropdown
                 a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                  img.d-inline-block.rounded-circle(style='width: 30px; height: 30px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                  i.fa.fa-heart-o(aria-hidden='true')
+                .dropdown-menu.p-3(aria-labelledby='navbarDropdown')
+                  .clearfix(style='min-width: 13rem;')
+                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="").clearl
+                    p.p-1 &nbsp; Đã like bài viết của bạn
+                  .clearfix(style='min-width: 13rem;')
+                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
+                    p.p-1 &nbsp; Đã like bài viết của bạn
+                  .clearfix(style='min-width: 13rem;')
+                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
+                    p.p-1 &nbsp; Đã like bài viết của bạn
+                  .clearfix(style='min-width: 13rem;')
+                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
+                    p.p-1 &nbsp; Đã like bài viết của bạn
+            ul.navbar-nav
+              li.nav-item.dropdown
+                a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  img.d-inline-block.rounded-circle(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
                   |&nbsp;
-                  =userLogin.name
                 .dropdown-menu(aria-labelledby='navbarDropdown')
-                  a.dropdown-item(href='#') Tài khoản
+                  a.dropdown-item(href='/user/'+ userLogin._id) Tài khoản
                   a.dropdown-item(href='#') Đổi pass
                   .dropdown-divider
                   a.dropdown-item(href='/auth/logout') Đăng Xuất

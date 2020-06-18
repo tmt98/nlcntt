@@ -65,7 +65,7 @@ block content
             if userLogin
               .avatar.clearfix
                 a(href="/user/" + userLogin.name).float-left
-                  img.rounded-circle(style='width: 40px; height: 40px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                  img.rounded-circle(style='width: 40px; height: 40px;',src=""+ userLogin.avatar, alt="")
                   span &nbsp;
                 .text-input
                   input.input.shadow-sm(type="text", name="abc", data-1=""+data._id)#comment-text

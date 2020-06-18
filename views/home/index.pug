@@ -39,7 +39,7 @@ block content
               .tag-list
                 each tag in post.tags
                   .tag-item
-                    a(href="#").tags.text-decoration-none
+                    a(href="/searchWithTag?q="+tag).tags.text-decoration-none
                       i.fa.fa-tags.pr-1
                       =tag
               .details

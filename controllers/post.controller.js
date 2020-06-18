@@ -1,6 +1,7 @@
 var UserM = require("../models/user.model");
 var PostM = require("../models/post.model");
 var CommentM = require("../models/comment.model");
+const Post = require("../models/post.model");
 
 // --> CREATE POST FORM
 module.exports.create = async (req, res) => {
@@ -98,7 +99,7 @@ module.exports.id = async (req, res) => {
   });
 };
 
-// --> EDIT POST
+// --> EDIT POST FORM
 module.exports.edit = async (req, res) => {
   console.log(req.signedCookies.id);
   console.log(req.params.id);
@@ -107,4 +108,27 @@ module.exports.edit = async (req, res) => {
   res.render("post/post-edit", {
     data: data,
   });
+};
+// --> EDIT POST
+module.exports.editPOST = async (req, res) => {
+  // Sửa bài viết (Conntent)
+  console.log(req.signedCookies.id);
+  console.log(req.params.id);
+  let POST = await PostM.findById(req.params.id);
+  if (req.signedCookies.id == POST.user) {
+    req.body.tags = req.body.tags.split(",");
+    if (req.file) {
+      req.body.banner = "/" + req.file.destination + req.file.filename;
+      POST.banner = req.body.banner;
+    }
+    POST.title = req.body.title;
+    POST.description = req.body.description;
+    POST.content = req.body.content;
+    POST.tags = req.body.tags;
+    console.log(req.body);
+    await POST.save();
+    res.redirect("/post/" + req.params.id);
+  } else {
+    res.redirect("/");
+  }
 };

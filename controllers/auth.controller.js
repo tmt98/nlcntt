@@ -36,7 +36,7 @@ module.exports.loginPOST = async (req, res) => {
   res.cookie("id", user.id, {
     signed: true,
   });
-
+  res.cookie("user", { user });
   res.redirect(url);
 };
 module.exports.signup = (req, res) => {

@@ -15,16 +15,36 @@ module.exports.index = async (req, res) => {
   });
 };
 
-// Chưa fix
-module.exports.search = (req, res) => {
+// Search Cơ bản
+module.exports.search = async (req, res) => {
   var q = req.query.q;
-  var matchedUsers = db
-    .get("users")
-    .value()
-    .filter((user) => {
-      return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-    });
+  var countCMT = [];
+  var data = await PostM.find({ title: { $regex: q, $options: "i" } })
+    .populate("user")
+    .sort({ datepost: -1 });
+  for (let i = 0; i < data.length; i++) {
+    data[i].comment = await CommentM.countDocuments({ idpost: data[i]._id });
+    countCMT.push(data[i].comment);
+  }
   res.render("home/index", {
-    users: matchedUsers,
+    posts: data,
+    countcmt: countCMT,
+  });
+};
+
+// Search With Tag
+module.exports.searchWithTag = async (req, res) => {
+  var q = req.query.q;
+  var countCMT = [];
+  var data = await PostM.find({ tags: { $all: q } })
+    .populate("user")
+    .sort({ datepost: -1 });
+  for (let i = 0; i < data.length; i++) {
+    data[i].comment = await CommentM.countDocuments({ idpost: data[i]._id });
+    countCMT.push(data[i].comment);
+  }
+  res.render("home/index", {
+    posts: data,
+    countcmt: countCMT,
   });
 };
