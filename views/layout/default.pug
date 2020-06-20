@@ -10,6 +10,11 @@ html(lang="en")
     script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
     script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')
     script(src='/public/bootstrap/js/bootstrap.min.js')
+    // Firebase
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-analytics.js"></script>
+    //
     block script
 
 
@@ -34,23 +39,18 @@ html(lang="en")
             button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Tìm kiếm
           a(href="/post/create").btn.btn-outline-success Viết bài
           if userLogin
+            // Notification
+            script(type='module').
+              var id = "#{userLogin._id}";
+              import { app } from '/public/script/app.js';
+              app(id);
             ul.navbar-nav
               li.nav-item.dropdown
                 a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                  i.fa.fa-heart-o(aria-hidden='true')
-                .dropdown-menu.p-3(aria-labelledby='navbarDropdown')
-                  .clearfix(style='min-width: 13rem;')
-                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="").clearl
-                    p.p-1 &nbsp; Đã like bài viết của bạn
-                  .clearfix(style='min-width: 13rem;')
-                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
-                    p.p-1 &nbsp; Đã like bài viết của bạn
-                  .clearfix(style='min-width: 13rem;')
-                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
-                    p.p-1 &nbsp; Đã like bài viết của bạn
-                  .clearfix(style='min-width: 13rem;')
-                    img.d-inline-block.rounded-circle.float-left(style='width: 30px; height: 30px;',src=""+userLogin.avatar , alt="")
-                    p.p-1 &nbsp; Đã like bài viết của bạn
+                  #countNotification.btn.btn-danger
+                    i.fa.fa-bell(aria-hidden='true')
+                    |&nbsp; ...
+                #notification-i.dropdown-menu.p-3(aria-labelledby='navbarDropdown', style='overflow-y: scroll; max-height: 300px;')
             ul.navbar-nav
               li.nav-item.dropdown
                 a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')

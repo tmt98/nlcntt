@@ -1,3 +1,12 @@
+// Firebase Set Up
+const admin = require("firebase-admin");
+const serviceAccount = require("./../FirebaseKey.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://nienluancntt-b1606931.firebaseio.com",
+});
+let firebaseDB = admin.firestore();
+//
 const UserM = require("../models/user.model");
 const PostM = require("../models/post.model");
 const CommentM = require("../models/comment.model");
@@ -7,8 +16,11 @@ module.exports.like = async (req, res) => {
   // Biến ID
   const ID_CMT = req.params.id;
   const ID_POST = req.body.idpost;
-  const ID_USER_LIKE = req.signedCookies.id;
+  var ID_USER_LIKE = req.signedCookies.id;
   console.log(ID_CMT + ":" + ID_POST + ":" + ID_USER_LIKE);
+  const Comment = await CommentM.findById(ID_CMT);
+  var ID_USER_CMT = Comment.user;
+  console.log(ID_USER_CMT);
   // -->
   if (!req.signedCookies.id) {
     res.redirect("/auth/login");
@@ -18,6 +30,15 @@ module.exports.like = async (req, res) => {
       { $push: { like: ID_USER_LIKE } }
     );
     console.log(LIKE);
+    // Add lên firebase
+    let docRef = firebaseDB.collection(ID_USER_CMT.toString()).doc();
+    let setData = docRef.set({
+      content: "Đã thích bình luận của bạn",
+      senderid: ID_USER_LIKE.toString(),
+      link: "/post/" + ID_POST.toString(),
+      status: "Chưa xem",
+    });
+    //
     res.send({
       success: true,
     });
