@@ -24,6 +24,8 @@ const userRoute = require("./routes/user.route");
 const postRoute = require("./routes/post.route");
 const authRoute = require("./routes/auth.route");
 const ajaxRoute = require("./routes/ajax.route");
+// > ADMIN ROUTE
+const adminRoute = require("./routes/admin.route");
 
 const apiUserRoute = require("./api/routes/user.route");
 
@@ -32,6 +34,8 @@ const app = express();
 // Set pug engine-->
 app.set("view engine", "pug");
 app.set("views", "./views");
+app.use("/admin", adminRoute);
+
 // Set req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
