@@ -1,7 +1,16 @@
-var UserM = require("../models/user.model");
-var PostM = require("../models/post.model");
-var CommentM = require("../models/comment.model");
-const Post = require("../models/post.model");
+// // Firebase Set Up
+const firebase = require("firebase");
+firebase.initializeApp({
+  apiKey: "AIzaSyCWH_f74iDZvJE7cMG8mIdRqtffLZmWmbo",
+  authDomain: "nienluancntt-b1606931.firebaseapp.com",
+  projectId: "nienluancntt-b1606931",
+});
+
+var firebaseDB = firebase.firestore();
+// //
+const UserM = require("../models/user.model");
+const PostM = require("../models/post.model");
+const CommentM = require("../models/comment.model");
 
 // --> CREATE POST FORM
 module.exports.create = async (req, res) => {
@@ -13,18 +22,33 @@ module.exports.create = async (req, res) => {
   });
 };
 // --> CREATE POST
-module.exports.createPOST = (req, res) => {
+module.exports.createPOST = async (req, res) => {
   // Tạo bài viết (Conntent)
   console.log(req.signedCookies.id);
   req.body.user = req.signedCookies.id;
   req.body.tags = req.body.tags.split(",");
   req.body.banner = "/" + req.file.destination + req.file.filename;
   console.log(req.body);
-  PostM.create(req.body, function (err, PostM) {
+  const Post = await PostM.create(req.body, async (err, PostM) => {
     if (err) return handleError(err);
     // saved!
     console.log(PostM.title + "da duoc them vao database");
+    const USER = await UserM.findById(req.body.user);
+    for (var i = 0; i < USER.following.length; i++) {
+      // Add lên firebase
+      console.log(USER);
+      let docRef = firebaseDB.collection(USER.following[i].toString()).doc();
+      let setData = docRef.set({
+        content: "Đã đăng 1 bài viết mới",
+        senderid: req.signedCookies.id.toString(),
+        link: "/post/" + PostM._id.toString(),
+        status: "Chưa xem",
+        avatar: USER.avatar,
+        time: new Date(),
+      });
+    }
   });
+
   res.redirect("/");
 };
 // --> VIEW POST BY ID
@@ -38,6 +62,7 @@ module.exports.id = async (req, res) => {
   let data = await PostM.findById(id).populate("user");
   let user = await UserM.findById(data.user);
   // Kiểm tra user post
+  console.log(data.user._id + ":" + req.signedCookies.id);
   if (data.user._id == req.signedCookies.id) {
     trueUserPostTF = true;
   }
@@ -88,7 +113,6 @@ module.exports.id = async (req, res) => {
       view: data.view + 1,
     }
   );
-  console.log(data.user._id);
   res.render("post/post-index", {
     data: data,
     comment: comment,

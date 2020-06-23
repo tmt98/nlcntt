@@ -16,10 +16,12 @@ module.exports.like = async (req, res) => {
   // Biến ID
   const ID_CMT = req.params.id;
   const ID_POST = req.body.idpost;
-  var ID_USER_LIKE = req.signedCookies.id;
-  console.log(ID_CMT + ":" + ID_POST + ":" + ID_USER_LIKE);
+  const ID_LOGIN = req.signedCookies.id; // USER LOGIN
+  const USER_SEND = await UserM.findById(ID_LOGIN);
+
+  console.log(ID_CMT + ":" + ID_POST + ":" + ID_LOGIN);
   const Comment = await CommentM.findById(ID_CMT);
-  var ID_USER_CMT = Comment.user;
+  const ID_USER_CMT = Comment.user; // Người nhận thông báo
   console.log(ID_USER_CMT);
   // -->
   if (!req.signedCookies.id) {
@@ -27,16 +29,18 @@ module.exports.like = async (req, res) => {
   } else {
     const LIKE = await CommentM.updateOne(
       { _id: ID_CMT },
-      { $push: { like: ID_USER_LIKE } }
+      { $push: { like: ID_LOGIN } }
     );
     console.log(LIKE);
     // Add lên firebase
     let docRef = firebaseDB.collection(ID_USER_CMT.toString()).doc();
     let setData = docRef.set({
       content: "Đã thích bình luận của bạn",
-      senderid: ID_USER_LIKE.toString(),
+      senderid: ID_LOGIN.toString(),
       link: "/post/" + ID_POST.toString(),
       status: "Chưa xem",
+      avatar: USER_SEND.avatar,
+      time: new Date(),
     });
     //
     res.send({
@@ -49,15 +53,15 @@ module.exports.unlike = async (req, res) => {
   // Biến ID
   const ID_CMT = req.params.id;
   const ID_POST = req.body.idpost;
-  const ID_USER_LIKE = req.signedCookies.id;
-  console.log(ID_CMT + ":" + ID_POST + ":" + ID_USER_LIKE);
+  const ID_LOGIN = req.signedCookies.id; // USER LOGIN
+  console.log(ID_CMT + ":" + ID_POST + ":" + ID_LOGIN);
   // -->
   if (!req.signedCookies.id) {
     res.redirect("/auth/login");
   } else {
     var UNLIKE = await CommentM.updateOne(
       { _id: ID_CMT },
-      { $pull: { like: ID_USER_LIKE } }
+      { $pull: { like: ID_LOGIN } }
     );
     console.log(UNLIKE);
     res.send({
@@ -69,14 +73,27 @@ module.exports.unlike = async (req, res) => {
 module.exports.comment = async (req, res) => {
   // Biến ID
   const ID_POST = req.body.idpost;
-  const ID_USER_CMT = req.signedCookies.id;
+  const ID_LOGIN = req.signedCookies.id; // USER LOGIN
+  const ID_USER_POST = req.body.userpost;
   const CONTENT = req.body.value;
-  console.log(ID_POST + ":" + ID_USER_CMT);
+  const USER_SEND = await UserM.findById(ID_LOGIN);
+  console.log(ID_POST + ":" + ID_LOGIN);
   CommentM.create(
-    { idpost: ID_POST, user: ID_USER_CMT, content: CONTENT },
+    { idpost: ID_POST, user: ID_LOGIN, content: CONTENT },
     function (err, CommentM) {
       if (err) return handleError(err);
       console.log(CommentM._id + "success");
+      // Add lên firebase
+      let docRef = firebaseDB.collection(ID_USER_POST.toString()).doc();
+      let setData = docRef.set({
+        content: "Đã bình luận về bài viết của bạn",
+        senderid: ID_LOGIN.toString(),
+        link: "/post/" + ID_POST.toString(),
+        status: "Chưa xem",
+        avatar: USER_SEND.avatar,
+        time: new Date(),
+      });
+      //
     }
   );
   res.send({

@@ -14,19 +14,6 @@ export function app(id) {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   var firebaseDB = firebase.firestore();
-  //   firebaseDB
-  //     .collection(id)
-  //     .get()
-  //     .then(function (qS) {
-  //       qS.forEach(function (doc) {
-  //         var notification = doc.data();
-  //         addNotification(
-  //           notification.senderid,
-  //           notification.content,
-  //           notification.link
-  //         );
-  //       });
-  //     });
   var countNotification = 0;
   firebaseDB
     .collection(id)
@@ -45,32 +32,46 @@ export function app(id) {
   } else {
     console.log("false");
   }
-  function addNotification(senderid, content, link) {
-    var html =
-      '<div class="clearfix" style="min-width: 13rem;"><img class="d-inline-block rounded-circle float-left clearl" style="width: 30px; height: 30px;" src="/public/upload/avatar/abc.jpg" alt=""><p class="p-1">&nbsp; Đã like bài viết của bạn</p></div>';
+  function addNotification(senderid, avatar, content, link, time) {
+    var strTime = moment(time).format("hh:mm, DD/MM/YYYY");
+    var html = `<div class="container" style="padding: 0;min-width: 15rem;">
+      <div class="row">
+        <div class="col-2">
+          <a href="/user/${senderid}"><img class="d-inline-block rounded-circle float-left clearl" style="width: 30px; height: 30px;" src="${avatar}" alt=""></a>
+        </div>
+      <div class="col"
+        <p class="p-1"><a href="${link}">${content}</a>
+        <span class="d-block" style="font-size: .8125rem;">${strTime}</span></p>
+      </div>
+    </div>`;
     console.log("Vừa có 1 tin nhắn mới");
     $("#countNotification").html(
       '<i class="fa fa-bell" aria-hidden="true"></i>&nbsp;' + countNotification
     );
-    $("#notification-i").append(html);
+    $("#notification-i").prepend(html);
   }
-  firebaseDB.collection(id).onSnapshot(function (snapshot) {
-    countNotification = snapshot.size;
-    snapshot.docChanges().forEach(function (change) {
-      if (change.type === "added") {
-        if (countNotification >= 1) {
-          $("#countNotification").addClass("btn-danger");
-          $("#countNotification").removeClass("btn-outline-danger");
+  firebaseDB
+    .collection(id)
+    .orderBy("time")
+    .onSnapshot(function (snapshot) {
+      countNotification = snapshot.size;
+      snapshot.docChanges().forEach(function (change) {
+        if (change.type === "added") {
+          if (countNotification >= 1) {
+            $("#countNotification").addClass("btn-danger");
+            $("#countNotification").removeClass("btn-outline-danger");
+          }
+          var notification = change.doc.data();
+          addNotification(
+            notification.senderid,
+            notification.avatar,
+            notification.content,
+            notification.link,
+            notification.time.toDate()
+          );
         }
-        var notification = change.doc.data();
-        addNotification(
-          notification.senderid,
-          notification.content,
-          notification.link
-        );
-      }
-      if (change.type === "removed") {
-      }
+        if (change.type === "removed") {
+        }
+      });
     });
-  });
 } // export

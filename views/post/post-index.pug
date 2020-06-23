@@ -136,6 +136,7 @@ block content
 
 
   script.
+    // LIKE
     $(document).on('click','.like', function(){
       var idC = $(this).attr('id');
       var countID = ".like-count-"+idC;
@@ -162,6 +163,7 @@ block content
         }
       }); // $.ajax
     }); // $(document) LIKE
+    // UNLIKE
     $(document).on('click','.unlike', function(){
       var idC = $(this).attr('id');
       var countID = ".like-count-"+idC;
@@ -188,16 +190,19 @@ block content
         }
       })
     }); // $(document) UNLIKE
+    // --> Comment
     $('#comment-text').bind("enterKey",function(e){
       var idPost = $('#comment-text').attr('data-1');
       var value = $('#comment-text').val();
+      var USER_POST = '#{data.user._id}';
       $.ajax({
         url: "/ajax/comment/" + idPost,
         method: "post",
         context: this,
         data: {
           idpost: idPost,
-          value: value
+          value: value,
+          userpost: USER_POST,
         },
         success: function(data){
           if(data.success){
