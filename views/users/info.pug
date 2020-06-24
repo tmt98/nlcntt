@@ -1,5 +1,6 @@
 extends ../layout/default
 block script
+    script(src='/public/script/jquery.min.js')
     link(rel='stylesheet', href='/public/css/info-user.css')
     link(rel='stylesheet', href='/public/css/info-content-user.css')
     link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
@@ -13,15 +14,16 @@ block content
         .container-lg
             .row
                 .col-lg-3.col-sm-4.col-left.pr-15.pl-15.mr-0.ml-0.pt-5.border-left.border-right.border-primary
-                    .sticky-top
+                    .sticky-top(style="top:55px")
                         .info.border-bottom.border-primary.text-center
                             .clearfix(style="padding: 5px;")
                             img.img-thumbnail.rounded-circle#avatarP(src=""+ user.avatar, alt="")
                             p.user-name= user.name
                             if (checkTrueUser)
-                                button.btn.btn-info.edit
-                                    span.fa.fa-pencil-square-o
-                                    span.follow-title &nbsp; Edit
+                                a(href="/user/edit/"+userLogin._id)
+                                    button.btn.btn-info.edit
+                                        span.fa.fa-pencil-square-o
+                                        span.follow-title &nbsp; Edit
                             else
                                 if (checkfollow)
                                     button.btn.btn-danger.button-unfollow(class="follow-count-"+user._id, data-2=""+user._id)
@@ -111,4 +113,58 @@ block content
                                             |&nbsp;23
                                 .description
                                     p= post.description
+    script.
+        $(document).on('click','.button-follow', function(){
+        var idUserPost = $(this).attr('data-2');
+        $.ajax({
+            url: "/ajax/follow/" + idUserPost,
+            method: "post",
+            context: this,
+            data: {
+            idUserPost: idUserPost
+            },
+            success: function(data){
+            console.log("a");
+            if(data.success){
+                $(this).removeClass("btn-primary");
+                $(this).addClass("btn-danger");
+                $(this).removeClass("button-follow");
+                $(this).addClass("button-unfollow");
+                $('.follow-title').html("&nbsp; Unfollow");
+                var count = (parseInt($('.follow-count').attr('data-1')).valueOf()+1).valueOf();
+                $('.follow-count').attr('data-1',count);
+                $('.follow-count').html("("+count+")");
+            } else {
+                window.location.href = "/auth/login";
+            }
+            }
+        })
+        });
+        $(document).on('click','.button-unfollow', function(){
+        var idUserPost = $(this).attr('data-2');
+        var countID = ".follow-count-"+idUserPost;
+        $.ajax({
+            url: "/ajax/unfollow/" + idUserPost,
+            method: "post",
+            context: this,
+            data: {
+            idUserPost: idUserPost
+            },
+            success: function(data){
+            console.log("a");
+            if(data.success){
+                $(this).removeClass("btn-danger");
+                $(this).addClass("btn-primary");
+                $(this).removeClass("button-unfollow");
+                $(this).addClass("button-follow");
+                $('.follow-title').html("&nbsp; Follow");
+                var count = (parseInt($('.follow-count').attr('data-1')).valueOf()-1).valueOf();
+                $('.follow-count').attr('data-1',count);
+                $('.follow-count').html("("+count+")");
+            } else {
+                window.location.href = "/auth/login";
+            }
+            }
+        })
+        });
 

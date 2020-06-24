@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-body{
-    /* font-family: "Poppins", sans-serif; */
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+body {
+  /* font-family: "Poppins", sans-serif; */
 }
 .dropdown-menu {
-    left: unset;
-    right: -2px;
+  left: unset;
+  right: -2px;
+}
+#navbarSupportedContent {
+  margin-left: -2px;
+  margin-right: -2px;
+}
+.thongbao1:hover {
+  border-radius: 5px;
+  background: #ffe5e5;
 }

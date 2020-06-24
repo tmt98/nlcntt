@@ -34,8 +34,8 @@ export function app(id) {
   }
   function addNotification(senderid, avatar, content, link, time) {
     var strTime = moment(time).format("hh:mm, DD/MM/YYYY");
-    var html = `<div class="container" style="padding: 0;min-width: 15rem;">
-      <div class="row">
+    var html = `<div class="container thongbao" style="padding: 0;min-width: 15rem;">
+      <div class="row thongbao1" style="padding-top: 10px;padding-bottom: 2px">
         <div class="col-2">
           <a href="/user/${senderid}"><img class="d-inline-block rounded-circle float-left clearl" style="width: 30px; height: 30px;" src="${avatar}" alt=""></a>
         </div>

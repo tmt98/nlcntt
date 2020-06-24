@@ -25,6 +25,14 @@ module.exports.create = (req, res) => {
 module.exports.createPOST = (req, res) => {
   // Test
 };
+// Cập nhật thông tin user:
+module.exports.edit = async (req, res) => {
+  const user = await UserM.findById(req.params.id);
+  res.render("users/edit", {
+    user: user,
+  });
+};
+
 module.exports.id = async (req, res) => {
   var id = req.params.id;
   let checkFollowTF;

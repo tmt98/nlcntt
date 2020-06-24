@@ -1,0 +1,25 @@
+extends ../layout/default
+block script  
+    script(src='/public/script/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
+    link(rel='stylesheet', href='/public/css/auth-singup.css')
+block content
+    .container.pt-5
+        .wrapper.fadeInDown
+            #formContent
+                form(action="#", method="post", enctype="multipart/form-data")
+                    h2.active Cập nhật thông tin
+                    #avatar
+                        img.rounded-circle(src=""+user.avatar, alt="", style="width:150px; height:150px")
+                    if errors
+                        each error in errors
+                            p=error
+                    br
+                    input#name(type="text",name="name", placeholder="họ Tên", value= user.name, required, oninvalid="this.setCustomValidity('Vui lòng nhập họ tên')", oninput="this.setCustomValidity('')")
+                    input#address(type="text",name="address", placeholder="quê Quán", value= user.address, required, oninvalid="this.setCustomValidity('Vui lòng nhập quê quán')", oninput="this.setCustomValidity('')")
+                    input#living(type="text",name="living", placeholder="sống Tại", value= user.living, required, oninvalid="this.setCustomValidity('Vui lòng nhập nơi ở hiện tại')", oninput="this.setCustomValidity('')")
+                    input#avatar(type="file", name="avatar", placeholder="avatar", required, oninvalid="this.setCustomValidity('Vui lòng chọn avatar')", oninput="this.setCustomValidity('')")
+                    input#password(type="password",name="password", placeholder="nhập mật Khẩu để xác thực", value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')", oninput="this.setCustomValidity('')")
+
+                    br
+                    input(type="submit", value="Sửa")

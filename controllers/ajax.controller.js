@@ -10,6 +10,7 @@ let firebaseDB = admin.firestore();
 const UserM = require("../models/user.model");
 const PostM = require("../models/post.model");
 const CommentM = require("../models/comment.model");
+const User = require("../models/user.model");
 
 /// --> LIKE
 module.exports.like = async (req, res) => {
@@ -133,6 +134,18 @@ module.exports.follow = async (req, res) => {
       { _id: ID_PROFILE_FOLLOW },
       { $push: { following: ID_USER_FOLLOW } }
     );
+    USER_SEND = await UserM.findById(ID_USER_FOLLOW);
+    // Add lên firebase
+    let docRef = firebaseDB.collection(ID_PROFILE_FOLLOW.toString()).doc();
+    let setData = docRef.set({
+      content: "Đã bắt đầu theo dõi bạn",
+      senderid: ID_USER_FOLLOW.toString(),
+      link: "/user/" + ID_USER_FOLLOW.toString(),
+      status: "Chưa xem",
+      avatar: USER_SEND.avatar,
+      time: new Date(),
+    });
+    //
     console.log(FOLLOW);
     res.send({
       success: true,
