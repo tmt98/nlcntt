@@ -12,6 +12,7 @@ router.get("/search", controller.search); // Tìm kiếm User /search?q=
 router.get("/create", controller.create); // Tạo User /create
 router.post("/create", controller.createPOST); // Thực Thi Tạo user
 router.get("/edit/:id", controller.edit); // Cập nhật User user/edit/id
+router.post("/edit/:id", upload.single("avatar"), controller.editPost); // Cập nhật User user/edit/id
 router.get("/:id", controller.id); // View Profile /user/id/
 
 module.exports = router;

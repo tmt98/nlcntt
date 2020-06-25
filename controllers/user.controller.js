@@ -1,6 +1,7 @@
-var UserM = require("../models/user.model");
-var PostM = require("../models/post.model");
-var bodyParser = require("body-parser");
+const UserM = require("../models/user.model");
+const PostM = require("../models/post.model");
+const bodyParser = require("body-parser");
+const md5 = require("md5");
 
 module.exports.index = (req, res) => {
   res.render("users/view", {
@@ -27,12 +28,35 @@ module.exports.createPOST = (req, res) => {
 };
 // Cập nhật thông tin user:
 module.exports.edit = async (req, res) => {
+  if (req.signedCookies.id != req.params.id) {
+    res.redirect("/");
+  }
   const user = await UserM.findById(req.params.id);
   res.render("users/edit", {
     user: user,
   });
 };
-
+// POST Cập nhật:
+module.exports.editPost = async (req, res) => {
+  var password = md5(req.body.password);
+  if (req.signedCookies.id != req.params.id) {
+    res.redirect("/");
+  } else {
+    const User = await UserM.findById(req.params.id);
+    if (User.password == password) {
+      if (req.file) {
+        req.body.avatar = "/" + req.file.destination + req.file.filename;
+        User.avatar = req.body.avatar;
+      }
+      User.name = req.body.name;
+      User.address = req.body.address;
+      User.living = req.body.living;
+      await User.save();
+      res.redirect("/user/" + req.params.id);
+    } else res.redirect("/");
+  }
+};
+//
 module.exports.id = async (req, res) => {
   var id = req.params.id;
   let checkFollowTF;

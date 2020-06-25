@@ -125,21 +125,26 @@ module.exports.id = async (req, res) => {
 
 // --> EDIT POST FORM
 module.exports.edit = async (req, res) => {
-  console.log(req.signedCookies.id);
-  console.log(req.params.id);
-  let data = await PostM.findById(req.params.id);
-  console.log(data);
-  res.render("post/post-edit", {
-    data: data,
-  });
+  if (req.signedCookies.id != req.params.id) {
+    res.redirect("/");
+  } else {
+    console.log(req.signedCookies.id);
+    console.log(req.params.id);
+    let data = await PostM.findById(req.params.id);
+    console.log(data);
+    res.render("post/post-edit", {
+      data: data,
+    });
+  }
 };
 // --> EDIT POST
 module.exports.editPOST = async (req, res) => {
   // Sửa bài viết (Conntent)
   console.log(req.signedCookies.id);
   console.log(req.params.id);
-  let POST = await PostM.findById(req.params.id);
-  if (req.signedCookies.id == POST.user) {
+  const POST = await PostM.findById(req.params.id);
+  console.log(POST);
+  if (req.signedCookies.id == POST.user._id) {
     req.body.tags = req.body.tags.split(",");
     if (req.file) {
       req.body.banner = "/" + req.file.destination + req.file.filename;

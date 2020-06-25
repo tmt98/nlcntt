@@ -107,3 +107,11 @@ a.tags {
     word-break: break-word;
     word-wrap: break-word;
 }
+@media (max-width:610px){
+    .cover-blog{
+        height: 200px;
+    }
+    .cover-blog a>img{
+        min-height: 200px;
+    }
+}

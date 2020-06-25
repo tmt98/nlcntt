@@ -1,0 +1,27 @@
+extends ../layout/default
+block script  
+    script(src='/public/script/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
+    link(rel='stylesheet', href='/public/css/auth-singin.css')
+    link(rel='stylesheet', href='/public/open-iconic/font/css/open-iconic-bootstrap.css')
+
+block content
+    .container.pt-5
+        .wrapper.fadeInDown
+            #formContent
+                h2.active Đổi mật khẩu
+                if errors
+                    each error in errors
+                        p=error
+                br
+                // Login Form
+                form(id="changpassFORM", action="/auth/changepass/"+userLogin._id, method="post")
+                    input#oldpassword(type='password', name='oldpassword', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu cũ')", oninput="this.setCustomValidity('')")
+                    input#password(type='password', name='password', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới')", oninput="this.setCustomValidity('')")
+                    input#repassword(type='password', name='repassword', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu mới')", oninput="this.setCustomValidity('')")
+                    input(type='submit', value='Đổi mật khẩu')
+                // Remind Passowrd
+                //- #formFooter
+                script.
+                    if (localStorage.getItem("URL_P"))
+                        $('#url').val(localStorage.getItem("URL_P"))

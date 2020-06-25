@@ -60,7 +60,7 @@ html(lang="en")
                   |&nbsp;
                 .dropdown-menu(aria-labelledby='navbarDropdown')
                   a.dropdown-item(href='/user/'+ userLogin._id) Tài khoản
-                  a.dropdown-item(href='#') Đổi pass
+                  a.dropdown-item(href='/auth/changepass/'+userLogin._id) Đổi pass
                   .dropdown-divider
                   a.dropdown-item(href='/auth/logout') Đăng Xuất
           else
@@ -71,4 +71,5 @@ html(lang="en")
 
                 localStorage.setItem( "URL_P",window.location.href);
               });
+          p
     block content

@@ -59,7 +59,7 @@ block content
                                     each follow in user.following
                                         .col
                                             a(href="/user/"+follow._id)
-                                                img.img-thumbnail.rounded-circle(src="" + follow.avatar, alt="")
+                                                img.img-thumbnail.rounded-circle(src="" + follow.avatar, alt="", style="min-width: 35px; min-height:35px")
                         br
                             
 
@@ -75,7 +75,7 @@ block content
                                 .information-blogger.clearfix
                                     .avatar
                                         a(href="/user/" + user.id)
-                                            img.rounded-circle(style='width: 35px; height: 35px;',src="/public/img/avatar/67265914_2394160794176107_7042751431970914304_o.jpg", alt="")
+                                            img.rounded-circle(style='width: 35px; height: 35px;',src=""+user.avatar, alt="")
                                     .infor
                                         a(href="/user/" + user.id).text-danger.text-decoration-none
                                             = user.name

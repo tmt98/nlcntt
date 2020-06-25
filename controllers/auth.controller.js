@@ -2,6 +2,7 @@ var md5 = require("md5");
 
 var UserM = require("../models/user.model");
 var PostM = require("../models/post.model");
+const User = require("../models/user.model");
 
 module.exports.login = (req, res) => {
   res.render("auth/signin");
@@ -98,4 +99,28 @@ module.exports.signupPOST = async (req, res) => {
 module.exports.logout = (req, res) => {
   res.clearCookie("id");
   res.redirect("/");
+};
+
+module.exports.changepass = (req, res) => {
+  if (req.signedCookies.id != req.params.id) {
+    res.redirect("/");
+  } else {
+    res.render("auth/changepass");
+  }
+};
+module.exports.changepassPost = async (req, res) => {
+  const oldpass = md5(req.body.oldpassword);
+  const newpass = md5(req.body.password);
+  if (req.params.id == req.signedCookies.id) {
+    const User = await UserM.findById(req.params.id);
+    if (oldpass == User.password) {
+      User.password = newpass;
+      User.save();
+      res.redirect("/");
+    } else {
+      res.render("auth/changepass", {
+        errors: ["Mật khẩu cũ không đúng"],
+      });
+    }
+  }
 };
