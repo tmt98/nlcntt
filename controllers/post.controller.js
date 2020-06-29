@@ -43,7 +43,6 @@ module.exports.createPOST = async (req, res) => {
         senderid: req.signedCookies.id.toString(),
         link: "/post/" + PostM._id.toString(),
         status: "Chưa xem",
-        avatar: USER.avatar,
         time: new Date(),
       });
     }
@@ -125,12 +124,14 @@ module.exports.id = async (req, res) => {
 
 // --> EDIT POST FORM
 module.exports.edit = async (req, res) => {
-  if (req.signedCookies.id != req.params.id) {
-    res.redirect("/");
+  const data = await PostM.findById(req.params.id);
+  if (req.signedCookies.id != data.user._id) {
+    res.render("layout/error", {
+      errors: ["Đã có lỗi xảy ra!!!"],
+    });
   } else {
     console.log(req.signedCookies.id);
     console.log(req.params.id);
-    let data = await PostM.findById(req.params.id);
     console.log(data);
     res.render("post/post-edit", {
       data: data,

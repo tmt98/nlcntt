@@ -16,9 +16,8 @@ block content
                 br
                 // Login Form
                 form(id="changpassFORM", action="/auth/changepass/"+userLogin._id, method="post")
-                    input#oldpassword(type='password', name='oldpassword', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu cũ')", oninput="this.setCustomValidity('')")
-                    input#password(type='password', name='password', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới')", oninput="this.setCustomValidity('')")
-                    input#repassword(type='password', name='repassword', placeholder='mật khẩu', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu mới')", oninput="this.setCustomValidity('')")
+                    input#oldpassword(type='password', name='oldpassword', placeholder='nhập mật khẩu cũ', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu cũ')", oninput="this.setCustomValidity('')")
+                    input#password(type='password', name='password', placeholder='nhập mật khẩu mới', value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu mới')", oninput="this.setCustomValidity('')")
                     input(type='submit', value='Đổi mật khẩu')
                 // Remind Passowrd
                 //- #formFooter

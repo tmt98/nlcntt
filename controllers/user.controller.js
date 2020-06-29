@@ -1,5 +1,6 @@
 const UserM = require("../models/user.model");
 const PostM = require("../models/post.model");
+const CommentM = require("../models/comment.model");
 const bodyParser = require("body-parser");
 const md5 = require("md5");
 
@@ -29,7 +30,9 @@ module.exports.createPOST = (req, res) => {
 // Cập nhật thông tin user:
 module.exports.edit = async (req, res) => {
   if (req.signedCookies.id != req.params.id) {
-    res.redirect("/");
+    res.render("layout/error", {
+      errors: ["Đã có lỗi xảy ra!!!"],
+    });
   }
   const user = await UserM.findById(req.params.id);
   res.render("users/edit", {
@@ -40,7 +43,10 @@ module.exports.edit = async (req, res) => {
 module.exports.editPost = async (req, res) => {
   var password = md5(req.body.password);
   if (req.signedCookies.id != req.params.id) {
-    res.redirect("/");
+    res.render("layout/error", {
+      errors: ["Đã có lỗi xảy ra!!!"],
+    });
+    // res.redirect("/");
   } else {
     const User = await UserM.findById(req.params.id);
     if (User.password == password) {
@@ -62,6 +68,7 @@ module.exports.id = async (req, res) => {
   let checkFollowTF;
   let trueUserProfileTF = false;
   let user = await UserM.findById(id).populate("following");
+  var countCMT = [];
   // Kiểm tra user post
   if (user._id == req.signedCookies.id) {
     trueUserProfileTF = true;
@@ -78,10 +85,15 @@ module.exports.id = async (req, res) => {
     } else checkFollowTF = false;
   }
   let post = await PostM.find({ user: id }).sort({ datepost: -1 });
+  for (let i = 0; i < post.length; i++) {
+    post[i].comment = await CommentM.countDocuments({ idpost: post[i]._id });
+    countCMT.push(post[i].comment);
+  }
   res.render("users/info", {
     user: user,
     checkfollow: checkFollowTF,
     checkTrueUser: trueUserProfileTF,
     posts: post,
+    countcmt: countCMT,
   });
 };

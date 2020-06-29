@@ -14,11 +14,11 @@ block content
                         each error in errors
                             p=error
                     br
-                    input#user(type="text",name="user", placeholder="tài Khoản", value=values ? values.user : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản')", oninput="this.setCustomValidity('')")
-                    input#password(type="password",name="password", placeholder="mật Khẩu", value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')", oninput="this.setCustomValidity('')")
-                    input#name(type="text",name="name", placeholder="họ Tên", value=values ? values.name : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập họ tên')", oninput="this.setCustomValidity('')")
-                    input#address(type="text",name="address", placeholder="quê Quán", value=values ? values.address : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập quê quán')", oninput="this.setCustomValidity('')")
-                    input#living(type="text",name="living", placeholder="sống Tại", value=values ? values.living : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập nơi ở hiện tại')", oninput="this.setCustomValidity('')")
+                    input#user(type="text",name="user", placeholder="tài khoản", value=values ? values.user : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản')", oninput="this.setCustomValidity('')")
+                    input#password(type="password",name="password", placeholder="mật khẩu", value=values ? values.password : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')", oninput="this.setCustomValidity('')")
+                    input#name(type="text",name="name", placeholder="họ tên", value=values ? values.name : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập họ tên')", oninput="this.setCustomValidity('')")
+                    input#address(type="text",name="address", placeholder="quê quán", value=values ? values.address : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập quê quán')", oninput="this.setCustomValidity('')")
+                    input#living(type="text",name="living", placeholder="sống tại", value=values ? values.living : "", required, oninvalid="this.setCustomValidity('Vui lòng nhập nơi ở hiện tại')", oninput="this.setCustomValidity('')")
                     input#avatar(type="file", name="avatar", placeholder="avatar", required, oninvalid="this.setCustomValidity('Vui lòng chọn avatar')", oninput="this.setCustomValidity('')")
                     br
                     input(type="submit", value="Đăng kí")

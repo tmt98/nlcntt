@@ -1,9 +1,10 @@
-const express = require('express')
+const express = require("express");
 
-const controller = require('../controllers/user.controller')
+const controller = require("../controllers/user.controller");
 
 const router = express.Router(); // POST/GET
-router.get('/', controller.index); // Index /user
+router.get("/", controller.index); // Index /api/user
+router.get("/:id", controller.id); // GET Profile /api/user/id/
 // router.get('/search', controller.search); // Tìm kiếm User /search?q=
 // router.get('/create', controller.create); // Tạo User /create
 // router.post('/create', controller.createPOST); // Thực Thi Tạo user

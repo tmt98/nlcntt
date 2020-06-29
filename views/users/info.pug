@@ -57,7 +57,7 @@ block content
                             .container
                                 .row.row-cols-3
                                     each follow in user.following
-                                        .col
+                                        .col(style="padding-bottom:4px;")
                                             a(href="/user/"+follow._id)
                                                 img.img-thumbnail.rounded-circle(src="" + follow.avatar, alt="", style="min-width: 35px; min-height:35px")
                         br
@@ -65,11 +65,8 @@ block content
 
                 .col-lg-9.col-sm-8.col-right.content
                     .post.nav.nav.bg-light
-                        a.nav-link.active(href='#') Trang Chủ
-                        a.nav-link(href='#') Hoạt Động
-                        a.nav-link(href='#') Theo Dõi
-                        a.nav-link.disabled(href='#') Đang Theo Dõi
-                    each post in posts
+                        a.nav-link.active(href='#') Bài viết
+                    each post,index in posts
                         .post.border.rounded
                             .info-content-user.bg-white.p-1
                                 .information-blogger.clearfix
@@ -90,7 +87,7 @@ block content
                                 div(style='position: relative;')
                                     .cover-blog
                                         a(href="#").text-decoration-none
-                                            img(src='https://media2.gody.vn/public/mytravelmap/images/2018/9/1/ngocanh.ngth3776/116643a8a4c2ddd29b1ffddcedbcfbd38b359424.jpg', alt='')
+                                            img(src=''+ post.banner, alt='')
                                 .title
                                     h2
                                         a.text-decoration-none(href="/post/"+post._id)= post.title
@@ -107,7 +104,7 @@ block content
                                             =post.view
                                         span
                                             i.fa.fa-comments.pr-1
-                                            |&nbsp;23
+                                            =countcmt[index]
                                         span
                                             i.fa.fa-share
                                             |&nbsp;23

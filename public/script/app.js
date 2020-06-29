@@ -17,6 +17,7 @@ export function app(id) {
   var countNotification = 0;
   firebaseDB
     .collection(id)
+    .where("status", "==", "Chưa xem")
     .get()
     .then(function (querySnapshot) {
       console.log(querySnapshot.size);
@@ -32,43 +33,86 @@ export function app(id) {
   } else {
     console.log("false");
   }
-  function addNotification(senderid, avatar, content, link, time) {
+  function Get(url) {
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET", url, false);
+    Httpreq.send(null);
+    return Httpreq.responseText;
+  }
+  function addNotification(senderid, content, link, time) {
+    firebaseDB
+      .collection(id)
+      .where("status", "==", "Chưa xem")
+      .get()
+      .then(function (querySnapshot) {
+        if (querySnapshot.size != undefined) {
+          countNotification = querySnapshot.size;
+        }
+      });
     var strTime = moment(time).format("hh:mm, DD/MM/YYYY");
+    var user = JSON.parse(Get("/api/user/" + senderid));
     var html = `<div class="container thongbao" style="padding: 0;min-width: 15rem;">
       <div class="row thongbao1" style="padding-top: 10px;padding-bottom: 2px">
         <div class="col-2">
-          <a href="/user/${senderid}"><img class="d-inline-block rounded-circle float-left clearl" style="width: 30px; height: 30px;" src="${avatar}" alt=""></a>
+          <a href="/user/${senderid}"><img class="d-inline-block rounded-circle float-left clearl" style="width: 30px; height: 30px;" src="${user.avatar}" alt=""></a>
         </div>
       <div class="col"
         <p class="p-1"><a href="${link}">${content}</a>
         <span class="d-block" style="font-size: .8125rem;">${strTime}</span></p>
       </div>
     </div>`;
-    console.log("Vừa có 1 tin nhắn mới");
-    $("#countNotification").html(
-      '<i class="fa fa-bell" aria-hidden="true"></i>&nbsp;' + countNotification
-    );
+    firebaseDB
+      .collection(id)
+      .where("status", "==", "Chưa xem")
+      .get()
+      .then(function (querySnapshot) {
+        if (querySnapshot.size != undefined) {
+          countNotification = querySnapshot.size;
+          if (countNotification >= 1) {
+            $("#countNotification").addClass("btn-danger");
+            $("#countNotification").removeClass("btn-outline-danger");
+          }
+          $("#countNotification").html(
+            '<i class="fa fa-bell" aria-hidden="true"></i>&nbsp;' +
+              countNotification
+          );
+        }
+      });
     $("#notification-i").prepend(html);
   }
   firebaseDB
     .collection(id)
     .orderBy("time")
     .onSnapshot(function (snapshot) {
-      countNotification = snapshot.size;
       snapshot.docChanges().forEach(function (change) {
         if (change.type === "added") {
-          if (countNotification >= 1) {
-            $("#countNotification").addClass("btn-danger");
-            $("#countNotification").removeClass("btn-outline-danger");
-          }
           var notification = change.doc.data();
           addNotification(
             notification.senderid,
-            notification.avatar,
             notification.content,
             notification.link,
             notification.time.toDate()
           );
+        }
+        if (change.type === "modified") {
+          console.log("vừa có 1 thay đổi");
+          firebaseDB
+            .collection(id)
+            .where("status", "==", "Chưa xem")
+            .get()
+            .then(function (querySnapshot) {
+              if (querySnapshot.size != undefined) {
+                countNotification = querySnapshot.size;
+                if (countNotification == 0) {
+                  $("#countNotification").removeClass("btn-danger");
+                  $("#countNotification").addClass("btn-outline-danger");
+                }
+                $("#countNotification").html(
+                  '<i class="fa fa-bell" aria-hidden="true"></i>&nbsp;' +
+                    countNotification
+                );
+              }
+            });
         }
         if (change.type === "removed") {
         }

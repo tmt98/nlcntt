@@ -28,14 +28,14 @@ html(lang="en")
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse.bg-light
           ul.navbar-nav.mr-2
-            li.nav-item.active
-              a.nav-link(href='/')
-                | Trang Chủ 
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='#') Hình ảnh
-            li.nav-item
-              a.nav-link.disabled(href='#') Cộng đồng
+            //- li.nav-item.active
+            //-   a.nav-link(href='/')
+            //-     | Trang Chủ 
+            //-     span.sr-only (current)
+            //- li.nav-item
+            //-   a.nav-link(href='#') Hình ảnh
+            //- li.nav-item
+            //-   a.nav-link.disabled(href='#') Cộng đồng
           form.form-inline.my-2.my-lg-0.mr-auto(action="/search", method="get")
             input.form-control.mr-sm-2(type='search', name='q', placeholder='Tìm kiếm', aria-label='Search')
             button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Tìm kiếm
@@ -52,7 +52,25 @@ html(lang="en")
                   #countNotification.btn.btn-danger
                     i.fa.fa-bell(aria-hidden='true')
                     |&nbsp; ...
-                #notification-i.dropdown-menu.p-3(aria-labelledby='navbarDropdown', style='overflow-y: scroll; max-height: 300px;')
+                #notification-a.dropdown-menu.p-3(aria-labelledby='navbarDropdown', style='overflow-y: scroll; max-height: 300px;')
+                  #readall.btn.btn-primary(style="height:25px; padding:0; margin: 0 auto; padding-left: 4px; padding-right: 4px") đã đọc tất cả
+                  script.
+                    $(document).on('click','#readall', function(){
+                      console.log("1");
+                      $.ajax({
+                        url: "/ajax/readall/" + "#{userLogin._id}",
+                        method: "post",
+                        context: this,
+                        data: {
+                        },
+                        success: function(data){
+                          console.log("true");
+                        }
+                      }); // $.ajax
+                    });
+                  br
+                  br
+                  #notification-i
             ul.navbar-nav
               li.nav-item.dropdown
                 a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')

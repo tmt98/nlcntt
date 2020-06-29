@@ -59,7 +59,9 @@ block content
             div!=data.content
         br.pt-9
         if (checkTrueUser)
-          a(href="/post/edit/"+ data._id).btn Sửa bài viết
+          a(href="/post/edit/"+ data._id).btn.btn-outline-danger Sửa bài viết
+          br
+          br
         h3(style="border-top: 3px solid;") Comment
         .container.reply-comment#comment
           .send-comment

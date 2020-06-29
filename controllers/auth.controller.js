@@ -3,8 +3,12 @@ var md5 = require("md5");
 var UserM = require("../models/user.model");
 var PostM = require("../models/post.model");
 const User = require("../models/user.model");
+const { response } = require("express");
 
 module.exports.login = (req, res) => {
+  if (typeof req.signedCookies.id != "undefined") {
+    res.redirect("/");
+  }
   res.render("auth/signin");
 };
 module.exports.loginPOST = async (req, res) => {
@@ -41,6 +45,9 @@ module.exports.loginPOST = async (req, res) => {
   res.redirect(url);
 };
 module.exports.signup = (req, res) => {
+  if (typeof req.signedCookies.id != "undefined") {
+    res.redirect("/");
+  }
   res.render("auth/signup");
 };
 module.exports.signupPOST = async (req, res) => {
@@ -103,7 +110,9 @@ module.exports.logout = (req, res) => {
 
 module.exports.changepass = (req, res) => {
   if (req.signedCookies.id != req.params.id) {
-    res.redirect("/");
+    res.render("layout/error", {
+      errors: ["Bạn không có quyền đổi pass người khác!!"],
+    });
   } else {
     res.render("auth/changepass");
   }
@@ -116,7 +125,9 @@ module.exports.changepassPost = async (req, res) => {
     if (oldpass == User.password) {
       User.password = newpass;
       User.save();
-      res.redirect("/");
+      res.render("layout/error", {
+        errors: ["Đổi mật khẩu thành công!!!"],
+      });
     } else {
       res.render("auth/changepass", {
         errors: ["Mật khẩu cũ không đúng"],

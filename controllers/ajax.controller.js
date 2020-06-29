@@ -77,7 +77,6 @@ module.exports.comment = async (req, res) => {
   const ID_LOGIN = req.signedCookies.id; // USER LOGIN
   const ID_USER_POST = req.body.userpost;
   const CONTENT = req.body.value;
-  const USER_SEND = await UserM.findById(ID_LOGIN);
   console.log(ID_POST + ":" + ID_LOGIN);
   CommentM.create(
     { idpost: ID_POST, user: ID_LOGIN, content: CONTENT },
@@ -91,7 +90,6 @@ module.exports.comment = async (req, res) => {
         senderid: ID_LOGIN.toString(),
         link: "/post/" + ID_POST.toString(),
         status: "Chưa xem",
-        avatar: USER_SEND.avatar,
         time: new Date(),
       });
       //
@@ -134,7 +132,6 @@ module.exports.follow = async (req, res) => {
       { _id: ID_PROFILE_FOLLOW },
       { $push: { following: ID_USER_FOLLOW } }
     );
-    USER_SEND = await UserM.findById(ID_USER_FOLLOW);
     // Add lên firebase
     let docRef = firebaseDB.collection(ID_PROFILE_FOLLOW.toString()).doc();
     let setData = docRef.set({
@@ -142,7 +139,6 @@ module.exports.follow = async (req, res) => {
       senderid: ID_USER_FOLLOW.toString(),
       link: "/user/" + ID_USER_FOLLOW.toString(),
       status: "Chưa xem",
-      avatar: USER_SEND.avatar,
       time: new Date(),
     });
     //
@@ -170,4 +166,23 @@ module.exports.unfollow = async (req, res) => {
       success: true,
     });
   }
+};
+
+// --> READ ALL NOTIFICATION
+module.exports.readall = async (req, res) => {
+  const ID_USER = req.params.id;
+  // Add lên firebase
+  firebaseDB
+    .collection(ID_USER)
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        doc.ref.update({
+          status: "Đã xem",
+        });
+      });
+    });
+  res.send({
+    success: true,
+  });
 };
