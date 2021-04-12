@@ -1,3 +1,8 @@
 node_modules
 .env
 FirebaseKey.json
+public/img
+public/upload
+backup
+.adminbro
+.vscode
