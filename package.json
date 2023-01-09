@@ -20,7 +20,7 @@
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
     "firebase": "^7.15.4",
-    "firebase-admin": "^8.12.1",
+    "firebase-admin": "^11.4.1",
     "formidable": "^1.2.2",
     "html2jade": "^0.8.6",
     "lowdb": "^1.0.0",
